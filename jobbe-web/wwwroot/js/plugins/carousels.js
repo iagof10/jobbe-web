@@ -142,7 +142,7 @@ class Carousels {
           gap: 0,
           rewind: false,
           type: 'carousel',
-          autoplay: 1000,
+          autoplay: 6000,
           perView: 6,
           breakpoints: {
             400: {perView: 1},

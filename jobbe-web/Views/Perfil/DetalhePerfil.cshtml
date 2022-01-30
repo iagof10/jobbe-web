@@ -71,7 +71,7 @@
                         <!-- Biography Start -->
                         <div class="card">
                             <div class="card-body mb-n5">
-                                <div class="d-flex align-items-center flex-column mb-5">
+                                <div class="d-flex align-items-center flex-column">
                                     <div class="mb-5 d-flex align-items-center flex-column">
                                         <div class="sw-13 position-relative mb-3">
                                             <img src="../img/profile/profile-2.webp" class="img-fluid rounded-xl" alt="thumb" />
@@ -87,138 +87,15 @@
 
                                         </div>
                                     </div>
-                                    <div style="width:100%" class="d-flex flex-row justify-content-between">
-                                        <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddCard">Add Card</button>
-
-                                        <!-- Vertically centered modal-->
-                                        <div class="modal fade modal-close-out"
-                                             id="modalAddCard"
-                                             tabindex="-1"
-                                             role="dialog"
-                                             aria-labelledby="verticallyCenteredLabel"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
-                                                        <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <!-- Quill Top Label Start -->
-
-                                                        <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
-                                                        </div>
-
-                                                        <section class="scroll-section" id="topLabel">
-                                                            <label class="mb-3 top-label">
-                                                                <input id="tituloCard" class="form-control" />
-                                                                <span>Título</span>
-                                                            </label>
-                                                            <div class="mb-3 top-label">
-                                                                <textarea id="descricaoCard" class="form-control" rows="2"></textarea>
-                                                                <span>Descrição</span>
-                                                            </div>
-                                                        </section>
-                                                        <!-- Quill Top Label End -->
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button id="btnSalvarCard" type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Vertically centered modal-->
-                                        <div class="modal fade modal-close-out"
-                                             id="modalDeleteCard"
-                                             tabindex="-1"
-                                             role="dialog"
-                                             aria-labelledby="verticallyCenteredLabel"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Excluir Card</h5>
-                                                        <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <!-- Quill Top Label Start -->
-
-                                                        <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
-                                                        </div>
-
-                                                        <section class="scroll-section" id="topLabel">
-                                                            <label class="mb-3 top-label">
-                                                                <input id="tituloCard" class="form-control" />
-                                                                <span>Título</span>
-                                                            </label>
-                                                            <div class="mb-3 top-label">
-                                                                <textarea id="descricaoCard" class="form-control" rows="2"></textarea>
-                                                                <span>Descrição</span>
-                                                            </div>
-                                                        </section>
-                                                        <!-- Quill Top Label End -->
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button id="btnDeletarCard" type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
                                 </div>
 
-                                <div id="listaCards" class="mb-5">
+                                <div id="listaCards">
 
                                 </div>
+
+                                <br /> 
 
                                 <div class="mb-5">
-
-                                    <div class="d-flex align-items-center flex-column mb-5">
-                                        <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddMural">Add Mural</button>
-                                    </div>
-
-                                    <!-- Vertically centered modal-->
-                                    <div class="modal fade modal-close-out"
-                                         id="modalAddMural"
-                                         tabindex="-1"
-                                         role="dialog"
-                                         aria-labelledby="verticallyCenteredLabel"
-                                         aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
-                                                    <button id="btnCloseAddMural" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <!-- Quill Top Label Start -->
-
-                                                    <div class="mb-5">
-                                                        <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
-                                                    </div>
-
-                                                    <section class="scroll-section" id="topLabel">
-                                                        <label class="mb-3 top-label">
-                                                            <input id="tituloMural" class="form-control" />
-                                                            <span>Título</span>
-                                                        </label>
-                                                        <div class="mb-3 top-label">
-                                                            <textarea id="descricaoMural" class="form-control" rows="2"></textarea>
-                                                            <span>Descrição</span>
-                                                        </div>
-                                                    </section>
-                                                    <!-- Quill Top Label End -->
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button id="btnSalvarMural" type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <p id="tituloMuralPrestador" class="text-medium text-muted mb-2">
 
@@ -261,53 +138,6 @@
                         <!-- Title Tabs End -->
 
                         <div class="tab-content">
-
-
-                            <br />
-
-                            <div class="d-flex align-items-center flex-column mb-5">
-                                <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddGaleria">Add Mídia</button>
-                            </div>
-
-                            <!-- Vertically centered modal-->
-                            <div class="modal fade modal-close-out"
-                                 id="modalAddGaleria"
-                                 tabindex="-1"
-                                 role="dialog"
-                                 aria-labelledby="verticallyCenteredLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="verticallyCenteredLabel">Adicionar Mídia</h5>
-                                            <button id="btnCloseAddPublicacao" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- Quill Top Label Start -->
-
-                                            <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
-                                            </div>
-
-                                            <section class="scroll-section" id="topLabel">
-                                                <label class="mb-3 top-label">
-                                                    <input id="tituloPublicacao" class="form-control" />
-                                                    <span>Título</span>
-                                                </label>
-                                                <div class="mb-3 top-label">
-                                                    <textarea id="descricaoPublicacao" class="form-control" rows="2"></textarea>
-                                                    <span>Descrição</span>
-                                                </div>
-                                            </section>
-                                            <!-- Quill Top Label End -->
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button id="btnSalvarMidia" type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Projects Tab Start -->
                             <div class="tab-pane fade active show" id="projectsTab" role="tabpanel">
                                 <div class="row row-cols-1 row-cols-sm-2 row-cols-xxl-3 g-2 mb-5">
@@ -753,49 +583,6 @@
                             <div class="tab-pane fade" id="publicacaoTab" role="tabpanel">
 
                                 <br />
-
-                                <div class="d-flex align-items-center flex-column mb-5">
-                                    <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddPublicacao">Add Publicação</button>
-                                </div>
-
-                                <!-- Vertically centered modal-->
-                                <div class="modal fade modal-close-out"
-                                     id="modalAddPublicacao"
-                                     tabindex="-1"
-                                     role="dialog"
-                                     aria-labelledby="verticallyCenteredLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
-                                                <button id="btnCloseAddPublicacao" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- Quill Top Label Start -->
-
-                                                <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                    <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
-                                                </div>
-
-                                                <section class="scroll-section" id="topLabel">
-                                                    <label class="mb-3 top-label">
-                                                        <input id="tituloPublicacao" class="form-control" />
-                                                        <span>Título</span>
-                                                    </label>
-                                                    <div class="mb-3 top-label">
-                                                        <textarea id="descricaoPublicacao" class="form-control" rows="2"></textarea>
-                                                        <span>Descrição</span>
-                                                    </div>
-                                                </section>
-                                                <!-- Quill Top Label End -->
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button id="btnSalvarPublicacao" type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- List Start -->
                                 <div class="mb-5" id="listaPublicacao">
@@ -1553,8 +1340,8 @@
                         existMuralPrestador = true
                         document.getElementById("descMuralPrestador").textContent = this.response.data.mural.descricao;
                         document.getElementById("tituloMuralPrestador").textContent = this.response.data.mural.titulo;
-                        titulo = document.getElementById("tituloMural").value = this.response.data.mural.titulo;
-                        descricao = document.getElementById("descricaoMural").value = this.response.data.mural.descricao;
+                        descricao = this.response.data.mural.descricao;
+                        titulo = this.response.data.mural.titulo;
                     }
 
                     if (this.response.data.cards != null) {
@@ -1641,182 +1428,6 @@
             };
 
             ajax.send();
-        }
-
-        document.getElementById("btnSalvarMural").addEventListener("click", salvarMural, false);
-
-        function salvarMural() {
-
-            titulo = document.getElementById("tituloMural").value
-            descricao = document.getElementById("descricaoMural").value
-
-            if (existMuralPrestador) {
-                var ajax = new XMLHttpRequest();
-                ajax.open("PUT", "https://localhost:44371/api/Mural");
-                ajax.setRequestHeader("Content-Type", "application/json");
-                ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador}));
-                ajax.onreadystatechange = function () {
-                    if (ajax.status == 200) {
-                        console.log(JSON.parse(this.response))
-                        idMuralPrestador = JSON.parse(this.response).data.id
-                        existMuralPrestador = true
-                        document.getElementById("descMuralPrestador").textContent = descricao;
-                        document.getElementById("tituloMuralPrestador").textContent = titulo;
-                        document.getElementById("btnCloseAddMural").click();
-                    } else {
-                        alertErro()
-                    }
-                }
-
-            } else {
-                var ajax = new XMLHttpRequest();
-                ajax.open("POST", "https://localhost:44371/api/Mural");
-                ajax.setRequestHeader("Content-Type", "application/json");
-                ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, idUsuario: @Model}));
-                ajax.onreadystatechange = function () {
-                    if (ajax.status == 200) {
-                        idMuralPrestador = JSON.parse(this.response).data.id
-                        existMuralPrestador = true
-                        document.getElementById("descMuralPrestador").textContent = descricao;
-                        document.getElementById("tituloMuralPrestador").textContent = titulo;
-                        document.getElementById("btnCloseAddMural").click();
-                    } else {
-                        alertErro()
-                    }
-                }
-            }
-        }
-
-        document.getElementById("btnSalvarCard").addEventListener("click", salvarCard, false);
-
-        function salvarCard() {
-
-            tituloCard = document.getElementById("tituloCard").value
-            descricaoCard = document.getElementById("descricaoCard").value
-
-            var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "https://localhost:44371/api/CardPerfil");
-            ajaxCard.setRequestHeader("Content-Type", "application/json");
-            ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
-            ajaxCard.onreadystatechange = function () {
-                if (ajaxCard.readyState == 4) {
-                    if (ajaxCard.status == 200) {
-                        var htmlCard = `
-                              <div class="row g-0 align-items-center mb-3">
-                                        <div class="col-auto">
-                                            <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                <i data-cs-icon="screen" class="text-primary"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ps-3">
-                                            <div class="row g-0">
-                                                <div class="col">
-                                                    <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
-                                                    <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + JSON.parse(this.response).data.id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary ms-1" type="button">
-                                                <i data-cs-icon="close"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                            `;
-
-                        document.getElementById("listaCards").innerHTML += htmlCard
-                        document.getElementById("btnCloseAddCard").click();
-
-                    } else {
-                        alertErro()
-                    }
-                }
-            }
-        }
-
-        document.getElementById("btnSalvarPublicacao").addEventListener("click", salvarPublicacao, false);
-
-        function salvarPublicacao() {
-
-            tituloCard = document.getElementById("tituloPublicacao").value
-            descricaoCard = document.getElementById("descricaoPublicacao").value
-
-            var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "https://localhost:44371/api/Publicacao");
-            ajaxCard.setRequestHeader("Content-Type", "application/json");
-            ajaxCard.send(JSON.stringify({ descricao: descricaoCard, idUsuario: @Model}));
-            ajaxCard.onreadystatechange = function () {
-                if (ajaxCard.readyState == 4) {
-                    if (ajaxCard.status == 200) {
-                        var html = `
-                              <div class="card mb-5">
-                                        <a href="Pages.Blog.Detail.html">
-                                            <img src="../img/product/large/product-1.webp" class="card-img-top sh-35" alt="card image" />
-                                        </a>
-                                        <div class="card-body">
-                                            <h4 class="mb-3">
-                                                <a href="Pages.Blog.Detail.html">Basic Introduction to Bread Making</a>
-                                            </h4>
-                                            <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                Jujubes brownie marshmallow apple pie donut ice cream jelly-o jelly-o gummi bears. Tootsie roll chocolate bar dragée bonbon cheesecake
-                                                icing. Danish wafer donut cookie caramels gummies topping.
-                                            </p>
-                                        </div>
-                                        <div class="card-footer border-0 pt-0">
-                                            <div class="row align-items-center">
-                                                <div class="col-6">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="sw-5 d-inline-block position-relative me-3">
-                                                            <img src="../img/profile/profile-1.webp" class="img-fluid rounded-xl" alt="thumb" />
-                                                        </div>
-                                                        <div class="d-inline-block">
-                                                            <a href="#">Olli Hawkins</a>
-                                                            <div class="text-muted text-small">Development Lead</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 text-muted">
-                                                    <div class="row g-0 justify-content-end">
-                                                        <div class="col-auto pe-3">
-                                                            <i data-cs-icon="eye" class="text-primary me-1" data-cs-size="15"></i>
-                                                            <span class="align-middle">421</span>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i data-cs-icon="message" class="text-primary me-1" data-cs-size="15"></i>
-                                                            <span class="align-middle">4</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            `;
-
-                        htmlBase = document.getElementById("listaPublicacao").innerHTML
-                        document.getElementById("listaPublicacao").innerHTML = html
-                        document.getElementById("listaPublicacao").innerHTML += htmlBase
-                        document.getElementById("btnCloseAddPublicacao").click();
-                        document.getElementById("descricaoPublicacao").value = ''
-
-                    } else {
-                        alertErro()
-                    }
-                }
-            }
-        }
-
-        function selectCardDelete(idCard) {
-            idCardDelete = idCard
-        }
-
-        document.getElementById("btnDeletarCard").addEventListener("click", deleteCard, false);
-
-        function deleteCard() {
-            console.log(idCardDelete)
-        }
-
-        function alertErro() {
-            sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
         }
 
     </script>

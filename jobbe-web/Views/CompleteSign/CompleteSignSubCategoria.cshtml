@@ -62,29 +62,7 @@
 
 <body style="padding-bottom: 0px">
     <div id="root">
-        <div id="nav" class="nav-container d-flex">
-            <div class="nav-content d-flex">
-                <!-- Logo Start -->
-                <div class="logo position-relative">
-                    <a href="Dashboards.Default.html">
-                        <!-- Logo can be added directly -->
-                        <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
-                        <!-- Or added via css to provide different ones for different color themes -->
-                        <div class="img"></div>
-                    </a>
-                </div>
-                <!-- Logo End -->
-                <!-- Menu Start -->
-                <div class="menu-container flex-grow-1">
-                    <ul id="menu" class="menu">
-                    </ul>
-                </div>
-                <!-- Menu End -->
-            </div>
-            <div class="nav-shadow"></div>
-        </div>
-
-        <main>
+        <main style="padding-top: 5vh;">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -97,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <br/>
+                <br />
                 <div class="d-grid gap-2 mb-3">
                     <button id="btnFinalizar" class="btn btn-primary" type="button">Tudo Pronto!</button>
                 </div>
@@ -131,6 +109,7 @@
     <script>
 
         let subCategorias
+        let idUsuario
 
         document.getElementById("btnFinalizar").addEventListener("click", salvarRegistro, false);
 
@@ -141,7 +120,6 @@
             for (let i = 0; i < subCategorias.length; i = i + 1) {
                 if (document.getElementById(subCategorias[i].id).checked) {
                     subCategoriasId.push(subCategorias[i].id)
-                    console.log("Id: " + subCategorias[i].id)
                 }
             }
 
@@ -151,8 +129,21 @@
             ajax.onload = function (e) {
                 if (this.status == 200) {
 
-                    c
+                    idUsuario = this.response
 
+                    var ajax = new XMLHttpRequest();
+                    ajax.open("POST", "https://localhost:44371/api/UsuarioPrestador/vincula-categoria");
+                    ajax.setRequestHeader("Content-Type", "application/json");
+                    ajax.send(JSON.stringify({ idUsuario: idUsuario, idCategoria: @Model, subCategoriasId: subCategoriasId}));
+                    ajax.onreadystatechange = function () {
+                        if (ajax.status == 200) {
+
+                            alertSucess('Bem vindo ao Jobbe!', 'Parabéns, agora você pode aproveitar os recursos do Jobbe.')
+
+                        } else {
+                            alertErro()
+                        }
+                    }
                 }
             };
 

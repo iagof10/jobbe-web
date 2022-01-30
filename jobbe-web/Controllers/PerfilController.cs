@@ -25,5 +25,12 @@ namespace jobbe_web.Controllers
             long idUsuarioConv = Convert.ToInt64(idUsuario);
             return View(idUsuarioConv);
         }
+
+        [HttpGet]
+        [Route("DetalhePerfil/{idUsuario}")]
+        public IActionResult DetalhePerfil(long idUsuario)
+        {
+            return View(idUsuario);
+        }
     }
 }

@@ -591,7 +591,7 @@
                 registerPasswordValue = document.getElementById("registerPassword").value
 
                 var ajax = new XMLHttpRequest();
-                ajax.open("POST", "https://localhost:44371/api/Login");
+                ajax.open("POST", "http://localhost:8081/api/Login");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ email: registerEmailValue, senha: registerPasswordValue }));
                 ajax.onreadystatechange = function () {
@@ -609,14 +609,14 @@
         function setSessionUser(idUsuario, categoriaId) {
 
             const ajaxSaveUser = new XMLHttpRequest();
-            ajaxSaveUser.open('GET', 'https://localhost:44335/SaveSessionUser/' + idUsuario);
+            ajaxSaveUser.open('GET', 'http://localhost:8082/SaveSessionUser/' + idUsuario);
             ajaxSaveUser.responseType = 'json';
             ajaxSaveUser.onload = function (e) {
                 if (this.status == 200) {
                     if (categoriaId == null) {
                         alertSucess()
                     } else {
-                        window.location.replace("https://localhost:44335/Perfil/Perfil");
+                        window.location.replace("http://localhost:8082/Perfil/Perfil");
                     }
                 } else {
                     alertErro()
@@ -648,7 +648,7 @@
                 confirmButtonColor: '#1ea8e7',
                 confirmButtonText: 'Yes!'
             }).then(() => {
-                window.location.replace("https://localhost:44335/CompleteSign/CompleteSign");
+                window.location.replace("http://localhost:8082/CompleteSign/CompleteSign");
 
             });
             //sweetAlert("Parabéns, você está a um passo de ser exibido para milhões de pessoas", "Preencha a categoria do seu trabalho.", "success")

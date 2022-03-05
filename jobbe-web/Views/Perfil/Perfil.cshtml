@@ -1538,7 +1538,7 @@
 
         function GetPerfilPrestador() {
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'https://localhost:44371/api/UsuarioPrestador?idUsuario=' + @Model);
+            ajax.open('GET', 'http://localhost:8081/api/UsuarioPrestador?idUsuario=' + @Model);
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -1610,7 +1610,7 @@
 
         function GetPublicacaoPrestador() {
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'https://localhost:44371/api/Publicacao?idUsuario=' + @Model);
+            ajax.open('GET', 'http://localhost:8081/api/Publicacao?idUsuario=' + @Model);
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -1652,7 +1652,7 @@
 
             if (existMuralPrestador) {
                 var ajax = new XMLHttpRequest();
-                ajax.open("PUT", "https://localhost:44371/api/Mural");
+                ajax.open("PUT", "http://localhost:8081/api/Mural");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador}));
                 ajax.onreadystatechange = function () {
@@ -1670,7 +1670,7 @@
 
             } else {
                 var ajax = new XMLHttpRequest();
-                ajax.open("POST", "https://localhost:44371/api/Mural");
+                ajax.open("POST", "http://localhost:8081/api/Mural");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, idUsuario: @Model}));
                 ajax.onreadystatechange = function () {
@@ -1695,7 +1695,7 @@
             descricaoCard = document.getElementById("descricaoCard").value
 
             var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "https://localhost:44371/api/CardPerfil");
+            ajaxCard.open("POST", "http://localhost:8081/api/CardPerfil");
             ajaxCard.setRequestHeader("Content-Type", "application/json");
             ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
             ajaxCard.onreadystatechange = function () {
@@ -1742,7 +1742,7 @@
             descricaoCard = document.getElementById("descricaoPublicacao").value
 
             var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "https://localhost:44371/api/Publicacao");
+            ajaxCard.open("POST", "http://localhost:8081/api/Publicacao");
             ajaxCard.setRequestHeader("Content-Type", "application/json");
             ajaxCard.send(JSON.stringify({ descricao: descricaoCard, idUsuario: @Model}));
             ajaxCard.onreadystatechange = function () {

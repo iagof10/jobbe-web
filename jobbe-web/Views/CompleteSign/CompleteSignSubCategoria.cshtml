@@ -124,7 +124,7 @@
             }
 
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'https://localhost:44335/GetSessionUser');
+            ajax.open('GET', 'http://localhost:8082/GetSessionUser');
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -132,7 +132,7 @@
                     idUsuario = this.response
 
                     var ajax = new XMLHttpRequest();
-                    ajax.open("POST", "https://localhost:44371/api/UsuarioPrestador/vincula-categoria");
+                    ajax.open("POST", "http://localhost:8081/api/UsuarioPrestador/vincula-categoria");
                     ajax.setRequestHeader("Content-Type", "application/json");
                     ajax.send(JSON.stringify({ idUsuario: idUsuario, idCategoria: @Model, subCategoriasId: subCategoriasId}));
                     ajax.onreadystatechange = function () {
@@ -155,7 +155,7 @@
         function getSubCategoria() {
 
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'https://localhost:44371/api/SubCategoria?idCategoria=' + @Model);
+            ajax.open('GET', 'http://localhost:8081/api/SubCategoria?idCategoria=' + @Model);
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -204,7 +204,7 @@
                 confirmButtonColor: '#1ea8e7',
                 confirmButtonText: 'Yes!'
             }).then(() => {
-                window.location.replace("https://localhost:44335/Perfil/Perfil");
+                window.location.replace("http://localhost:8082/Perfil/Perfil");
             });
             //sweetAlert("Parabéns, você está a um passo de ser exibido para milhões de pessoas", "Preencha a categoria do seu trabalho.", "success")
         }

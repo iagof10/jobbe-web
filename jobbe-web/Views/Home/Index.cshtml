@@ -587,7 +587,7 @@
 
         function GetPrestadores() {
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'http://localhost:8081/api/UsuarioPrestador/list');
+            ajax.open('GET', 'http://51.222.19.201:8081/api/UsuarioPrestador/list');
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -679,7 +679,7 @@
 
         function GetPublicacoess() {
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'http://localhost:8081/api/Publicacao/list');
+            ajax.open('GET', 'http://51.222.19.201:8081/api/Publicacao/list');
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -740,7 +740,7 @@
 
         function selectPrestador(idUsuario) {
 
-            window.location.replace('http://localhost:8082/DetalhePerfil/' + idUsuario);
+            window.location.replace('http://51.222.19.201:8082/DetalhePerfil/' + idUsuario);
         }
 
     </script>

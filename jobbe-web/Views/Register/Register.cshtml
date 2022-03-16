@@ -636,14 +636,14 @@
                 registerTipoValue = document.querySelector('input[name="btnradio"]:checked').value
 
                 var ajax = new XMLHttpRequest();
-                ajax.open("POST", "http://localhost:8081/api/UsuarioPrestador");
+                ajax.open("POST", "http://51.222.19.201:8081/api/UsuarioPrestador");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ nome: registerNameValue, apelido: registerApelidoValue, tipoUsuario: parseInt(registerTipoValue), telefone: registerCelularValue, email: registerEmailValue, senha: registerPasswordValue }));
                 ajax.onreadystatechange = function () {
                     if (ajax.readyState == 4 && ajax.status == 200) {
 
                         const ajaxSaveUser = new XMLHttpRequest();
-                        ajaxSaveUser.open('GET', 'http://localhost:8082/SaveSessionUser/' + JSON.parse(ajax.response).data.id);
+                        ajaxSaveUser.open('GET', 'http://51.222.19.201:8082/SaveSessionUser/' + JSON.parse(ajax.response).data.id);
                         ajaxSaveUser.responseType = 'json';
                         ajaxSaveUser.onload = function (e) {
                             if (this.status == 200) {
@@ -685,7 +685,7 @@
                 confirmButtonColor: '#1ea8e7',
                 confirmButtonText: 'Yes!'
             }).then(() => {
-                window.location.replace("http://localhost:8082/CompleteSign/CompleteSign");
+                window.location.replace("http://51.222.19.201:8082/CompleteSign/CompleteSign");
 
             });
             //sweetAlert("Parabéns, você está a um passo de ser exibido para milhões de pessoas", "Preencha a categoria do seu trabalho.", "success")

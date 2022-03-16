@@ -46,7 +46,7 @@ class Lists {
             };
 
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'http://localhost:8081/api/Categoria');
+            ajax.open('GET', 'http://51.222.19.201:8081/api/Categoria');
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {

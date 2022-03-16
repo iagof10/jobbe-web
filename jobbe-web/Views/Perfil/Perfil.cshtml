@@ -83,8 +83,6 @@
                                             <span class="align-middle"><span id="emailPrestador"></span></span>
                                         </div>
                                         <div id="listaTelefone">
-
-
                                         </div>
                                     </div>
                                     <div style="width:100%" class="d-flex flex-row justify-content-between">
@@ -172,7 +170,6 @@
                                 </div>
 
                                 <div id="listaCards" class="mb-5">
-
                                 </div>
 
                                 <div class="mb-5">
@@ -262,13 +259,6 @@
 
                         <div class="tab-content">
 
-
-                            <br />
-
-                            <div class="d-flex align-items-center flex-column mb-5">
-                                <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddGaleria">Add Mídia</button>
-                            </div>
-
                             <!-- Vertically centered modal-->
                             <div class="modal fade modal-close-out"
                                  id="modalAddGaleria"
@@ -310,6 +300,14 @@
 
                             <!-- Projects Tab Start -->
                             <div class="tab-pane fade active show" id="projectsTab" role="tabpanel">
+
+
+                                <br />
+
+                                <div class="d-flex align-items-center flex-column mb-5">
+                                    <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddGaleria">Add Mídia</button>
+                                </div>
+
                                 <div class="row row-cols-1 row-cols-sm-2 row-cols-xxl-3 g-2 mb-5">
                                     <div class="col">
                                         <div class="card sh-35 hover-img-scale-up hover-reveal">
@@ -752,12 +750,6 @@
                             <!-- Collections Tab Start -->
                             <div class="tab-pane fade" id="publicacaoTab" role="tabpanel">
 
-                                <br />
-
-                                <div class="d-flex align-items-center flex-column mb-5">
-                                    <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddPublicacao">Add Publicação</button>
-                                </div>
-
                                 <!-- Vertically centered modal-->
                                 <div class="modal fade modal-close-out"
                                      id="modalAddPublicacao"
@@ -797,17 +789,22 @@
                                     </div>
                                 </div>
 
+                                <br />
+
+                                <div class="d-flex align-items-center flex-column mb-5">
+                                    <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddPublicacao">Add Publicação</button>
+                                </div>
+
                                 <!-- List Start -->
                                 <div class="mb-5" id="listaPublicacao">
-
-
-
                                 </div>
                                 <!-- List End -->
                             </div>
                             <!-- Collections Tab End -->
                             <!-- Friends Tab Start -->
                             <div class="tab-pane fade" id="friendsTab" role="tabpanel">
+
+
                                 <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-2">
                                     <div class="col">
                                         <div class="card">
@@ -1538,7 +1535,7 @@
 
         function GetPerfilPrestador() {
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'http://localhost:8081/api/UsuarioPrestador?idUsuario=' + @Model);
+            ajax.open('GET', 'http://51.222.19.201:8081/api/UsuarioPrestador?idUsuario=' + @Model);
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -1610,7 +1607,7 @@
 
         function GetPublicacaoPrestador() {
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'http://localhost:8081/api/Publicacao?idUsuario=' + @Model);
+            ajax.open('GET', 'http://51.222.19.201:8081/api/Publicacao?idUsuario=' + @Model);
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -1652,7 +1649,7 @@
 
             if (existMuralPrestador) {
                 var ajax = new XMLHttpRequest();
-                ajax.open("PUT", "http://localhost:8081/api/Mural");
+                ajax.open("PUT", "http://51.222.19.201:8081/api/Mural");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador}));
                 ajax.onreadystatechange = function () {
@@ -1670,7 +1667,7 @@
 
             } else {
                 var ajax = new XMLHttpRequest();
-                ajax.open("POST", "http://localhost:8081/api/Mural");
+                ajax.open("POST", "http://51.222.19.201:8081/api/Mural");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, idUsuario: @Model}));
                 ajax.onreadystatechange = function () {
@@ -1695,7 +1692,7 @@
             descricaoCard = document.getElementById("descricaoCard").value
 
             var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "http://localhost:8081/api/CardPerfil");
+            ajaxCard.open("POST", "http://51.222.19.201:8081/api/CardPerfil");
             ajaxCard.setRequestHeader("Content-Type", "application/json");
             ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
             ajaxCard.onreadystatechange = function () {
@@ -1742,7 +1739,7 @@
             descricaoCard = document.getElementById("descricaoPublicacao").value
 
             var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "http://localhost:8081/api/Publicacao");
+            ajaxCard.open("POST", "http://51.222.19.201:8081/api/Publicacao");
             ajaxCard.setRequestHeader("Content-Type", "application/json");
             ajaxCard.send(JSON.stringify({ descricao: descricaoCard, idUsuario: @Model}));
             ajaxCard.onreadystatechange = function () {

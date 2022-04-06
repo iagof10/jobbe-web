@@ -74,7 +74,7 @@
                                 <div class="d-flex align-items-center flex-column">
                                     <div class="mb-5 d-flex align-items-center flex-column">
                                         <div class="sw-13 position-relative mb-3">
-                                            <img src="../img/profile/profile-2.webp" class="img-fluid rounded-xl" alt="thumb" />
+                                            <img id="fotoPerfilPrestador" src="../img/profile/profile-2.webp" class="img-fluid rounded-xl" alt="thumb" />
                                         </div>
                                         <div class="h5 mb-0"><span id="apelidoPrestador"></span></div>
                                         <div class="text-muted"><span id="categoriaPrestador"></span></div>
@@ -83,17 +83,9 @@
                                             <span class="align-middle"><span id="emailPrestador"></span></span>
                                         </div>
                                         <div id="listaTelefone">
-
-
                                         </div>
                                     </div>
                                 </div>
-
-                                <div id="listaCards">
-
-                                </div>
-
-                                <br /> 
 
                                 <div class="mb-5">
 
@@ -106,6 +98,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <br />
+
+                        <div id="listaCards">
+                        </div>
+
                         <!-- Biography End -->
                     </div>
                     <!-- Left Side End -->
@@ -140,443 +138,14 @@
                         <div class="tab-content">
                             <!-- Projects Tab Start -->
                             <div class="tab-pane fade active show" id="projectsTab" role="tabpanel">
-                                <div class="row row-cols-1 row-cols-sm-2 row-cols-xxl-3 g-2 mb-5">
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-1.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">153</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">29</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Introduction to Bread Making</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Blaine Cottrell</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-2.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">224</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">2</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">52</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">14 Facts About Sugar Products</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Cherish Kerr</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-3.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">13</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">12</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Apple Cake Recipe</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Kirby Peters</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-4.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">155</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">6</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">46</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Complete Guide to Mix Dough</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Olli Hawkins</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-5.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">82</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">4</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">3</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">10 Secrets Every Southern Baker Knows</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Kathryn Mengel</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-6.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">55</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">1</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">4</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Recipes for Sweet and Healty Treats</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Esperanza Lodge</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-7.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">49</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">19</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">8</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Mix Dough for the Molds</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Zayn Hartley</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-8.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">81</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">13</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Basic Introduction for Dough Molding</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Joisse Kaycee</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-9.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">64</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">9</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">3</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Mix Dough for the Molds</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Kirby Peters</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-10.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">35</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">2</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Introduction to Baking Donut</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Peter Linatti</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-2.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">27</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">12</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">8</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Apple Cake Recipe for Starters</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Rosa Holt</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-6.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">15</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">2</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">6 Facts About Sugar Products</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Josh Henderson</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                <br />
+
+                                <!-- List Start -->
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-xxl-3 g-2 mb-5" id="listaGaleria">
                                 </div>
-                                <div class="text-center">
-                                    <button class="btn btn-xl btn-outline-primary sw-30">Load More</button>
-                                </div>
+                                <!-- List End -->
+
                             </div>
                             <!-- Projects Tab End -->
                             <!-- Collections Tab Start -->
@@ -586,9 +155,6 @@
 
                                 <!-- List Start -->
                                 <div class="mb-5" id="listaPublicacao">
-
-
-
                                 </div>
                                 <!-- List End -->
                             </div>
@@ -1318,6 +884,7 @@
 
         GetPerfilPrestador()
         GetPublicacaoPrestador()
+        GetGaleriaPrestador()
 
         var existMuralPrestador = false
         var idMuralPrestador = 0
@@ -1342,33 +909,37 @@
                         document.getElementById("tituloMuralPrestador").textContent = this.response.data.mural.titulo;
                         descricao = this.response.data.mural.descricao;
                         titulo = this.response.data.mural.titulo;
+                        document.getElementById('fotoPerfilPrestador').src = "http://51.222.19.201:8081/api/UsuarioPrestador/" + this.response.data.idFotoPerfil
                     }
 
                     if (this.response.data.cards != null) {
 
                         for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
+
                             var html = `
-                              <div class="row g-0 align-items-center mb-3">
-                                        <div class="col-auto">
-                                            <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                <i data-cs-icon="screen" class="text-primary"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ps-3">
-                                            <div class="row g-0">
-                                                <div class="col">
-                                                    <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
-                                                    <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                <div style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
+                                  <div class="row g-0 align-items-center mb-3">
+                                            <div class="col-auto">
+                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                    <i data-cs-icon="screen" class="text-primary"></i>
                                                 </div>
                                             </div>
+                                            <div class="col ps-3">
+                                                <div class="row g-0">
+                                                    <div class="col">
+                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
+                                                        <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
+                                                    <i data-cs-icon="close"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
-                                                <i data-cs-icon="close"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                            `;
+                                </div>
+                                `;
 
                             document.getElementById("listaCards").innerHTML += html
                         }
@@ -1410,7 +981,7 @@
                             var html = `
                               <div class="card mb-5">
                                         <a href="Pages.Blog.Detail.html">
-                                            <img src="../img/product/large/product-1.webp" class="card-img-top sh-35" alt="card image" />
+                                            <img style="min-height: 70vh;" src="http://51.222.19.201:8081/api/Publicacao/` + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
                                         </a>
                                         <div class="card-body">
                                             <p class="text-alternate clamp-line mb-0" data-line="2">
@@ -1429,6 +1000,37 @@
 
             ajax.send();
         }
+
+        function GetGaleriaPrestador() {
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', 'http://51.222.19.201:8081/api/Galeria?idUsuario=' + @Model);
+            ajax.responseType = 'json';
+            ajax.onload = function (e) {
+                if (this.status == 200) {
+
+                    console.log(this.response)
+
+                    if (this.response.data != null) {
+
+                        for (let i = 0; i < this.response.data.length; i = i + 1) {
+
+                            var html = `
+                                        <div class="col">
+                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                        <img src="http://51.222.19.201:8081/api/Galeria/` + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                        </div>
+                                    </div>
+                            `;
+
+                            document.getElementById("listaGaleria").innerHTML += html
+                        }
+
+                    }
+                }
+            };
+
+            ajax.send();
+          }
 
     </script>
 

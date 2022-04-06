@@ -15,6 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Acorn Admin Template | Portfolio Home Page</title>
     <meta name="description" content="Portfolio Home Page" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cropme Responsive Modal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropme@1.4.3/dist/cropme.min.css">
+
     <!-- Favicon Tags Start -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../img/favicon/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/favicon/apple-touch-icon-114x114.png" />
@@ -71,11 +79,83 @@
                         <!-- Biography Start -->
                         <div class="card">
                             <div class="card-body mb-n5">
-                                <div class="d-flex align-items-center flex-column mb-5">
+                                <div class="d-flex align-items-center flex-column">
                                     <div class="mb-5 d-flex align-items-center flex-column">
                                         <div class="sw-13 position-relative mb-3">
-                                            <img src="../img/profile/profile-2.webp" class="img-fluid rounded-xl" alt="thumb" />
+                                            <img id="fotoPerfilPrestador" src="../img/profile/profile-2.webp" class="img-fluid rounded-xl" alt="thumb" />
                                         </div>
+
+                                        <!-- Vertically centered modal-->
+                                        <div class="modal fade modal-close-out"
+                                             id="modalAlterarFotoPerfil"
+                                             tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="verticallyCenteredLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Alterar Foto Perfil</h5>
+                                                        <button id="btnCloseAlterarFotoPerfil" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Quill Top Label Start -->
+
+                                                        <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
+                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Insira sua publicação, ela será exibida para milhares de clientes!</h7>
+                                                        </div>
+
+                                                        <section class="scroll-section" id="topLabel">
+
+                                                            <div class="row">
+                                                                <div class="col text-center p-2">
+                                                                    <img style="width: 100%;" id="saved-imgFotoPerfil">
+                                                                    <div class="mt-3">
+                                                                        <button style="width: 100%;" id="btnGetImageFotoPerfil" class="btn btn-primary">Adicionar Foto</button>
+                                                                        <input class="d-none" type="file" id="fileUploadFotoPerfil" accept="image/*" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- ================ Start of Modal =============== -->
+                                                            <div class="modal fade" id="imgModal-dialogFotoPerfil" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h3 id="imgModal-hdr">Bootstrap Modal</h3>
+                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        </div>
+                                                                        <div id="imgModal-msgFotoPerfil" class="modal-body mb-2">
+                                                                            <div id="cropped-img-wrp"><img id="cropped-imgFotoPerfil"></div>
+                                                                            <div id="imgModal-cropme-wrp" class="justify-content-center">
+                                                                                <div id="imgModal-cropmeFotoPerfil" class=""></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer justify-content-center">
+                                                                            <button id="imgModal-btnSaveFotoPerfil" class="btn btn-primary">Save Image</button>
+                                                                            <button id="imgModal-btnCropFotoPerfil" type="button" class="btn btn-info">Crop</button>
+                                                                            <button id="imgModal-btnCancelFotoPerfil" type="button" class="btn btn-info">Cancel</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                        <!-- Quill Top Label End -->
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="btnSalvarFotoPerfil" type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-muted">
+                                            <button type="button" class="btn btn-outline-primary btn-icon btn-icon-end w-100 w-sm-auto" data-bs-toggle="modal" data-bs-target="#modalAlterarFotoPerfil">
+                                                <i data-cs-icon="edit"></i>
+                                            </button>
+                                        </div>
+
+                                        <br />
+
                                         <div class="h5 mb-0"><span id="apelidoPrestador"></span></div>
                                         <div class="text-muted"><span id="categoriaPrestador"></span></div>
                                         <div class="text-muted">
@@ -85,91 +165,6 @@
                                         <div id="listaTelefone">
                                         </div>
                                     </div>
-                                    <div style="width:100%" class="d-flex flex-row justify-content-between">
-                                        <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddCard">Add Card</button>
-
-                                        <!-- Vertically centered modal-->
-                                        <div class="modal fade modal-close-out"
-                                             id="modalAddCard"
-                                             tabindex="-1"
-                                             role="dialog"
-                                             aria-labelledby="verticallyCenteredLabel"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
-                                                        <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <!-- Quill Top Label Start -->
-
-                                                        <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
-                                                        </div>
-
-                                                        <section class="scroll-section" id="topLabel">
-                                                            <label class="mb-3 top-label">
-                                                                <input id="tituloCard" class="form-control" />
-                                                                <span>Título</span>
-                                                            </label>
-                                                            <div class="mb-3 top-label">
-                                                                <textarea id="descricaoCard" class="form-control" rows="2"></textarea>
-                                                                <span>Descrição</span>
-                                                            </div>
-                                                        </section>
-                                                        <!-- Quill Top Label End -->
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button id="btnSalvarCard" type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Vertically centered modal-->
-                                        <div class="modal fade modal-close-out"
-                                             id="modalDeleteCard"
-                                             tabindex="-1"
-                                             role="dialog"
-                                             aria-labelledby="verticallyCenteredLabel"
-                                             aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Excluir Card</h5>
-                                                        <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <!-- Quill Top Label Start -->
-
-                                                        <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
-                                                        </div>
-
-                                                        <section class="scroll-section" id="topLabel">
-                                                            <label class="mb-3 top-label">
-                                                                <input id="tituloCard" class="form-control" />
-                                                                <span>Título</span>
-                                                            </label>
-                                                            <div class="mb-3 top-label">
-                                                                <textarea id="descricaoCard" class="form-control" rows="2"></textarea>
-                                                                <span>Descrição</span>
-                                                            </div>
-                                                        </section>
-                                                        <!-- Quill Top Label End -->
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button id="btnDeletarCard" type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div id="listaCards" class="mb-5">
                                 </div>
 
                                 <div class="mb-5">
@@ -226,6 +221,98 @@
                                 </div>
                             </div>
                         </div>
+
+                        <br />
+
+                        <div style="width:100%" class="d-flex flex-row justify-content-between">
+
+                            <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddCard">Add Card</button>
+
+                            <!-- Vertically centered modal-->
+                            <div class="modal fade modal-close-out"
+                                 id="modalAddCard"
+                                 tabindex="-1"
+                                 role="dialog"
+                                 aria-labelledby="verticallyCenteredLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
+                                            <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Quill Top Label Start -->
+
+                                            <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
+                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
+                                            </div>
+
+                                            <section class="scroll-section" id="topLabel">
+                                                <label class="mb-3 top-label">
+                                                    <input id="tituloCard" class="form-control" />
+                                                    <span>Título</span>
+                                                </label>
+                                                <div class="mb-3 top-label">
+                                                    <textarea id="descricaoCard" class="form-control" rows="2"></textarea>
+                                                    <span>Descrição</span>
+                                                </div>
+                                            </section>
+                                            <!-- Quill Top Label End -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button id="btnSalvarCard" type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Vertically centered modal-->
+                            <div class="modal fade modal-close-out"
+                                 id="modalDeleteCard"
+                                 tabindex="-1"
+                                 role="dialog"
+                                 aria-labelledby="verticallyCenteredLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="verticallyCenteredLabel">Excluir Card</h5>
+                                            <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Quill Top Label Start -->
+
+                                            <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
+                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
+                                            </div>
+
+                                            <section class="scroll-section" id="topLabel">
+                                                <label class="mb-3 top-label">
+                                                    <input id="tituloCard" class="form-control" />
+                                                    <span>Título</span>
+                                                </label>
+                                                <div class="mb-3 top-label">
+                                                    <textarea id="descricaoCard" class="form-control" rows="2"></textarea>
+                                                    <span>Descrição</span>
+                                                </div>
+                                            </section>
+                                            <!-- Quill Top Label End -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button id="btnDeletarCard" type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <br />
+
+                        <div id="listaCards">
+                        </div>
+
                         <!-- Biography End -->
                     </div>
                     <!-- Left Side End -->
@@ -270,26 +357,54 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="verticallyCenteredLabel">Adicionar Mídia</h5>
-                                            <button id="btnCloseAddPublicacao" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button id="btnCloseAddMidia" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+
+
                                             <!-- Quill Top Label Start -->
 
                                             <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
+                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira uma nova foto para sua galeria!</h7>
                                             </div>
 
                                             <section class="scroll-section" id="topLabel">
-                                                <label class="mb-3 top-label">
-                                                    <input id="tituloPublicacao" class="form-control" />
-                                                    <span>Título</span>
-                                                </label>
-                                                <div class="mb-3 top-label">
-                                                    <textarea id="descricaoPublicacao" class="form-control" rows="2"></textarea>
-                                                    <span>Descrição</span>
+
+                                                <div class="row">
+                                                    <div class="col text-center p-2">
+                                                        <img style="width: 100%;" id="saved-imgFotoMidia">
+                                                        <div class="mt-3">
+                                                            <button style="width: 100%;" id="btnGetImageFotoMidia" class="btn btn-primary">Adicionar Foto</button>
+                                                            <input class="d-none" type="file" id="fileUploadFotoMidia" accept="image/*" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- ================ Start of Modal =============== -->
+                                                <div class="modal fade" id="imgModal-dialogFotoMidia" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 id="imgModal-hdr">Bootstrap Modal</h3>
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            </div>
+                                                            <div id="imgModal-msgFotoMidia" class="modal-body mb-2">
+                                                                <div id="cropped-img-wrp"><img id="cropped-imgFotoMidia"></div>
+                                                                <div id="imgModal-cropme-wrp" class="justify-content-center">
+                                                                    <div id="imgModal-cropmeFotoMidia" class=""></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer justify-content-center">
+                                                                <button id="imgModal-btnSaveFotoMidia" class="btn btn-primary">Save Image</button>
+                                                                <button id="imgModal-btnCropFotoMidia" type="button" class="btn btn-info">Crop</button>
+                                                                <button id="imgModal-btnCancelFotoMidia" type="button" class="btn btn-info">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </section>
                                             <!-- Quill Top Label End -->
+
+
                                         </div>
                                         <div class="modal-footer">
                                             <button id="btnSalvarMidia" type="button" class="btn btn-primary">Save changes</button>
@@ -308,443 +423,12 @@
                                     <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddGaleria">Add Mídia</button>
                                 </div>
 
-                                <div class="row row-cols-1 row-cols-sm-2 row-cols-xxl-3 g-2 mb-5">
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-1.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">153</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">29</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Introduction to Bread Making</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Blaine Cottrell</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-2.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">224</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">2</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">52</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">14 Facts About Sugar Products</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Cherish Kerr</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-3.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">13</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">12</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Apple Cake Recipe</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Kirby Peters</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-4.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">155</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">6</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">46</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Complete Guide to Mix Dough</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Olli Hawkins</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-5.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">82</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">4</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">3</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">10 Secrets Every Southern Baker Knows</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Kathryn Mengel</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-6.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">55</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">1</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">4</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Recipes for Sweet and Healty Treats</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Esperanza Lodge</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-7.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">49</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">19</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">8</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Mix Dough for the Molds</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Zayn Hartley</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-8.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">81</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">13</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Basic Introduction for Dough Molding</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Joisse Kaycee</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-9.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">64</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">9</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">3</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Mix Dough for the Molds</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Kirby Peters</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-10.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">35</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">2</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">5</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Introduction to Baking Donut</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Peter Linatti</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-2.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">27</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">12</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">8</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">Apple Cake Recipe for Starters</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Rosa Holt</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="../img/product/small/product-6.webp" class="card-img h-100 scale" alt="card image" />
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between reveal-content">
-                                                <div class="row g-0">
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="eye" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">15</span>
-                                                    </div>
-                                                    <div class="col-auto pe-3">
-                                                        <i data-cs-icon="message" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">2</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i data-cs-icon="like" class="text-white me-1" data-cs-size="15"></i>
-                                                        <span class="align-middle text-white">0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row g-0">
-                                                    <div class="col pe-2">
-                                                        <a href="Pages.Portfolio.Detail.html" class="stretched-link">
-                                                            <h5 class="heading text-white mb-1">6 Facts About Sugar Products</h5>
-                                                        </a>
-                                                        <div class="d-inline-block">
-                                                            <div class="text-white">Josh Henderson</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto me-auto">
-                                                        <button class="btn btn-icon btn-icon-only btn-foreground mb-1" type="button">
-                                                            <i data-cs-icon="like"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                <!-- List Start -->
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-xxl-3 g-2 mb-5" id="listaGaleria">
                                 </div>
-                                <div class="text-center">
-                                    <button class="btn btn-xl btn-outline-primary sw-30">Load More</button>
-                                </div>
+                                <!-- List End -->
+
                             </div>
                             <!-- Projects Tab End -->
                             <!-- Collections Tab Start -->
@@ -760,21 +444,51 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
+                                                <h5 class="modal-title" id="verticallyCenteredLabel">Publicação</h5>
                                                 <button id="btnCloseAddPublicacao" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Quill Top Label Start -->
 
                                                 <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                    <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
+                                                    <h7 class="modal-title" id="verticallyCenteredLabel">Insira sua publicação, ela será exibida para milhares de clientes!</h7>
                                                 </div>
 
                                                 <section class="scroll-section" id="topLabel">
-                                                    <label class="mb-3 top-label">
-                                                        <input id="tituloPublicacao" class="form-control" />
-                                                        <span>Título</span>
-                                                    </label>
+
+                                                    <div class="row">
+                                                        <div class="col text-center p-2">
+                                                            <img style="width: 100%;" id="saved-img">
+                                                            <div class="mt-3">
+                                                                <button style="width: 100%;" id="btnGetImage" class="btn btn-primary">Adicionar Foto</button>
+                                                                <input class="d-none" type="file" id="fileUpload" accept="image/*" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- ================ Start of Modal =============== -->
+                                                    <div class="modal fade" id="imgModal-dialog" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 id="imgModal-hdr">Bootstrap Modal</h3>
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                </div>
+                                                                <div id="imgModal-msg" class="modal-body mb-2">
+                                                                    <div id="cropped-img-wrp"><img id="cropped-img"></div>
+                                                                    <div id="imgModal-cropme-wrp" class="justify-content-center">
+                                                                        <div id="imgModal-cropme" class=""></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer justify-content-center">
+                                                                    <button id="imgModal-btnSave" class="btn btn-primary">Save Image</button>
+                                                                    <button id="imgModal-btnCrop" type="button" class="btn btn-info">Crop</button>
+                                                                    <button id="imgModal-btnCancel" type="button" class="btn btn-info">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- ================ End of Modal =============== -->
+
                                                     <div class="mb-3 top-label">
                                                         <textarea id="descricaoPublicacao" class="form-control" rows="2"></textarea>
                                                         <span>Descrição</span>
@@ -1499,6 +1213,16 @@
             </div>
         </div>
     </div>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
+    </script>
+    <!-- Latest minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    </script>
+    <!-- CropMe from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/cropme@1.4.3/dist/cropme.min.js"></script>
+
     <!-- Search Modal End -->
     <!-- Vendor Scripts Start -->
     <script src="../js/vendor/jquery-3.5.1.min.js"></script>
@@ -1526,295 +1250,704 @@
 
     <script>
 
-        GetPerfilPrestador()
-        GetPublicacaoPrestador()
+            //Cropme in Modal
+        var CiM = {
+          myCropme: null,
 
-        var existMuralPrestador = false
-        var idMuralPrestador = 0
-        var idCardDelete = 0
+          opt: {
+            //our extra properties. must be set!
+            my_win_ratio: 0,
+            my_final_size: {w:0, h:0},
 
-        function GetPerfilPrestador() {
-            const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'http://51.222.19.201:8081/api/UsuarioPrestador?idUsuario=' + @Model);
-            ajax.responseType = 'json';
-            ajax.onload = function (e) {
-                if (this.status == 200) {
-                    document.getElementById("apelidoPrestador").textContent = this.response.data.apelido;
-                    document.getElementById("categoriaPrestador").textContent = this.response.data.categoria.descricao;
-                    document.getElementById("emailPrestador").textContent = this.response.data.email;
+            container: { width: 0, height: 0 }, //to be set
+            viewport: {
+              width: 0, height: 0, //to be set
+              type: 'square',
+              border: { width: 2, enable: true, color: '#fff' }
+            },
+            zoom: { enable: true, mouseWheel: true, slider: true },
+            rotation: { slider: true, enable: true },
+            transformOrigin: 'viewport',
+          },
 
-                    console.log(this.response)
+          crop_into_img: function(img, callback) {
+            CiM.myCropme.crop({
+              width: CiM.opt.my_final_size.w,
+            }).then(function(res) {
+              img[0].src = res;
+              CiM.myCropme.destroy();
+              CiM.myCropme = null;
+              if (callback) callback();
+            })
+          },
 
-                    if (this.response.data.mural != null) {
-                        idMuralPrestador = this.response.data.mural.id
-                        existMuralPrestador = true
-                        document.getElementById("descMuralPrestador").textContent = this.response.data.mural.descricao;
-                        document.getElementById("tituloMuralPrestador").textContent = this.response.data.mural.titulo;
-                        titulo = document.getElementById("tituloMural").value = this.response.data.mural.titulo;
-                        descricao = document.getElementById("descricaoMural").value = this.response.data.mural.descricao;
-                    }
+          imgHolder: null,
+          imgHolderCallback: null,
+          read_file_from_input: function(input, callback) {
+            if (input.files && input.files[0]) {
+                imgHolderCallback = callback;
+                var reader = new FileReader();
+                if (!CiM.imgHolder) {
+                  CiM.imgHolder = new Image();
+                  CiM.imgHolder.onload = function () {
+                     if (imgHolderCallback) {
+                       imgHolderCallback();
+                     }
+                  }
+                }
+                reader.onload = function (e) {
+                  console.log('image data loaded!');
+                  CiM.imgHolder.src = e.target.result; //listen to img:load...
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+              console.warn('failed to read file');
+            }
+          },
 
-                    if (this.response.data.cards != null) {
+          getImagePlaceholder: function(width, height, text) {
+            //based on https://cloudfour.com/thinks/simple-svg-placeholder/
+            var svg = '\
+              <svg xmlns="http://www.w3.org/2000/svg" width="{w}" \
+              height="{h}" viewBox="0 0 {w} {h}">\
+              <rect fill="#ddd" width="{w}" height="{h}"/>\
+              <text fill="rgba(0,0,0,0.5)" font-family="sans-serif"\
+              font-size="30" dy="10.5" font-weight="bold"\
+              x="50%" y="50%" text-anchor="middle">{t}</text>\
+              </svg>';
+            var cleaned = svg
+              .replace(/{w}/g, width)
+              .replace(/{h}/g, height)
+              .replace('{t}', text)
+              .replace(/[\t\n\r]/gim, '') // Strip newlines and tabs
+              .replace(/\s\s+/g, ' ') // Condense multiple spaces
+              .replace(/'/gim, '\\i'); // Normalize quotes
 
-                        for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
-                            var html = `
-                              <div class="row g-0 align-items-center mb-3">
-                                        <div class="col-auto">
-                                            <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                <i data-cs-icon="screen" class="text-primary"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ps-3">
-                                            <div class="row g-0">
-                                                <div class="col">
-                                                    <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
-                                                    <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
-                                                <i data-cs-icon="close"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                            `;
+            var encoded = encodeURIComponent(cleaned)
+              .replace(/\(/g, '%28') // Encode brackets
+              .replace(/\)/g, '%29');
 
-                            document.getElementById("listaCards").innerHTML += html
+            return 'data:image/svg+xml;charset=UTF-8,' + encoded;
+          },
+
+          get_image_placeholder: function(text) {
+            return CiM.getImagePlaceholder(
+              CiM.opt.my_final_size.w, CiM.opt.my_final_size.h, text);
+          },
+
+          uploadImage: function(img, callback){
+            var imgCanvas = document.createElement("canvas"),
+            imgContext = imgCanvas.getContext("2d");
+
+            // Make sure canvas is as big as the picture (needed??)
+            imgCanvas.width = img.width;
+            imgCanvas.height = img.height;
+
+            // Draw image into canvas element
+            imgContext.drawImage(img, 0, 0, img.width, img.height);
+
+            var dataURL = imgCanvas.toDataURL();
+
+            $.ajax({
+              type: "POST",
+              url: "save-img.php", // see code at the bottom
+              data: {
+                 imgBase64: dataURL
+              }
+            }).done(function(resp) {
+              if (resp.startsWith('nok')) {
+                console.warn('got save error:', resp);
+              } else {
+                if (callback) callback(resp);
+              }
+            });
+          },
+
+          update_options_for_width: function(w) {
+            var o = CiM.opt, //shortcut
+                vp_ratio = o.my_final_size.w / o.my_final_size.h,
+                h, new_vp_w, new_vp_h;
+            w = Math.floor(w * 0.9);
+            h = Math.floor(w / o.my_win_ratio);
+            o.container.width = w;
+            o.container.height = h;
+            new_vp_h = 0.6 * h;
+            new_vp_w = new_vp_h * vp_ratio;
+            // if we adapted to the height, but it's too wide:
+            if (new_vp_w > 0.6 * w) {
+              new_vp_w = 0.6 * w;
+              new_vp_h = new_vp_w / vp_ratio;
+            }
+            new_vp_w = Math.floor(new_vp_w);
+            new_vp_h = Math.floor(new_vp_h);
+            o.viewport.height = new_vp_h;
+            o.viewport.width = new_vp_w;
+          },
+
+          show_cropme_in_div: function(cropme_div) {
+            if (CiM.myCropme)
+              CiM.myCropme.destroy();
+            CiM.myCropme = new Cropme(cropme_div, CiM.opt);
+            CiM.myCropme.bind({ url: CiM.imgHolder.src });
+          }
+        }
+
+        window.onload = function() {
+
+          function getBase64Image(img) {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            var dataURL = canvas.toDataURL("image/png");
+            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+          }
+
+          var croppedImg = $('#saved-img'),
+              savedImg = $('#saved-img');
+
+          CiM.opt.my_final_size = {w:240, h:292};
+          CiM.opt.my_win_ratio = 1.5;
+
+          savedImg[0].src = CiM.get_image_placeholder('?');
+
+          $('#imgModal-btnCrop').on('click', function() {
+            CiM.crop_into_img(croppedImg, function() {
+              //var base64 = getBase64Image(document.getElementById("saved-img"));
+              //document.getElementById('saved-img').src = 'data:image/png;base64,' + base64
+              //console.log(base64)
+              $('#imgModal-dialog').modal('hide');
+              //$('#imgModal-btnSave').show();
+              $('#imgModal-btnCrop').hide();
+            });
+          });
+
+          $('#imgModal-btnCancel').on('click', function() {
+              $('#imgModal-dialog').modal('hide');
+          });
+
+          $('#imgModal-btnSave').on('click', function(){
+
+            var base64 = getBase64Image(document.getElementById("saved-img"));
+            document.getElementById('saved-img').src = 'data:image/png;base64,' + base64
+            console.log(base64)
+            $('#imgModal-dialog').modal('hide');
+
+          });
+          $('#btnGetImage').on('click', function(){
+            //force 'change' event even if repeating same file:
+            $('#fileUpload').prop("value", "");
+            $('#fileUpload').click();
+          });
+          $('#fileUpload').on('change', function(){
+            CiM.read_file_from_input(/*input elem*/this, function() {
+              console.log('image src fully loaded');
+              $('#imgModal-dialog').modal('show');
+            });
+          });
+          $('#imgModal-dialog').on('shown.bs.modal', function() {
+            var cropZone = $('#imgModal-cropme');
+
+            CiM.update_options_for_width($('#imgModal-msg').width());
+
+            $('#imgModal-btnSave').hide();
+            $('#imgModal-btnCrop').show();
+            croppedImg[0].src = '';
+            CiM.show_cropme_in_div($('#imgModal-cropme')[0]);
+          });
+
+          /////////////////////////////////////////
+
+          var croppedImgFotoPerfil = $('#saved-imgFotoPerfil'),
+          savedImgFotoPerfil = $('#saved-imgFotoPerfil');
+
+          CiM.opt.my_final_size = {w:240, h:292};
+          CiM.opt.my_win_ratio = 1.5;
+
+          savedImgFotoPerfil[0].src = CiM.get_image_placeholder('?');
+
+          $('#imgModal-btnCropFotoPerfil').on('click', function() {
+            CiM.crop_into_img(croppedImgFotoPerfil, function() {
+              //$('#imgModal-btnSaveFotoPerfil').show();
+              $('#imgModal-dialogFotoPerfil').modal('hide');
+              $('#imgModal-btnCropFotoPerfil').hide();
+            });
+          });
+
+          $('#imgModal-btnCancelFotoPerfil').on('click', function() {
+              $('#imgModal-dialogFotoPerfil').modal('hide');
+          });
+
+          $('#imgModal-btnSaveFotoPerfil').on('click', function(){
+
+            var base64 = getBase64Image(document.getElementById("cropped-imgFotoPerfil"));
+            document.getElementById('saved-imgFotoPerfil').src = 'data:image/png;base64,' + base64
+            console.log(base64)
+            $('#imgModal-dialogFotoPerfil').modal('hide');
+
+          });
+          $('#btnGetImageFotoPerfil').on('click', function(){
+            //force 'change' event even if repeating same file:
+            $('#fileUploadFotoPerfil').prop("value", "");
+            $('#fileUploadFotoPerfil').click();
+          });
+          $('#fileUploadFotoPerfil').on('change', function(){
+            CiM.read_file_from_input(/*input elem*/this, function() {
+              console.log('image src fully loaded');
+              $('#imgModal-dialogFotoPerfil').modal('show');
+            });
+          });
+          $('#imgModal-dialogFotoPerfil').on('shown.bs.modal', function() {
+            var cropZone = $('#imgModal-cropmeFotoPerfil');
+
+            CiM.update_options_for_width($('#imgModal-msgFotoPerfil').width());
+
+            $('#imgModal-btnSaveFotoPerfil').hide();
+            $('#imgModal-btnCropFotoPerfil').show();
+            croppedImgFotoPerfil[0].src = '';
+            CiM.show_cropme_in_div($('#imgModal-cropmeFotoPerfil')[0]);
+          });
+
+
+          /////////////////////////////////////////////////
+
+          var croppedImgFotoMidia = $('#saved-imgFotoMidia'),
+          savedImgFotoMidia = $('#saved-imgFotoMidia');
+
+          CiM.opt.my_final_size = {w:240, h:292};
+          CiM.opt.my_win_ratio = 1.5;
+
+          savedImgFotoMidia[0].src = CiM.get_image_placeholder('?');
+
+          $('#imgModal-btnCropFotoMidia').on('click', function() {
+            CiM.crop_into_img(croppedImgFotoMidia, function() {
+              //$('#imgModal-btnSaveFotoMidia').show();
+              $('#imgModal-dialogFotoMidia').modal('hide');
+              $('#imgModal-btnCropFotoMidia').hide();
+            });
+          });
+
+          $('#imgModal-btnCancelFotoMidia').on('click', function() {
+              $('#imgModal-dialogFotoMidia').modal('hide');
+          });
+
+          $('#imgModal-btnSaveFotoMidia').on('click', function(){
+
+            var base64 = getBase64Image(document.getElementById("cropped-imgFotoMidia"));
+            document.getElementById('saved-imgFotoMidia').src = 'data:image/png;base64,' + base64
+            console.log(base64)
+            $('#imgModal-dialogFotoMidia').modal('hide');
+
+          });
+          $('#btnGetImageFotoMidia').on('click', function(){
+            //force 'change' event even if repeating same file:
+            $('#fileUploadFotoMidia').prop("value", "");
+            $('#fileUploadFotoMidia').click();
+          });
+          $('#fileUploadFotoMidia').on('change', function(){
+            CiM.read_file_from_input(/*input elem*/this, function() {
+              console.log('image src fully loaded');
+              $('#imgModal-dialogFotoMidia').modal('show');
+            });
+          });
+          $('#imgModal-dialogFotoMidia').on('shown.bs.modal', function() {
+            var cropZone = $('#imgModal-cropmeFotoMidia');
+
+            CiM.update_options_for_width($('#imgModal-msgFotoMidia').width());
+
+            $('#imgModal-btnSaveFotoMidia').hide();
+            $('#imgModal-btnCropFotoMidia').show();
+            croppedImgFotoMidia[0].src = '';
+            CiM.show_cropme_in_div($('#imgModal-cropmeFotoMidia')[0]);
+          });
+
+
+        };
+
+
+
+            //////////////////////////////////////
+
+          function getBase64Image(img) {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            var dataURL = canvas.toDataURL("image/png");
+            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+          }
+
+            GetPerfilPrestador()
+            GetPublicacaoPrestador()
+            GetGaleriaPrestador()
+
+            var existMuralPrestador = false
+            var idMuralPrestador = 0
+            var idCardDelete = 0
+
+            function GetPerfilPrestador() {
+                const ajax = new XMLHttpRequest();
+                ajax.open('GET', 'http://51.222.19.201:8081/api/UsuarioPrestador?idUsuario=' + @Model);
+                ajax.responseType = 'json';
+                ajax.onload = function (e) {
+                    if (this.status == 200) {
+                        document.getElementById("apelidoPrestador").textContent = this.response.data.apelido;
+                        document.getElementById("categoriaPrestador").textContent = this.response.data.categoria.descricao;
+                        document.getElementById("emailPrestador").textContent = this.response.data.email;
+
+                        console.log(this.response)
+
+                        if (this.response.data.mural != null) {
+                            idMuralPrestador = this.response.data.mural.id
+                            existMuralPrestador = true
+                            document.getElementById("descMuralPrestador").textContent = this.response.data.mural.descricao;
+                            document.getElementById("tituloMuralPrestador").textContent = this.response.data.mural.titulo;
+                            titulo = document.getElementById("tituloMural").value = this.response.data.mural.titulo;
+                            descricao = document.getElementById("descricaoMural").value = this.response.data.mural.descricao;
+                            document.getElementById('fotoPerfilPrestador').src = "http://51.222.19.201:8081/api/UsuarioPrestador/" + this.response.data.idFotoPerfil
                         }
 
-                    }
+                        if (this.response.data.cards != null) {
 
-                    if (this.response.data.telefones != null) {
-
-                        for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
-                            var html = `
-                              <div class="text-muted">
-                                        <i data-cs-icon="phone" class="me-1"></i>
-                                        <span class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
+                            for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
+                                var html = `
+                                <div style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
+                                  <div class="row g-0 align-items-center mb-3">
+                                            <div class="col-auto">
+                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                    <i data-cs-icon="screen" class="text-primary"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col ps-3">
+                                                <div class="row g-0">
+                                                    <div class="col">
+                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
+                                                        <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
+                                                    <i data-cs-icon="close"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                 </div>
-                            `;
+                                `;
 
-                            document.getElementById("listaTelefone").innerHTML += html
+                                document.getElementById("listaCards").innerHTML += html
+                            }
+
                         }
 
-                    }
-                }
-            };
+                        if (this.response.data.telefones != null) {
 
-            ajax.send();
-        }
-
-        function GetPublicacaoPrestador() {
-            const ajax = new XMLHttpRequest();
-            ajax.open('GET', 'http://51.222.19.201:8081/api/Publicacao?idUsuario=' + @Model);
-            ajax.responseType = 'json';
-            ajax.onload = function (e) {
-                if (this.status == 200) {
-
-                    console.log(this.response)
-
-                    if (this.response.data != null) {
-
-                        for (let i = 0; i < this.response.data.length; i = i + 1) {
-                            var html = `
-                              <div class="card mb-5">
-                                        <a href="Pages.Blog.Detail.html">
-                                            <img src="../img/product/large/product-1.webp" class="card-img-top sh-35" alt="card image" />
-                                        </a>
-                                        <div class="card-body">
-                                            <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                ` + this.response.data[i].descricao + `
-                                            </p>
-                                        </div>
-                               </div>
-                            `;
-
-                            document.getElementById("listaPublicacao").innerHTML += html
-                        }
-
-                    }
-                }
-            };
-
-            ajax.send();
-        }
-
-        document.getElementById("btnSalvarMural").addEventListener("click", salvarMural, false);
-
-        function salvarMural() {
-
-            titulo = document.getElementById("tituloMural").value
-            descricao = document.getElementById("descricaoMural").value
-
-            if (existMuralPrestador) {
-                var ajax = new XMLHttpRequest();
-                ajax.open("PUT", "http://51.222.19.201:8081/api/Mural");
-                ajax.setRequestHeader("Content-Type", "application/json");
-                ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador}));
-                ajax.onreadystatechange = function () {
-                    if (ajax.status == 200) {
-                        console.log(JSON.parse(this.response))
-                        idMuralPrestador = JSON.parse(this.response).data.id
-                        existMuralPrestador = true
-                        document.getElementById("descMuralPrestador").textContent = descricao;
-                        document.getElementById("tituloMuralPrestador").textContent = titulo;
-                        document.getElementById("btnCloseAddMural").click();
-                    } else {
-                        alertErro()
-                    }
-                }
-
-            } else {
-                var ajax = new XMLHttpRequest();
-                ajax.open("POST", "http://51.222.19.201:8081/api/Mural");
-                ajax.setRequestHeader("Content-Type", "application/json");
-                ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, idUsuario: @Model}));
-                ajax.onreadystatechange = function () {
-                    if (ajax.status == 200) {
-                        idMuralPrestador = JSON.parse(this.response).data.id
-                        existMuralPrestador = true
-                        document.getElementById("descMuralPrestador").textContent = descricao;
-                        document.getElementById("tituloMuralPrestador").textContent = titulo;
-                        document.getElementById("btnCloseAddMural").click();
-                    } else {
-                        alertErro()
-                    }
-                }
-            }
-        }
-
-        document.getElementById("btnSalvarCard").addEventListener("click", salvarCard, false);
-
-        function salvarCard() {
-
-            tituloCard = document.getElementById("tituloCard").value
-            descricaoCard = document.getElementById("descricaoCard").value
-
-            var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "http://51.222.19.201:8081/api/CardPerfil");
-            ajaxCard.setRequestHeader("Content-Type", "application/json");
-            ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
-            ajaxCard.onreadystatechange = function () {
-                if (ajaxCard.readyState == 4) {
-                    if (ajaxCard.status == 200) {
-                        var htmlCard = `
-                              <div class="row g-0 align-items-center mb-3">
-                                        <div class="col-auto">
-                                            <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                <i data-cs-icon="screen" class="text-primary"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ps-3">
-                                            <div class="row g-0">
-                                                <div class="col">
-                                                    <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
-                                                    <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + JSON.parse(this.response).data.id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary ms-1" type="button">
-                                                <i data-cs-icon="close"></i>
-                                            </button>
-                                        </div>
+                            for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
+                                var html = `
+                                  <div class="text-muted">
+                                            <i data-cs-icon="phone" class="me-1"></i>
+                                            <span class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
                                     </div>
-                            `;
+                                `;
 
-                        document.getElementById("listaCards").innerHTML += htmlCard
-                        document.getElementById("btnCloseAddCard").click();
+                                document.getElementById("listaTelefone").innerHTML += html
+                            }
 
-                    } else {
-                        alertErro()
+                        }
+                    }
+                };
+
+                ajax.send();
+            }
+
+            function GetPublicacaoPrestador() {
+                const ajax = new XMLHttpRequest();
+                ajax.open('GET', 'http://51.222.19.201:8081/api/Publicacao?idUsuario=' + @Model);
+                ajax.responseType = 'json';
+                ajax.onload = function (e) {
+                    if (this.status == 200) {
+
+                        console.log(this.response)
+
+                        if (this.response.data != null) {
+
+                            for (let i = 0; i < this.response.data.length; i = i + 1) {
+                                var html = `
+                                  <div class="card mb-5">
+                                            <a href="Pages.Blog.Detail.html">
+                                                <img style="min-height: 70vh;" src="http://51.222.19.201:8081/api/Publicacao/` + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                            </a>
+                                            <div class="card-body">
+                                                <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                    ` + this.response.data[i].descricao + `
+                                                </p>
+                                            </div>
+                                   </div>
+                                `;
+
+                                document.getElementById("listaPublicacao").innerHTML += html
+                            }
+
+                        }
+                    }
+                };
+
+                ajax.send();
+            }
+
+            function GetGaleriaPrestador() {
+                const ajax = new XMLHttpRequest();
+                ajax.open('GET', 'http://51.222.19.201:8081/api/Galeria?idUsuario=' + @Model);
+                ajax.responseType = 'json';
+                ajax.onload = function (e) {
+                    if (this.status == 200) {
+
+                        console.log(this.response)
+
+                        if (this.response.data != null) {
+
+                            for (let i = 0; i < this.response.data.length; i = i + 1) {
+
+                                var html = `
+                                          <div class="col">
+                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                            <img src="http://51.222.19.201:8081/api/Galeria/` + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                            </div>
+                                        </div>
+                                `;
+
+                                document.getElementById("listaGaleria").innerHTML += html
+                            }
+
+                        }
+                    }
+                };
+
+                ajax.send();
+            }
+
+            document.getElementById("btnSalvarMural").addEventListener("click", salvarMural, false);
+
+            function salvarMural() {
+
+                titulo = document.getElementById("tituloMural").value
+                descricao = document.getElementById("descricaoMural").value
+
+                if (existMuralPrestador) {
+                    var ajax = new XMLHttpRequest();
+                    ajax.open("PUT", "http://51.222.19.201:8081/api/Mural");
+                    ajax.setRequestHeader("Content-Type", "application/json");
+                    ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador}));
+                    ajax.onreadystatechange = function () {
+                        if (ajax.status == 200) {
+                            console.log(JSON.parse(this.response))
+                            idMuralPrestador = JSON.parse(this.response).data.id
+                            existMuralPrestador = true
+                            document.getElementById("descMuralPrestador").textContent = descricao;
+                            document.getElementById("tituloMuralPrestador").textContent = titulo;
+                            document.getElementById("btnCloseAddMural").click();
+                        } else {
+                            alertErro()
+                        }
+                    }
+
+                } else {
+                    var ajax = new XMLHttpRequest();
+                    ajax.open("POST", "http://51.222.19.201:8081/api/Mural");
+                    ajax.setRequestHeader("Content-Type", "application/json");
+                    ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, idUsuario: @Model}));
+                    ajax.onreadystatechange = function () {
+                        if (ajax.status == 200) {
+                            idMuralPrestador = JSON.parse(this.response).data.id
+                            existMuralPrestador = true
+                            document.getElementById("descMuralPrestador").textContent = descricao;
+                            document.getElementById("tituloMuralPrestador").textContent = titulo;
+                            document.getElementById("btnCloseAddMural").click();
+                        } else {
+                            alertErro()
+                        }
                     }
                 }
             }
-        }
 
-        document.getElementById("btnSalvarPublicacao").addEventListener("click", salvarPublicacao, false);
+            document.getElementById("btnSalvarCard").addEventListener("click", salvarCard, false);
 
-        function salvarPublicacao() {
+            function salvarCard() {
 
-            tituloCard = document.getElementById("tituloPublicacao").value
-            descricaoCard = document.getElementById("descricaoPublicacao").value
+                tituloCard = document.getElementById("tituloCard").value
+                descricaoCard = document.getElementById("descricaoCard").value
 
-            var ajaxCard = new XMLHttpRequest();
-            ajaxCard.open("POST", "http://51.222.19.201:8081/api/Publicacao");
-            ajaxCard.setRequestHeader("Content-Type", "application/json");
-            ajaxCard.send(JSON.stringify({ descricao: descricaoCard, idUsuario: @Model}));
-            ajaxCard.onreadystatechange = function () {
-                if (ajaxCard.readyState == 4) {
-                    if (ajaxCard.status == 200) {
-                        var html = `
-                              <div class="card mb-5">
-                                        <a href="Pages.Blog.Detail.html">
-                                            <img src="../img/product/large/product-1.webp" class="card-img-top sh-35" alt="card image" />
-                                        </a>
-                                        <div class="card-body">
-                                            <h4 class="mb-3">
-                                                <a href="Pages.Blog.Detail.html">Basic Introduction to Bread Making</a>
-                                            </h4>
-                                            <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                Jujubes brownie marshmallow apple pie donut ice cream jelly-o jelly-o gummi bears. Tootsie roll chocolate bar dragée bonbon cheesecake
-                                                icing. Danish wafer donut cookie caramels gummies topping.
-                                            </p>
-                                        </div>
-                                        <div class="card-footer border-0 pt-0">
-                                            <div class="row align-items-center">
-                                                <div class="col-6">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="sw-5 d-inline-block position-relative me-3">
-                                                            <img src="../img/profile/profile-1.webp" class="img-fluid rounded-xl" alt="thumb" />
-                                                        </div>
-                                                        <div class="d-inline-block">
-                                                            <a href="#">Olli Hawkins</a>
-                                                            <div class="text-muted text-small">Development Lead</div>
-                                                        </div>
-                                                    </div>
+                var ajaxCard = new XMLHttpRequest();
+                ajaxCard.open("POST", "http://51.222.19.201:8081/api/CardPerfil");
+                ajaxCard.setRequestHeader("Content-Type", "application/json");
+                ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
+                ajaxCard.onreadystatechange = function () {
+                    if (ajaxCard.readyState == 4) {
+                        if (ajaxCard.status == 200) {
+                            var htmlCard = `
+                                <div style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
+                                  <div class="row g-0 align-items-center mb-3">
+                                            <div class="col-auto">
+                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                    <i data-cs-icon="screen" class="text-primary"></i>
                                                 </div>
-                                                <div class="col-6 text-muted">
-                                                    <div class="row g-0 justify-content-end">
-                                                        <div class="col-auto pe-3">
-                                                            <i data-cs-icon="eye" class="text-primary me-1" data-cs-size="15"></i>
-                                                            <span class="align-middle">421</span>
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <i data-cs-icon="message" class="text-primary me-1" data-cs-size="15"></i>
-                                                            <span class="align-middle">4</span>
-                                                        </div>
+                                            </div>
+                                            <div class="col ps-3">
+                                                <div class="row g-0">
+                                                    <div class="col">
+                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
+                                                        <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-auto">
+                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + JSON.parse(this.response).data.id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary ms-1" type="button">
+                                                    <i data-cs-icon="close"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                            `;
+                                `;
 
-                        htmlBase = document.getElementById("listaPublicacao").innerHTML
-                        document.getElementById("listaPublicacao").innerHTML = html
-                        document.getElementById("listaPublicacao").innerHTML += htmlBase
-                        document.getElementById("btnCloseAddPublicacao").click();
-                        document.getElementById("descricaoPublicacao").value = ''
+                            document.getElementById("listaCards").innerHTML += htmlCard
+                            document.getElementById("btnCloseAddCard").click();
 
-                    } else {
-                        alertErro()
+                        } else {
+                            alertErro()
+                        }
                     }
                 }
             }
-        }
 
-        function selectCardDelete(idCard) {
-            idCardDelete = idCard
-        }
+            document.getElementById("btnSalvarPublicacao").addEventListener("click", salvarPublicacao, false);
 
-        document.getElementById("btnDeletarCard").addEventListener("click", deleteCard, false);
+            function salvarPublicacao() {
 
-        function deleteCard() {
-            console.log(idCardDelete)
-        }
+                descricaoCard = document.getElementById("descricaoPublicacao").value
 
-        function alertErro() {
-            sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
-        }
+                //var base64 = getBase64Image(document.getElementById("saved-img"));
+                var base64Completed = document.getElementById("saved-img").src
+                var base64 = base64Completed.split(",").pop()
+                console.log(base64)
+
+                var ajaxCard = new XMLHttpRequest();
+                ajaxCard.open("POST", "http://51.222.19.201:8081/api/Publicacao");
+                ajaxCard.setRequestHeader("Content-Type", "application/json");
+                ajaxCard.send(JSON.stringify({ base64Midia : base64, descricao: descricaoCard, idUsuario: @Model}));
+                ajaxCard.onreadystatechange = function () {
+                    console.log(ajaxCard)
+                    if (ajaxCard.readyState == 4) {
+                        if (ajaxCard.status == 200) {
+                                var html = `
+                                  <div class="card mb-5">
+                                            <a href="Pages.Blog.Detail.html">
+                                                <img style="min-height: 70vh;" src="http://51.222.19.201:8081/api/Publicacao/` + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                            </a>
+                                            <div class="card-body">
+                                                <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                    ` + JSON.parse(this.response).data.descricao + `
+                                                </p>
+                                            </div>
+                                   </div>
+                                `;
+
+                            htmlBase = document.getElementById("listaPublicacao").innerHTML
+                            document.getElementById("listaPublicacao").innerHTML = html
+                            document.getElementById("listaPublicacao").innerHTML += htmlBase
+                            document.getElementById("btnCloseAddPublicacao").click();
+                            document.getElementById("descricaoPublicacao").value = ''
+
+                        } else {
+                            alertErro()
+                        }
+                    }
+                }
+            }
+
+            document.getElementById("btnSalvarMidia").addEventListener("click", salvarMidia, false);
+
+            function salvarMidia() {
+
+                //var base64 = getBase64Image(document.getElementById("saved-imgFotoMidia"));
+                var base64Completed = document.getElementById("saved-imgFotoMidia").src
+                var base64 = base64Completed.split(",").pop()
+                console.log(base64)
+
+                var ajaxGaleria = new XMLHttpRequest();
+                ajaxGaleria.open("POST", "http://51.222.19.201:8081/api/Galeria");
+                ajaxGaleria.setRequestHeader("Content-Type", "application/json");
+                ajaxGaleria.send(JSON.stringify({ base64Midia : base64, idUsuario: @Model}));
+                ajaxGaleria.onreadystatechange = function () {
+                    console.log(ajaxGaleria)
+                    if (ajaxGaleria.readyState == 4) {
+                        if (ajaxGaleria.status == 200) {
+
+                                 var html = `
+                                          <div class="col">
+                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                            <img src="http://51.222.19.201:8081/api/Galeria/` + JSON.parse(this.response).data.urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                            </div>
+                                        </div>
+                                `;
+
+                            htmlBase = document.getElementById("listaGaleria").innerHTML
+                            document.getElementById("listaGaleria").innerHTML = html
+                            document.getElementById("listaGaleria").innerHTML += htmlBase
+                            document.getElementById("btnCloseAddMidia").click();
+
+                        } else {
+                            alertErro()
+                        }
+                    }
+                }
+
+            }
+
+            document.getElementById("btnSalvarFotoPerfil").addEventListener("click", salvarFotoPerfil, false);
+
+            function salvarFotoPerfil() {
+
+                //var base64 = getBase64Image(document.getElementById("saved-imgFotoPerfil"));
+                var base64Completed = document.getElementById("saved-imgFotoPerfil").src
+                var base64 = base64Completed.split(",").pop()
+                console.log(base64)
+
+                var ajaxCard = new XMLHttpRequest();
+                ajaxCard.open("POST", "http://51.222.19.201:8081/api/UsuarioPrestador/upload-foto-perfil");
+                ajaxCard.setRequestHeader("Content-Type", "application/json");
+                ajaxCard.send(JSON.stringify({ IdUsuario : @Model, Base64Imagem: base64}));
+                ajaxCard.onreadystatechange = function () {
+                    console.log(ajaxCard)
+                    if (ajaxCard.readyState == 4) {
+                        if (ajaxCard.status == 200) {
+
+                            document.getElementById('fotoPerfilPrestador').src = 'data:image/png;base64,' + base64
+                            document.getElementById("btnCloseAlterarFotoPerfil").click();
+
+                        } else {
+                            alertErro()
+                        }
+                    }
+                }
+            }
+
+
+            function selectCardDelete(idCard) {
+                idCardDelete = idCard
+            }
+
+            document.getElementById("btnDeletarCard").addEventListener("click", deleteCard, false);
+
+            function deleteCard() {
+                console.log(idCardDelete)
+            }
+
+            function alertErro() {
+                sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
+            }
 
     </script>
 

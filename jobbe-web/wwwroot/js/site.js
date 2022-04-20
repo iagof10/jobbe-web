@@ -1,4 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿//var RotaAPI = 'http://51.222.19.201:8081/'
+var RotaAPI = 'https://localhost:44371/'
+//var RotaWeb = 'http://51.222.19.201:8082/'
+var RotaWeb = 'https://localhost:5000/'

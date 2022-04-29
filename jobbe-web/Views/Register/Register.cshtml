@@ -308,13 +308,13 @@
                             if (this.status == 200) {
                                 alertSucess()
                             } else {
-                                alertErro()
+                                alertErro(JSON.parse(ajax.response).errorMessage)
                             }
                         };
                         ajaxSaveUser.send();
 
                     } else {
-                        alertErro()
+                        alertErro(JSON.parse(ajax.response).errorMessage)
                     }
                 }
             }
@@ -331,8 +331,8 @@
         }
 
 
-        function alertErro() {
-            sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
+        function alertErro(message) {
+            sweetAlert("Algo deu errado!", "Não foi possível salvar o registro. <br>" + message, "error")
         }
 
         function alertSucess() {

@@ -60,6 +60,8 @@
 
     <link rel="stylesheet" href="../css/vendor/baguetteBox.min.css" />
 
+    <link rel="stylesheet" href="../css/vendor/nouislider.min.css" />
+
     <!-- Vendor Styles End -->
     <!-- Template Base Styles Start -->
     <link rel="stylesheet" href="../css/styles.css" />
@@ -83,7 +85,7 @@
                                 <div class="d-flex align-items-center flex-column">
                                     <div class="mb-3 d-flex align-items-center flex-column">
                                         <div class="sw-13 position-relative mb-3">
-                                            <img id="fotoPerfilPrestador" src="../img/profile/profile-2.webp" class="img-fluid rounded-xl" alt="thumb" />
+                                            <img id="fotoPerfilPrestador" src="../img/profile/profile-2.webp" class="img-fluid card" alt="thumb" />
                                         </div>
 
                                         <!-- Vertically centered modal-->
@@ -229,6 +231,96 @@
 
                                     </p>
                                 </div>
+
+                                <div class="mb-5">
+
+                                    <div class="d-flex align-items-center flex-column mb-3">
+                                        <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddRegiaoAtendimento">Alterar Região de Atendimento</button>
+                                    </div>
+
+                                    <!-- Vertically centered modal-->
+                                    <div class="modal fade modal-close-out"
+                                         id="modalAddRegiaoAtendimento"
+                                         tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="verticallyCenteredLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="verticallyCenteredLabel">Região de Atendimento</h5>
+                                                    <button id="btnCloseRegiaoAtendimento" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div class="mb-5">
+                                                        <h7 class="modal-title" id="verticallyCenteredLabel">Para adicionar sua região de atendimento precisamos saber onde você atua. Você escolhe como nos fornecer essa informação, através da localização ou CEP!</h7>
+                                                    </div>
+
+                                                    <section class="scroll-section" id="topLabel">
+
+                                                        <div class="d-flex align-items-center flex-column mb-5">
+                                                            <button id="btnSelecionarLocalizacao" type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddRegiaoLocalizacao">Usar Localização</button>
+                                                        </div>
+
+                                                        <div class="d-flex align-items-center flex-column mb-5">
+                                                            <a id="btnShareWhatsapp" data-action="share/whatsapp/share" class="btn btn-outline-primary w-100 me-2">Adicionar CEP</a>
+                                                        </div>
+
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Vertically centered modal-->
+                                    <div class="modal fade modal-close-out"
+                                         id="modalAddRegiaoLocalizacao"
+                                         tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="verticallyCenteredLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="verticallyCenteredLabel">Região de Atendimento</h5>
+                                                    <button id="btnCloseRegiaoLocalizacao" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div class="mb-5">
+                                                        <h7 class="modal-title" id="verticallyCenteredLabel">Insira o raio de atendimento</h7>
+                                                    </div>
+
+                                                    <section class="scroll-section" id="topLabel">
+
+                                                        <div class="slidecontainer">
+                                                            <input type="range" min="5" max="5000" value="5" class="slider" id="myRange">
+                                                            <p>Km: <span id="valorKm"></span></p>
+                                                            <p><span id="latitudelongitude"></span></p>
+                                                        </div>
+
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-medium text-muted mb-1">
+                                        Região de Atendimento
+                                    </p>
+                                    <p class="mb-2">
+                                        Brasil Inteiro
+                                    </p>
+
+                                    <p class="text-medium text-muted mb-1">
+                                        Atende em um raio de:
+                                    </p>
+                                    <p class="mb-2">
+                                        25 kilometros
+                                    </p>
+                                </div>
+
 
                                 <div class="mb-2">
                                     <p class="text-medium text-muted mb-2">Compartilhe seu perfil com sua rede!</p>
@@ -910,6 +1002,43 @@
         </div>
     </div>
 
+    <style>
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+            .slider:hover {
+                opacity: 1;
+            }
+
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                background: #d44f4f;
+                cursor: pointer;
+            }
+
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                background: #d44f4f;
+                cursor: pointer;
+            }
+    </style>
+
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js">
     </script>
@@ -928,6 +1057,9 @@
     <script src="../js/vendor/clamp.min.js"></script>
     <script src="../js/vendor/baguetteBox.min.js"></script>
     <script src="../js/cs/responsivetab.js"></script>
+    <script src="../js/vendor/nouislider.min.js"></script>
+    <script src="../js/forms/controls.slider.js"></script>
+    <script src="../js/cs/scrollspy.js"></script>
     <!-- Vendor Scripts End -->
     <!-- Template Base Scripts Start -->
     <script src="../font/CS-Line/csicons.min.js"></script>
@@ -944,741 +1076,773 @@
     <script src="../js/scripts.js"></script>
     <!-- Page Specific Scripts End -->
 
+
     <script>
 
-            //Cropme in Modal
-        var CiM = {
-          myCropme: null,
+                            //Cropme in Modal
+                        var CiM = {
+                          myCropme: null,
 
-          opt: {
-            //our extra properties. must be set!
-            my_win_ratio: 0,
-            my_final_size: {w:0, h:0},
+                          opt: {
+                            //our extra properties. must be set!
+                            my_win_ratio: 0,
+                            my_final_size: {w:0, h:0},
 
-            container: { width: 0, height: 0 }, //to be set
-            viewport: {
-              width: 0, height: 0, //to be set
-              type: 'square',
-              border: { width: 2, enable: true, color: '#fff' }
-            },
-            zoom: { enable: true, mouseWheel: true, slider: true },
-            rotation: { slider: true, enable: true },
-            transformOrigin: 'viewport',
-          },
+                            container: { width: 0, height: 0 }, //to be set
+                            viewport: {
+                              width: 0, height: 0, //to be set
+                              type: 'square',
+                              border: { width: 2, enable: true, color: '#fff' }
+                            },
+                            zoom: { enable: true, mouseWheel: true, slider: true },
+                            rotation: { slider: true, enable: true },
+                            transformOrigin: 'viewport',
+                          },
 
-          crop_into_img: function(img, callback) {
-            CiM.myCropme.crop({
-              width: CiM.opt.my_final_size.w,
-            }).then(function(res) {
-              img[0].src = res;
-              CiM.myCropme.destroy();
-              CiM.myCropme = null;
-              if (callback) callback();
-            })
-          },
+                          crop_into_img: function(img, callback) {
+                            CiM.myCropme.crop({
+                              width: CiM.opt.my_final_size.w,
+                            }).then(function(res) {
+                              img[0].src = res;
+                              CiM.myCropme.destroy();
+                              CiM.myCropme = null;
+                              if (callback) callback();
+                            })
+                          },
 
-          imgHolder: null,
-          imgHolderCallback: null,
-          read_file_from_input: function(input, callback) {
-            if (input.files && input.files[0]) {
-                imgHolderCallback = callback;
-                var reader = new FileReader();
-                if (!CiM.imgHolder) {
-                  CiM.imgHolder = new Image();
-                  CiM.imgHolder.onload = function () {
-                     if (imgHolderCallback) {
-                       imgHolderCallback();
-                     }
-                  }
-                }
-                reader.onload = function (e) {
-                  console.log('image data loaded!');
-                  CiM.imgHolder.src = e.target.result; //listen to img:load...
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-            else {
-              console.warn('failed to read file');
-            }
-          },
+                          imgHolder: null,
+                          imgHolderCallback: null,
+                          read_file_from_input: function(input, callback) {
+                            if (input.files && input.files[0]) {
+                                imgHolderCallback = callback;
+                                var reader = new FileReader();
+                                if (!CiM.imgHolder) {
+                                  CiM.imgHolder = new Image();
+                                  CiM.imgHolder.onload = function () {
+                                     if (imgHolderCallback) {
+                                       imgHolderCallback();
+                                     }
+                                  }
+                                }
+                                reader.onload = function (e) {
+                                  console.log('image data loaded!');
+                                  CiM.imgHolder.src = e.target.result; //listen to img:load...
+                                }
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                            else {
+                              console.warn('failed to read file');
+                            }
+                          },
 
-          getImagePlaceholder: function(width, height, text) {
-            //based on https://cloudfour.com/thinks/simple-svg-placeholder/
-            var svg = '\
-              <svg xmlns="http://www.w3.org/2000/svg" width="{w}" \
-              height="{h}" viewBox="0 0 {w} {h}">\
-              <rect fill="#ddd" width="{w}" height="{h}"/>\
-              <text fill="rgba(0,0,0,0.5)" font-family="sans-serif"\
-              font-size="30" dy="10.5" font-weight="bold"\
-              x="50%" y="50%" text-anchor="middle">{t}</text>\
-              </svg>';
-            var cleaned = svg
-              .replace(/{w}/g, width)
-              .replace(/{h}/g, height)
-              .replace('{t}', text)
-              .replace(/[\t\n\r]/gim, '') // Strip newlines and tabs
-              .replace(/\s\s+/g, ' ') // Condense multiple spaces
-              .replace(/'/gim, '\\i'); // Normalize quotes
+                          getImagePlaceholder: function(width, height, text) {
+                            //based on https://cloudfour.com/thinks/simple-svg-placeholder/
+                            var svg = '\
+                              <svg xmlns="http://www.w3.org/2000/svg" width="{w}" \
+                              height="{h}" viewBox="0 0 {w} {h}">\
+                              <rect fill="#ddd" width="{w}" height="{h}"/>\
+                              <text fill="rgba(0,0,0,0.5)" font-family="sans-serif"\
+                              font-size="30" dy="10.5" font-weight="bold"\
+                              x="50%" y="50%" text-anchor="middle">{t}</text>\
+                              </svg>';
+                            var cleaned = svg
+                              .replace(/{w}/g, width)
+                              .replace(/{h}/g, height)
+                              .replace('{t}', text)
+                              .replace(/[\t\n\r]/gim, '') // Strip newlines and tabs
+                              .replace(/\s\s+/g, ' ') // Condense multiple spaces
+                              .replace(/'/gim, '\\i'); // Normalize quotes
 
-            var encoded = encodeURIComponent(cleaned)
-              .replace(/\(/g, '%28') // Encode brackets
-              .replace(/\)/g, '%29');
+                            var encoded = encodeURIComponent(cleaned)
+                              .replace(/\(/g, '%28') // Encode brackets
+                              .replace(/\)/g, '%29');
 
-            return 'data:image/svg+xml;charset=UTF-8,' + encoded;
-          },
+                            return 'data:image/svg+xml;charset=UTF-8,' + encoded;
+                          },
 
-          get_image_placeholder: function(text) {
-            return CiM.getImagePlaceholder(
-              CiM.opt.my_final_size.w, CiM.opt.my_final_size.h, text);
-          },
+                          get_image_placeholder: function(text) {
+                            return CiM.getImagePlaceholder(
+                              CiM.opt.my_final_size.w, CiM.opt.my_final_size.h, text);
+                          },
 
-          uploadImage: function(img, callback){
-            var imgCanvas = document.createElement("canvas"),
-            imgContext = imgCanvas.getContext("2d");
+                          uploadImage: function(img, callback){
+                            var imgCanvas = document.createElement("canvas"),
+                            imgContext = imgCanvas.getContext("2d");
 
-            // Make sure canvas is as big as the picture (needed??)
-            imgCanvas.width = img.width;
-            imgCanvas.height = img.height;
+                            // Make sure canvas is as big as the picture (needed??)
+                            imgCanvas.width = img.width;
+                            imgCanvas.height = img.height;
 
-            // Draw image into canvas element
-            imgContext.drawImage(img, 0, 0, img.width, img.height);
+                            // Draw image into canvas element
+                            imgContext.drawImage(img, 0, 0, img.width, img.height);
 
-            var dataURL = imgCanvas.toDataURL();
+                            var dataURL = imgCanvas.toDataURL();
 
-            $.ajax({
-              type: "POST",
-              url: "save-img.php", // see code at the bottom
-              data: {
-                 imgBase64: dataURL
-              }
-            }).done(function(resp) {
-              if (resp.startsWith('nok')) {
-                console.warn('got save error:', resp);
-              } else {
-                if (callback) callback(resp);
-              }
-            });
-          },
+                            $.ajax({
+                              type: "POST",
+                              url: "save-img.php", // see code at the bottom
+                              data: {
+                                 imgBase64: dataURL
+                              }
+                            }).done(function(resp) {
+                              if (resp.startsWith('nok')) {
+                                console.warn('got save error:', resp);
+                              } else {
+                                if (callback) callback(resp);
+                              }
+                            });
+                          },
 
-          update_options_for_width: function(w) {
-            var o = CiM.opt, //shortcut
-                vp_ratio = o.my_final_size.w / o.my_final_size.h,
-                h, new_vp_w, new_vp_h;
-            w = Math.floor(w * 0.9);
-            h = Math.floor(w / o.my_win_ratio);
-            o.container.width = w;
-            o.container.height = h;
-            new_vp_h = 0.6 * h;
-            new_vp_w = new_vp_h * vp_ratio;
-            // if we adapted to the height, but it's too wide:
-            if (new_vp_w > 0.6 * w) {
-              new_vp_w = 0.6 * w;
-              new_vp_h = new_vp_w / vp_ratio;
-            }
-            new_vp_w = Math.floor(new_vp_w);
-            new_vp_h = Math.floor(new_vp_h);
-            o.viewport.height = new_vp_h;
-            o.viewport.width = new_vp_w;
-          },
+                          update_options_for_width: function(w) {
+                            var o = CiM.opt, //shortcut
+                                vp_ratio = o.my_final_size.w / o.my_final_size.h,
+                                h, new_vp_w, new_vp_h;
+                            w = Math.floor(w * 0.9);
+                            h = Math.floor(w / o.my_win_ratio);
+                            o.container.width = w;
+                            o.container.height = h;
+                            new_vp_h = 0.6 * h;
+                            new_vp_w = new_vp_h * vp_ratio;
+                            // if we adapted to the height, but it's too wide:
+                            if (new_vp_w > 0.6 * w) {
+                              new_vp_w = 0.6 * w;
+                              new_vp_h = new_vp_w / vp_ratio;
+                            }
+                            new_vp_w = Math.floor(new_vp_w);
+                            new_vp_h = Math.floor(new_vp_h);
+                            o.viewport.height = new_vp_h;
+                            o.viewport.width = new_vp_w;
+                          },
 
-          show_cropme_in_div: function(cropme_div) {
-            if (CiM.myCropme)
-              CiM.myCropme.destroy();
-            CiM.myCropme = new Cropme(cropme_div, CiM.opt);
-            CiM.myCropme.bind({ url: CiM.imgHolder.src });
-          }
-        }
-
-        window.onload = function() {
-
-          function getBase64Image(img) {
-            var canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-            var dataURL = canvas.toDataURL("image/png");
-            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-          }
-
-          var croppedImg = $('#saved-img'),
-              savedImg = $('#saved-img');
-
-          CiM.opt.my_final_size = {w:240, h:292};
-          CiM.opt.my_win_ratio = 1.5;
-
-          savedImg[0].src = CiM.get_image_placeholder('?');
-
-          $('#imgModal-btnCrop').on('click', function() {
-            CiM.crop_into_img(croppedImg, function() {
-              //var base64 = getBase64Image(document.getElementById("saved-img"));
-              //document.getElementById('saved-img').src = 'data:image/png;base64,' + base64
-              //console.log(base64)
-              $('#imgModal-dialog').modal('hide');
-              //$('#imgModal-btnSave').show();
-              $('#imgModal-btnCrop').hide();
-            });
-          });
-
-          $('#imgModal-btnCancel').on('click', function() {
-              $('#imgModal-dialog').modal('hide');
-          });
-
-          $('#imgModal-btnSave').on('click', function(){
-
-            var base64 = getBase64Image(document.getElementById("saved-img"));
-            document.getElementById('saved-img').src = 'data:image/png;base64,' + base64
-            console.log(base64)
-            $('#imgModal-dialog').modal('hide');
-
-          });
-          $('#btnGetImage').on('click', function(){
-            //force 'change' event even if repeating same file:
-            $('#fileUpload').prop("value", "");
-            $('#fileUpload').click();
-          });
-          $('#fileUpload').on('change', function(){
-            CiM.read_file_from_input(/*input elem*/this, function() {
-              console.log('image src fully loaded');
-              $('#imgModal-dialog').modal('show');
-            });
-          });
-          $('#imgModal-dialog').on('shown.bs.modal', function() {
-            var cropZone = $('#imgModal-cropme');
-
-            CiM.update_options_for_width($('#imgModal-msg').width());
-
-            $('#imgModal-btnSave').hide();
-            $('#imgModal-btnCrop').show();
-            croppedImg[0].src = '';
-            CiM.show_cropme_in_div($('#imgModal-cropme')[0]);
-          });
-
-          /////////////////////////////////////////
-
-          var croppedImgFotoPerfil = $('#saved-imgFotoPerfil'),
-          savedImgFotoPerfil = $('#saved-imgFotoPerfil');
-
-          CiM.opt.my_final_size = {w:240, h:292};
-          CiM.opt.my_win_ratio = 1.5;
-
-          savedImgFotoPerfil[0].src = CiM.get_image_placeholder('?');
-
-          $('#imgModal-btnCropFotoPerfil').on('click', function() {
-            CiM.crop_into_img(croppedImgFotoPerfil, function() {
-              //$('#imgModal-btnSaveFotoPerfil').show();
-              $('#imgModal-dialogFotoPerfil').modal('hide');
-              $('#imgModal-btnCropFotoPerfil').hide();
-            });
-          });
-
-          $('#imgModal-btnCancelFotoPerfil').on('click', function() {
-              $('#imgModal-dialogFotoPerfil').modal('hide');
-          });
-
-          $('#imgModal-btnSaveFotoPerfil').on('click', function(){
-
-            var base64 = getBase64Image(document.getElementById("cropped-imgFotoPerfil"));
-            document.getElementById('saved-imgFotoPerfil').src = 'data:image/png;base64,' + base64
-            console.log(base64)
-            $('#imgModal-dialogFotoPerfil').modal('hide');
-
-          });
-          $('#btnGetImageFotoPerfil').on('click', function(){
-            //force 'change' event even if repeating same file:
-            $('#fileUploadFotoPerfil').prop("value", "");
-            $('#fileUploadFotoPerfil').click();
-          });
-          $('#fileUploadFotoPerfil').on('change', function(){
-            CiM.read_file_from_input(/*input elem*/this, function() {
-              console.log('image src fully loaded');
-              $('#imgModal-dialogFotoPerfil').modal('show');
-            });
-          });
-          $('#imgModal-dialogFotoPerfil').on('shown.bs.modal', function() {
-            var cropZone = $('#imgModal-cropmeFotoPerfil');
-
-            CiM.update_options_for_width($('#imgModal-msgFotoPerfil').width());
-
-            $('#imgModal-btnSaveFotoPerfil').hide();
-            $('#imgModal-btnCropFotoPerfil').show();
-            croppedImgFotoPerfil[0].src = '';
-            CiM.show_cropme_in_div($('#imgModal-cropmeFotoPerfil')[0]);
-          });
-
-
-          /////////////////////////////////////////////////
-
-          var croppedImgFotoMidia = $('#saved-imgFotoMidia'),
-          savedImgFotoMidia = $('#saved-imgFotoMidia');
-
-          CiM.opt.my_final_size = {w:240, h:292};
-          CiM.opt.my_win_ratio = 1.5;
-
-          savedImgFotoMidia[0].src = CiM.get_image_placeholder('?');
-
-          $('#imgModal-btnCropFotoMidia').on('click', function() {
-            CiM.crop_into_img(croppedImgFotoMidia, function() {
-              //$('#imgModal-btnSaveFotoMidia').show();
-              $('#imgModal-dialogFotoMidia').modal('hide');
-              $('#imgModal-btnCropFotoMidia').hide();
-            });
-          });
-
-          $('#imgModal-btnCancelFotoMidia').on('click', function() {
-              $('#imgModal-dialogFotoMidia').modal('hide');
-          });
-
-          $('#imgModal-btnSaveFotoMidia').on('click', function(){
-
-            var base64 = getBase64Image(document.getElementById("cropped-imgFotoMidia"));
-            document.getElementById('saved-imgFotoMidia').src = 'data:image/png;base64,' + base64
-            console.log(base64)
-            $('#imgModal-dialogFotoMidia').modal('hide');
-
-          });
-          $('#btnGetImageFotoMidia').on('click', function(){
-            //force 'change' event even if repeating same file:
-            $('#fileUploadFotoMidia').prop("value", "");
-            $('#fileUploadFotoMidia').click();
-          });
-          $('#fileUploadFotoMidia').on('change', function(){
-            CiM.read_file_from_input(/*input elem*/this, function() {
-              console.log('image src fully loaded');
-              $('#imgModal-dialogFotoMidia').modal('show');
-            });
-          });
-          $('#imgModal-dialogFotoMidia').on('shown.bs.modal', function() {
-            var cropZone = $('#imgModal-cropmeFotoMidia');
-
-            CiM.update_options_for_width($('#imgModal-msgFotoMidia').width());
-
-            $('#imgModal-btnSaveFotoMidia').hide();
-            $('#imgModal-btnCropFotoMidia').show();
-            croppedImgFotoMidia[0].src = '';
-            CiM.show_cropme_in_div($('#imgModal-cropmeFotoMidia')[0]);
-          });
-
-
-        };
-
-
-
-            //////////////////////////////////////
-
-          function getBase64Image(img) {
-            var canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-            var dataURL = canvas.toDataURL("image/png");
-            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-          }
-
-            GetPerfilPrestador()
-            GetPublicacaoPrestador()
-            GetGaleriaPrestador()
-
-            var existMuralPrestador = false
-            var idMuralPrestador = 0
-            var idCardDelete = 0
-
-            function GetPerfilPrestador() {
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/GetByToken?idUsuario=' + @Model);
-                ajax.responseType = 'json';
-                ajax.onload = function (e) {
-                    if (this.status == 200) {
-                        document.getElementById("apelidoPrestador").textContent = this.response.data.apelido;
-                        document.getElementById("categoriaPrestador").textContent = this.response.data.categoria.descricao;
-                        document.getElementById("emailPrestador").textContent = this.response.data.email;
-                        document.getElementById("numVisualizacoes").textContent = this.response.data.numVisualizacoes;
-
-                        console.log(this.response)
-
-                        if (this.response.data.mural != null) {
-                            idMuralPrestador = this.response.data.mural.id
-                            existMuralPrestador = true
-                            document.getElementById("descMuralPrestador").textContent = this.response.data.mural.descricao;
-                            document.getElementById("tituloMuralPrestador").textContent = this.response.data.mural.titulo;
-
-                            document.getElementById("linkPerfil").value = RotaWeb + "DetalhePerfil/" + @Model;
-                            document.getElementById("btnShareWhatsapp").href = 'whatsapp://send?text=Olá, estou te convidando para fazer parte do meu mural de parceitos, acesse o link e me aceite: http://51.222.19.201:8082/DetalhePerfil/' + @Model;
-                            document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, este é meu perfil no Jobbe, acesse o link e tenha acesso a todo meu conteúdo: http://51.222.19.201:8082/DetalhePerfil/' + @Model;
-                            //document.getElementById("btnShareFacebook").data-url = RotaWeb + "DetalhePerfil/" + @Model;
-
-                            titulo = document.getElementById("tituloMural").value = this.response.data.mural.titulo;
-                            descricao = document.getElementById("descricaoMural").value = this.response.data.mural.descricao;
-                            document.getElementById('fotoPerfilPrestador').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
+                          show_cropme_in_div: function(cropme_div) {
+                            if (CiM.myCropme)
+                              CiM.myCropme.destroy();
+                            CiM.myCropme = new Cropme(cropme_div, CiM.opt);
+                            CiM.myCropme.bind({ url: CiM.imgHolder.src });
+                          }
                         }
 
-                        if (this.response.data.cards != null) {
+                        window.onload = function() {
 
-                            for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
-                                var html = `
-                                <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
-                                  <div class="row g-0 align-items-center mb-3">
-                                            <div class="col-auto">
-                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                    <i data-cs-icon="screen" class="text-primary"></i>
+                          function getBase64Image(img) {
+                            var canvas = document.createElement("canvas");
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            var ctx = canvas.getContext("2d");
+                            ctx.drawImage(img, 0, 0);
+                            var dataURL = canvas.toDataURL("image/png");
+                            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+                          }
+
+                          var croppedImg = $('#saved-img'),
+                              savedImg = $('#saved-img');
+
+                          CiM.opt.my_final_size = {w:240, h:292};
+                          CiM.opt.my_win_ratio = 1.5;
+
+                          savedImg[0].src = CiM.get_image_placeholder('?');
+
+                          $('#imgModal-btnCrop').on('click', function() {
+                            CiM.crop_into_img(croppedImg, function() {
+                              //var base64 = getBase64Image(document.getElementById("saved-img"));
+                              //document.getElementById('saved-img').src = 'data:image/png;base64,' + base64
+                              //console.log(base64)
+                              $('#imgModal-dialog').modal('hide');
+                              //$('#imgModal-btnSave').show();
+                              $('#imgModal-btnCrop').hide();
+                            });
+                          });
+
+                          $('#imgModal-btnCancel').on('click', function() {
+                              $('#imgModal-dialog').modal('hide');
+                          });
+
+                          $('#imgModal-btnSave').on('click', function(){
+
+                            var base64 = getBase64Image(document.getElementById("saved-img"));
+                            document.getElementById('saved-img').src = 'data:image/png;base64,' + base64
+                            console.log(base64)
+                            $('#imgModal-dialog').modal('hide');
+
+                          });
+                          $('#btnGetImage').on('click', function(){
+                            //force 'change' event even if repeating same file:
+                            $('#fileUpload').prop("value", "");
+                            $('#fileUpload').click();
+                          });
+                          $('#fileUpload').on('change', function(){
+                            CiM.read_file_from_input(/*input elem*/this, function() {
+                              console.log('image src fully loaded');
+                              $('#imgModal-dialog').modal('show');
+                            });
+                          });
+                          $('#imgModal-dialog').on('shown.bs.modal', function() {
+                            var cropZone = $('#imgModal-cropme');
+
+                            CiM.update_options_for_width($('#imgModal-msg').width());
+
+                            $('#imgModal-btnSave').hide();
+                            $('#imgModal-btnCrop').show();
+                            croppedImg[0].src = '';
+                            CiM.show_cropme_in_div($('#imgModal-cropme')[0]);
+                          });
+
+                          /////////////////////////////////////////
+
+                          var croppedImgFotoPerfil = $('#saved-imgFotoPerfil'),
+                          savedImgFotoPerfil = $('#saved-imgFotoPerfil');
+
+                          CiM.opt.my_final_size = {w:240, h:292};
+                          CiM.opt.my_win_ratio = 1.5;
+
+                          savedImgFotoPerfil[0].src = CiM.get_image_placeholder('?');
+
+                          $('#imgModal-btnCropFotoPerfil').on('click', function() {
+                            CiM.crop_into_img(croppedImgFotoPerfil, function() {
+                              //$('#imgModal-btnSaveFotoPerfil').show();
+                              $('#imgModal-dialogFotoPerfil').modal('hide');
+                              $('#imgModal-btnCropFotoPerfil').hide();
+                            });
+                          });
+
+                          $('#imgModal-btnCancelFotoPerfil').on('click', function() {
+                              $('#imgModal-dialogFotoPerfil').modal('hide');
+                          });
+
+                          $('#imgModal-btnSaveFotoPerfil').on('click', function(){
+
+                            var base64 = getBase64Image(document.getElementById("cropped-imgFotoPerfil"));
+                            document.getElementById('saved-imgFotoPerfil').src = 'data:image/png;base64,' + base64
+                            console.log(base64)
+                            $('#imgModal-dialogFotoPerfil').modal('hide');
+
+                          });
+                          $('#btnGetImageFotoPerfil').on('click', function(){
+                            //force 'change' event even if repeating same file:
+                            $('#fileUploadFotoPerfil').prop("value", "");
+                            $('#fileUploadFotoPerfil').click();
+                          });
+                          $('#fileUploadFotoPerfil').on('change', function(){
+                            CiM.read_file_from_input(/*input elem*/this, function() {
+                              console.log('image src fully loaded');
+                              $('#imgModal-dialogFotoPerfil').modal('show');
+                            });
+                          });
+                          $('#imgModal-dialogFotoPerfil').on('shown.bs.modal', function() {
+                            var cropZone = $('#imgModal-cropmeFotoPerfil');
+
+                            CiM.update_options_for_width($('#imgModal-msgFotoPerfil').width());
+
+                            $('#imgModal-btnSaveFotoPerfil').hide();
+                            $('#imgModal-btnCropFotoPerfil').show();
+                            croppedImgFotoPerfil[0].src = '';
+                            CiM.show_cropme_in_div($('#imgModal-cropmeFotoPerfil')[0]);
+                          });
+
+
+                          /////////////////////////////////////////////////
+
+                          var croppedImgFotoMidia = $('#saved-imgFotoMidia'),
+                          savedImgFotoMidia = $('#saved-imgFotoMidia');
+
+                          CiM.opt.my_final_size = {w:240, h:292};
+                          CiM.opt.my_win_ratio = 1.5;
+
+                          savedImgFotoMidia[0].src = CiM.get_image_placeholder('?');
+
+                          $('#imgModal-btnCropFotoMidia').on('click', function() {
+                            CiM.crop_into_img(croppedImgFotoMidia, function() {
+                              //$('#imgModal-btnSaveFotoMidia').show();
+                              $('#imgModal-dialogFotoMidia').modal('hide');
+                              $('#imgModal-btnCropFotoMidia').hide();
+                            });
+                          });
+
+                          $('#imgModal-btnCancelFotoMidia').on('click', function() {
+                              $('#imgModal-dialogFotoMidia').modal('hide');
+                          });
+
+                          $('#imgModal-btnSaveFotoMidia').on('click', function(){
+
+                            var base64 = getBase64Image(document.getElementById("cropped-imgFotoMidia"));
+                            document.getElementById('saved-imgFotoMidia').src = 'data:image/png;base64,' + base64
+                            console.log(base64)
+                            $('#imgModal-dialogFotoMidia').modal('hide');
+
+                          });
+                          $('#btnGetImageFotoMidia').on('click', function(){
+                            //force 'change' event even if repeating same file:
+                            $('#fileUploadFotoMidia').prop("value", "");
+                            $('#fileUploadFotoMidia').click();
+                          });
+                          $('#fileUploadFotoMidia').on('change', function(){
+                            CiM.read_file_from_input(/*input elem*/this, function() {
+                              console.log('image src fully loaded');
+                              $('#imgModal-dialogFotoMidia').modal('show');
+                            });
+                          });
+                          $('#imgModal-dialogFotoMidia').on('shown.bs.modal', function() {
+                            var cropZone = $('#imgModal-cropmeFotoMidia');
+
+                            CiM.update_options_for_width($('#imgModal-msgFotoMidia').width());
+
+                            $('#imgModal-btnSaveFotoMidia').hide();
+                            $('#imgModal-btnCropFotoMidia').show();
+                            croppedImgFotoMidia[0].src = '';
+                            CiM.show_cropme_in_div($('#imgModal-cropmeFotoMidia')[0]);
+                          });
+
+
+                        };
+
+
+
+                            //////////////////////////////////////
+
+                          function getBase64Image(img) {
+                            var canvas = document.createElement("canvas");
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            var ctx = canvas.getContext("2d");
+                            ctx.drawImage(img, 0, 0);
+                            var dataURL = canvas.toDataURL("image/png");
+                            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+                          }
+
+                            GetPerfilPrestador()
+                            GetPublicacaoPrestador()
+                            GetGaleriaPrestador()
+
+                            var existMuralPrestador = false
+                            var idMuralPrestador = 0
+                            var idCardDelete = 0
+
+                            function GetPerfilPrestador() {
+                                const ajax = new XMLHttpRequest();
+                                ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/GetByToken?idUsuario=' + @Model);
+                                ajax.responseType = 'json';
+                                ajax.onload = function (e) {
+                                    if (this.status == 200) {
+                                        document.getElementById("apelidoPrestador").textContent = this.response.data.apelido;
+                                        document.getElementById("categoriaPrestador").textContent = this.response.data.categoria.descricao;
+                                        document.getElementById("emailPrestador").textContent = this.response.data.email;
+                                        document.getElementById("numVisualizacoes").textContent = this.response.data.numVisualizacoes;
+
+                                        console.log(this.response)
+
+                                        if (this.response.data.mural != null) {
+                                            idMuralPrestador = this.response.data.mural.id
+                                            existMuralPrestador = true
+                                            document.getElementById("descMuralPrestador").textContent = this.response.data.mural.descricao;
+                                            document.getElementById("tituloMuralPrestador").textContent = this.response.data.mural.titulo;
+
+                                            document.getElementById("linkPerfil").value = RotaWeb + "DetalhePerfil/" + @Model;
+                                            document.getElementById("btnShareWhatsapp").href = 'whatsapp://send?text=Olá, estou te convidando para fazer parte do meu mural de parceitos, acesse o link e me aceite: http://51.222.19.201:8082/DetalhePerfil/' + @Model;
+                                            document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, este é meu perfil no Jobbe, acesse o link e tenha acesso a todo meu conteúdo: http://51.222.19.201:8082/DetalhePerfil/' + @Model;
+                                            //document.getElementById("btnShareFacebook").data-url = RotaWeb + "DetalhePerfil/" + @Model;
+
+                                            titulo = document.getElementById("tituloMural").value = this.response.data.mural.titulo;
+                                            descricao = document.getElementById("descricaoMural").value = this.response.data.mural.descricao;
+                                            document.getElementById('fotoPerfilPrestador').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
+                                        }
+
+                                        if (this.response.data.cards != null) {
+
+                                            for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
+                                                var html = `
+                                                <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
+                                                  <div class="row g-0 align-items-center mb-3">
+                                                            <div class="col-auto">
+                                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                                    <i data-cs-icon="screen" class="text-primary"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col ps-3">
+                                                                <div class="row g-0">
+                                                                    <div class="col">
+                                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
+                                                                        <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
+                                                                    <i data-cs-icon="close"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                 </div>
-                                            </div>
-                                            <div class="col ps-3">
-                                                <div class="row g-0">
-                                                    <div class="col">
-                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
-                                                        <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                                `;
+
+                                                document.getElementById("listaCards").innerHTML += html
+                                            }
+
+                                        }
+
+                                        if (this.response.data.telefones != null) {
+
+                                            for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
+                                                var html = `
+                                                  <div class="text-muted">
+                                                            <i data-cs-icon="phone" class="me-1"></i>
+                                                            <span class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
-                                                    <i data-cs-icon="close"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                </div>
-                                `;
+                                                `;
 
-                                document.getElementById("listaCards").innerHTML += html
+                                                document.getElementById("listaTelefone").innerHTML += html
+                                            }
+
+                                        }
+                                    }
+                                };
+
+                                ajax.send();
                             }
 
-                        }
+                            function GetPublicacaoPrestador() {
+                                const ajax = new XMLHttpRequest();
+                                ajax.open('GET', RotaAPI + 'api/Publicacao?idUsuario=' + @Model);
+                                ajax.responseType = 'json';
+                                ajax.onload = function (e) {
+                                    if (this.status == 200) {
 
-                        if (this.response.data.telefones != null) {
+                                        console.log(this.response)
 
-                            for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
-                                var html = `
-                                  <div class="text-muted">
-                                            <i data-cs-icon="phone" class="me-1"></i>
-                                            <span class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
-                                    </div>
-                                `;
+                                        if (this.response.data != null) {
 
-                                document.getElementById("listaTelefone").innerHTML += html
+                                            for (let i = 0; i < this.response.data.length; i = i + 1) {
+                                                var html = `
+                                                  <div class="card mb-5">
+                                                            <a href="Pages.Blog.Detail.html">
+                                                                <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                            </a>
+                                                            <div class="card-body">
+                                                                <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                    ` + this.response.data[i].descricao + `
+                                                                </p>
+                                                            </div>
+                                                   </div>
+                                                `;
+
+                                                document.getElementById("listaPublicacao").innerHTML += html
+                                            }
+
+                                        }
+                                    }
+                                };
+
+                                ajax.send();
                             }
 
-                        }
-                    }
-                };
+                            function GetGaleriaPrestador() {
+                                const ajax = new XMLHttpRequest();
+                                ajax.open('GET', RotaAPI + 'api/Galeria?idUsuario=' + @Model);
+                                ajax.responseType = 'json';
+                                ajax.onload = function (e) {
+                                    if (this.status == 200) {
 
-                ajax.send();
-            }
+                                        console.log(this.response)
 
-            function GetPublicacaoPrestador() {
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/Publicacao?idUsuario=' + @Model);
-                ajax.responseType = 'json';
-                ajax.onload = function (e) {
-                    if (this.status == 200) {
+                                        if (this.response.data != null) {
 
-                        console.log(this.response)
+                                            for (let i = 0; i < this.response.data.length; i = i + 1) {
 
-                        if (this.response.data != null) {
+                                                var html = `
+                                                          <div class="col">
+                                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                                            <img src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                                            </div>
+                                                        </div>
+                                                `;
 
-                            for (let i = 0; i < this.response.data.length; i = i + 1) {
-                                var html = `
-                                  <div class="card mb-5">
-                                            <a href="Pages.Blog.Detail.html">
-                                                <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                            </a>
-                                            <div class="card-body">
-                                                <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                    ` + this.response.data[i].descricao + `
-                                                </p>
-                                            </div>
-                                   </div>
-                                `;
+                                                document.getElementById("listaGaleria").innerHTML += html
+                                            }
 
-                                document.getElementById("listaPublicacao").innerHTML += html
+                                        }
+                                    }
+                                };
+
+                                ajax.send();
                             }
 
-                        }
-                    }
-                };
+                            document.getElementById("btnSalvarMural").addEventListener("click", salvarMural, false);
 
-                ajax.send();
-            }
+                            function salvarMural() {
 
-            function GetGaleriaPrestador() {
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/Galeria?idUsuario=' + @Model);
-                ajax.responseType = 'json';
-                ajax.onload = function (e) {
-                    if (this.status == 200) {
+                                titulo = document.getElementById("tituloMural").value
+                                descricao = document.getElementById("descricaoMural").value
 
-                        console.log(this.response)
+                                if (existMuralPrestador) {
+                                    var ajax = new XMLHttpRequest();
+                                    ajax.open("PUT", RotaAPI + "api/Mural");
+                                    ajax.setRequestHeader("Content-Type", "application/json");
+                                    ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador}));
+                                    ajax.onreadystatechange = function () {
+                                        if (ajax.status == 200) {
+                                            console.log(JSON.parse(this.response))
+                                            idMuralPrestador = JSON.parse(this.response).data.id
+                                            existMuralPrestador = true
+                                            document.getElementById("descMuralPrestador").textContent = descricao;
+                                            document.getElementById("tituloMuralPrestador").textContent = titulo;
+                                            document.getElementById("btnCloseAddMural").click();
+                                        } else {
+                                            alertErro()
+                                        }
+                                    }
 
-                        if (this.response.data != null) {
-
-                            for (let i = 0; i < this.response.data.length; i = i + 1) {
-
-                                var html = `
-                                          <div class="col">
-                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
-                                            </div>
-                                        </div>
-                                `;
-
-                                document.getElementById("listaGaleria").innerHTML += html
+                                } else {
+                                    var ajax = new XMLHttpRequest();
+                                    ajax.open("POST", RotaAPI + "api/Mural");
+                                    ajax.setRequestHeader("Content-Type", "application/json");
+                                    ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, idUsuario: @Model}));
+                                    ajax.onreadystatechange = function () {
+                                        if (ajax.status == 200) {
+                                            idMuralPrestador = JSON.parse(this.response).data.id
+                                            existMuralPrestador = true
+                                            document.getElementById("descMuralPrestador").textContent = descricao;
+                                            document.getElementById("tituloMuralPrestador").textContent = titulo;
+                                            document.getElementById("btnCloseAddMural").click();
+                                        } else {
+                                            alertErro()
+                                        }
+                                    }
+                                }
                             }
 
-                        }
-                    }
-                };
+                            document.getElementById("btnSalvarCard").addEventListener("click", salvarCard, false);
 
-                ajax.send();
-            }
+                            function salvarCard() {
 
-            document.getElementById("btnSalvarMural").addEventListener("click", salvarMural, false);
+                                tituloCard = document.getElementById("tituloCard").value
+                                descricaoCard = document.getElementById("descricaoCard").value
 
-            function salvarMural() {
-
-                titulo = document.getElementById("tituloMural").value
-                descricao = document.getElementById("descricaoMural").value
-
-                if (existMuralPrestador) {
-                    var ajax = new XMLHttpRequest();
-                    ajax.open("PUT", RotaAPI + "api/Mural");
-                    ajax.setRequestHeader("Content-Type", "application/json");
-                    ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador}));
-                    ajax.onreadystatechange = function () {
-                        if (ajax.status == 200) {
-                            console.log(JSON.parse(this.response))
-                            idMuralPrestador = JSON.parse(this.response).data.id
-                            existMuralPrestador = true
-                            document.getElementById("descMuralPrestador").textContent = descricao;
-                            document.getElementById("tituloMuralPrestador").textContent = titulo;
-                            document.getElementById("btnCloseAddMural").click();
-                        } else {
-                            alertErro()
-                        }
-                    }
-
-                } else {
-                    var ajax = new XMLHttpRequest();
-                    ajax.open("POST", RotaAPI + "api/Mural");
-                    ajax.setRequestHeader("Content-Type", "application/json");
-                    ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, idUsuario: @Model}));
-                    ajax.onreadystatechange = function () {
-                        if (ajax.status == 200) {
-                            idMuralPrestador = JSON.parse(this.response).data.id
-                            existMuralPrestador = true
-                            document.getElementById("descMuralPrestador").textContent = descricao;
-                            document.getElementById("tituloMuralPrestador").textContent = titulo;
-                            document.getElementById("btnCloseAddMural").click();
-                        } else {
-                            alertErro()
-                        }
-                    }
-                }
-            }
-
-            document.getElementById("btnSalvarCard").addEventListener("click", salvarCard, false);
-
-            function salvarCard() {
-
-                tituloCard = document.getElementById("tituloCard").value
-                descricaoCard = document.getElementById("descricaoCard").value
-
-                var ajaxCard = new XMLHttpRequest();
-                ajaxCard.open("POST", RotaAPI + "api/CardPerfil");
-                ajaxCard.setRequestHeader("Content-Type", "application/json");
-                ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
-                ajaxCard.onreadystatechange = function () {
-                    if (ajaxCard.readyState == 4) {
-                        if (ajaxCard.status == 200) {
-                            var htmlCard = `
-                                <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
-                                  <div class="row g-0 align-items-center mb-3">
-                                            <div class="col-auto">
-                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                    <i data-cs-icon="screen" class="text-primary"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col ps-3">
-                                                <div class="row g-0">
-                                                    <div class="col">
-                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
-                                                        <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
+                                var ajaxCard = new XMLHttpRequest();
+                                ajaxCard.open("POST", RotaAPI + "api/CardPerfil");
+                                ajaxCard.setRequestHeader("Content-Type", "application/json");
+                                ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
+                                ajaxCard.onreadystatechange = function () {
+                                    if (ajaxCard.readyState == 4) {
+                                        if (ajaxCard.status == 200) {
+                                            var htmlCard = `
+                                                <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
+                                                  <div class="row g-0 align-items-center mb-3">
+                                                            <div class="col-auto">
+                                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                                    <i data-cs-icon="screen" class="text-primary"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col ps-3">
+                                                                <div class="row g-0">
+                                                                    <div class="col">
+                                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
+                                                                        <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + JSON.parse(this.response).data.id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary ms-1" type="button">
+                                                                    <i data-cs-icon="close"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + JSON.parse(this.response).data.id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary ms-1" type="button">
-                                                    <i data-cs-icon="close"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
+                                                `;
 
-                            document.getElementById("listaCards").innerHTML += htmlCard
-                            document.getElementById("btnCloseAddCard").click();
+                                            document.getElementById("listaCards").innerHTML += htmlCard
+                                            document.getElementById("btnCloseAddCard").click();
 
-                        } else {
-                            alertErro()
-                        }
-                    }
-                }
-            }
+                                        } else {
+                                            alertErro()
+                                        }
+                                    }
+                                }
+                            }
 
-            document.getElementById("btnSalvarPublicacao").addEventListener("click", salvarPublicacao, false);
+                            document.getElementById("btnSalvarPublicacao").addEventListener("click", salvarPublicacao, false);
 
-            function salvarPublicacao() {
+                            function salvarPublicacao() {
 
-                descricaoCard = document.getElementById("descricaoPublicacao").value
+                                descricaoCard = document.getElementById("descricaoPublicacao").value
 
-                //var base64 = getBase64Image(document.getElementById("saved-img"));
-                var base64Completed = document.getElementById("saved-img").src
-                var base64 = base64Completed.split(",").pop()
-                console.log(base64)
+                                //var base64 = getBase64Image(document.getElementById("saved-img"));
+                                var base64Completed = document.getElementById("saved-img").src
+                                var base64 = base64Completed.split(",").pop()
+                                console.log(base64)
 
-                var ajaxCard = new XMLHttpRequest();
-                ajaxCard.open("POST", RotaAPI + "api/Publicacao");
-                ajaxCard.setRequestHeader("Content-Type", "application/json");
-                ajaxCard.send(JSON.stringify({ base64Midia : base64, descricao: descricaoCard, idUsuario: @Model}));
-                ajaxCard.onreadystatechange = function () {
-                    console.log(ajaxCard)
-                    if (ajaxCard.readyState == 4) {
-                        if (ajaxCard.status == 200) {
-                                var html = `
-                                  <div class="card mb-5">
-                                            <a href="Pages.Blog.Detail.html">
-                                                <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                            </a>
-                                            <div class="card-body">
-                                                <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                    ` + JSON.parse(this.response).data.descricao + `
-                                                </p>
-                                            </div>
-                                   </div>
-                                `;
+                                var ajaxCard = new XMLHttpRequest();
+                                ajaxCard.open("POST", RotaAPI + "api/Publicacao");
+                                ajaxCard.setRequestHeader("Content-Type", "application/json");
+                                ajaxCard.send(JSON.stringify({ base64Midia : base64, descricao: descricaoCard, idUsuario: @Model}));
+                                ajaxCard.onreadystatechange = function () {
+                                    console.log(ajaxCard)
+                                    if (ajaxCard.readyState == 4) {
+                                        if (ajaxCard.status == 200) {
+                                                var html = `
+                                                  <div class="card mb-5">
+                                                            <a href="Pages.Blog.Detail.html">
+                                                                <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                            </a>
+                                                            <div class="card-body">
+                                                                <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                    ` + JSON.parse(this.response).data.descricao + `
+                                                                </p>
+                                                            </div>
+                                                   </div>
+                                                `;
 
-                            htmlBase = document.getElementById("listaPublicacao").innerHTML
-                            document.getElementById("listaPublicacao").innerHTML = html
-                            document.getElementById("listaPublicacao").innerHTML += htmlBase
-                            document.getElementById("btnCloseAddPublicacao").click();
-                            document.getElementById("descricaoPublicacao").value = ''
+                                            htmlBase = document.getElementById("listaPublicacao").innerHTML
+                                            document.getElementById("listaPublicacao").innerHTML = html
+                                            document.getElementById("listaPublicacao").innerHTML += htmlBase
+                                            document.getElementById("btnCloseAddPublicacao").click();
+                                            document.getElementById("descricaoPublicacao").value = ''
 
-                        } else {
-                            alertErro()
-                        }
-                    }
-                }
-            }
+                                        } else {
+                                            alertErro()
+                                        }
+                                    }
+                                }
+                            }
 
-            document.getElementById("btnSalvarMidia").addEventListener("click", salvarMidia, false);
+                            document.getElementById("btnSalvarMidia").addEventListener("click", salvarMidia, false);
 
-            function salvarMidia() {
+                            function salvarMidia() {
 
-                //var base64 = getBase64Image(document.getElementById("saved-imgFotoMidia"));
-                var base64Completed = document.getElementById("saved-imgFotoMidia").src
-                var base64 = base64Completed.split(",").pop()
-                console.log(base64)
+                                //var base64 = getBase64Image(document.getElementById("saved-imgFotoMidia"));
+                                var base64Completed = document.getElementById("saved-imgFotoMidia").src
+                                var base64 = base64Completed.split(",").pop()
+                                console.log(base64)
 
-                var ajaxGaleria = new XMLHttpRequest();
-                ajaxGaleria.open("POST", RotaAPI + "api/Galeria");
-                ajaxGaleria.setRequestHeader("Content-Type", "application/json");
-                ajaxGaleria.send(JSON.stringify({ base64Midia : base64, idUsuario: @Model}));
-                ajaxGaleria.onreadystatechange = function () {
-                    console.log(ajaxGaleria)
-                    if (ajaxGaleria.readyState == 4) {
-                        if (ajaxGaleria.status == 200) {
+                                var ajaxGaleria = new XMLHttpRequest();
+                                ajaxGaleria.open("POST", RotaAPI + "api/Galeria");
+                                ajaxGaleria.setRequestHeader("Content-Type", "application/json");
+                                ajaxGaleria.send(JSON.stringify({ base64Midia : base64, idUsuario: @Model}));
+                                ajaxGaleria.onreadystatechange = function () {
+                                    console.log(ajaxGaleria)
+                                    if (ajaxGaleria.readyState == 4) {
+                                        if (ajaxGaleria.status == 200) {
 
-                                 var html = `
-                                          <div class="col">
-                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" class="card-img h-100 scale" alt="card image" />
-                                            </div>
-                                        </div>
-                                `;
+                                                 var html = `
+                                                          <div class="col">
+                                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                                            <img src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                                            </div>
+                                                        </div>
+                                                `;
 
-                            htmlBase = document.getElementById("listaGaleria").innerHTML
-                            document.getElementById("listaGaleria").innerHTML = html
-                            document.getElementById("listaGaleria").innerHTML += htmlBase
-                            document.getElementById("btnCloseAddMidia").click();
+                                            htmlBase = document.getElementById("listaGaleria").innerHTML
+                                            document.getElementById("listaGaleria").innerHTML = html
+                                            document.getElementById("listaGaleria").innerHTML += htmlBase
+                                            document.getElementById("btnCloseAddMidia").click();
 
-                        } else {
-                            alertErro()
-                        }
-                    }
-                }
+                                        } else {
+                                            alertErro()
+                                        }
+                                    }
+                                }
 
-            }
+                            }
 
-            document.getElementById("btnSalvarFotoPerfil").addEventListener("click", salvarFotoPerfil, false);
+                            document.getElementById("btnSalvarFotoPerfil").addEventListener("click", salvarFotoPerfil, false);
 
-            function salvarFotoPerfil() {
+                            function salvarFotoPerfil() {
 
-                //var base64 = getBase64Image(document.getElementById("saved-imgFotoPerfil"));
-                var base64Completed = document.getElementById("saved-imgFotoPerfil").src
-                var base64 = base64Completed.split(",").pop()
-                console.log(base64)
+                                //var base64 = getBase64Image(document.getElementById("saved-imgFotoPerfil"));
+                                var base64Completed = document.getElementById("saved-imgFotoPerfil").src
+                                var base64 = base64Completed.split(",").pop()
+                                console.log(base64)
 
-                var ajaxCard = new XMLHttpRequest();
-                ajaxCard.open("POST", RotaAPI + "api/UsuarioPrestador/upload-foto-perfil");
-                ajaxCard.setRequestHeader("Content-Type", "application/json");
-                ajaxCard.send(JSON.stringify({ IdUsuario : @Model, Base64Imagem: base64}));
-                ajaxCard.onreadystatechange = function () {
-                    console.log(ajaxCard)
-                    if (ajaxCard.readyState == 4) {
-                        if (ajaxCard.status == 200) {
+                                var ajaxCard = new XMLHttpRequest();
+                                ajaxCard.open("POST", RotaAPI + "api/UsuarioPrestador/upload-foto-perfil");
+                                ajaxCard.setRequestHeader("Content-Type", "application/json");
+                                ajaxCard.send(JSON.stringify({ IdUsuario : @Model, Base64Imagem: base64}));
+                                ajaxCard.onreadystatechange = function () {
+                                    console.log(ajaxCard)
+                                    if (ajaxCard.readyState == 4) {
+                                        if (ajaxCard.status == 200) {
 
-                            document.getElementById('fotoPerfilPrestador').src = 'data:image/png;base64,' + base64
-                            document.getElementById("btnCloseAlterarFotoPerfil").click();
+                                            document.getElementById('fotoPerfilPrestador').src = 'data:image/png;base64,' + base64
+                                            document.getElementById("btnCloseAlterarFotoPerfil").click();
 
-                        } else {
-                            alertErro()
-                        }
-                    }
-                }
-            }
+                                        } else {
+                                            alertErro()
+                                        }
+                                    }
+                                }
+                            }
 
 
-            function selectCardDelete(idCard) {
-                idCardDelete = idCard
-            }
+                            function selectCardDelete(idCard) {
+                                idCardDelete = idCard
+                            }
 
-            document.getElementById("btnDeletarCard").addEventListener("click", deleteCard, false);
+                            document.getElementById("btnDeletarCard").addEventListener("click", deleteCard, false);
 
-            function deleteCard() {
+                            function deleteCard() {
 
-                const ajax = new XMLHttpRequest();
-                ajax.open('DELETE', RotaAPI + 'api/CardPerfil/' + idCardDelete);
-                ajax.responseType = 'json';
-                ajax.onload = function (e) {
-                    if (this.status == 200) {
+                                const ajax = new XMLHttpRequest();
+                                ajax.open('DELETE', RotaAPI + 'api/CardPerfil/' + idCardDelete);
+                                ajax.responseType = 'json';
+                                ajax.onload = function (e) {
+                                    if (this.status == 200) {
 
-                        if (this.response.data) {
+                                        if (this.response.data) {
 
-                            document.getElementById("card" + idCardDelete).outerHTML = "";
-                            document.getElementById("btnCloseRemoveCard").click();
+                                            document.getElementById("card" + idCardDelete).outerHTML = "";
+                                            document.getElementById("btnCloseRemoveCard").click();
 
-                        }
-                    }
-                };
+                                        }
+                                    }
+                                };
 
-                ajax.send();
-            }
+                                ajax.send();
+                            }
 
-            function alertErro() {
-                sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
-            }
+                            document.getElementById("btnSelecionarLocalizacao").addEventListener("click", getLocation, false);
 
-            document.getElementById("btnCopiarLink").addEventListener("click", CopyClipboard, false);
+                            function fecharModalRegiaoAtendimento() {
 
-            function CopyClipboard() {
-              var copyText = document.getElementById("linkPerfil");
-              var copyButton = document.getElementById("btnCopiarLink");
+                                document.getElementById("btnCloseRegiaoAtendimento").click();
+                            }
 
-              copyText.select();
-              copyText.setSelectionRange(0, 99999);
-              navigator.clipboard.writeText(copyText.value);
-              copyButton.textContent = 'Copiado';
-            }
+                            function alertErro() {
+                                sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
+                            }
+
+                            document.getElementById("btnCopiarLink").addEventListener("click", CopyClipboard, false);
+
+                            function CopyClipboard() {
+                              var copyText = document.getElementById("linkPerfil");
+                              var copyButton = document.getElementById("btnCopiarLink");
+
+                              copyText.select();
+                              copyText.setSelectionRange(0, 99999);
+                              navigator.clipboard.writeText(copyText.value);
+                              copyButton.textContent = 'Copiado';
+                            }
+
+                            function getLocation() {
+                              fecharModalRegiaoAtendimento()
+                              if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(savePosition);
+                              } else {
+                                x.innerHTML = "Geolocation is not supported by this browser.";
+                              }
+                            }
+
+                            function savePosition(position) {
+                              var x = document.getElementById("latitudelongitude");
+                              console.log(position.coords.latitude)
+                              console.log(position.coords.longitude)
+                              x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+                            }
+
+                            var slider = document.getElementById("myRange");
+                            var output = document.getElementById("valorKm");
+                            output.innerHTML = slider.value;
+
+                            slider.oninput = function() {
+                              output.innerHTML = this.value;
+                            }
 
     </script>
 

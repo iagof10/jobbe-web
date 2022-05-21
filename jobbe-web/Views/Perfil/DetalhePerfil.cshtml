@@ -87,7 +87,7 @@
                                         <div class="mb-3" id="listaTelefone">
                                         </div>
 
-                                         <div>
+                                        <div>
                                             <img src="../img/favicon/olho.png" style="width: 3.5vh">
                                         </div>
 
@@ -114,6 +114,26 @@
                                     </p>
                                     <p id="descMuralPrestador">
 
+                                    </p>
+                                </div>
+
+                                <div class="mb-5">
+                                    <p class="text-medium text-muted mb-1">
+                                        Região de Atendimento
+                                    </p>
+                                    <p id="txtRegiaoAtendimento" class="mb-1">
+                                        
+                                    </p>
+
+                                    <p id="txtRegiaoAtendimentoCidade" class="mb-2">
+                                        
+                                    </p>
+
+                                    <p class="text-medium text-muted mb-1">
+                                        Atende em um raio de:
+                                    </p>
+                                    <p id="txtRaioAtendimento" class="mb-2">
+                                        
                                     </p>
                                 </div>
 
@@ -492,7 +512,6 @@
         </button>
     </div>
     <!-- Theme Settings & Niches Buttons End -->
-
     <!-- Search Modal Start -->
     <div class="modal fade modal-under-nav modal-search modal-close-out" id="searchPagesModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -562,6 +581,15 @@
                     document.getElementById("categoriaPrestador").textContent = this.response.data.categoria.descricao;
                     document.getElementById("emailPrestador").textContent = this.response.data.email;
                     document.getElementById("numVisualizacoes").textContent = this.response.data.numVisualizacoes;
+
+                    if(this.response.data.raio != 0){
+                        document.getElementById("txtRaioAtendimento").innerText = this.response.data.raio + " Kilômetros";
+                    }
+
+                    if(this.response.data.enderecoBase != null){
+                        document.getElementById("txtRegiaoAtendimento").innerText = this.response.data.enderecoBase.bairro;
+                        document.getElementById("txtRegiaoAtendimentoCidade").innerText = this.response.data.enderecoBase.localidadeNome + " - " + this.response.data.enderecoBase.uf;
+                    }
 
                     console.log(this.response)
 

@@ -43,6 +43,7 @@
     <!-- Font Tags End -->
     <!-- Vendor Styles Start -->
     <link rel="stylesheet" href="../css/vendor/bootstrap.min.css" />
+
     <link rel="stylesheet" href="../css/vendor/OverlayScrollbars.min.css" />
 
     <link rel="stylesheet" href="../css/vendor/glide.core.min.css" />
@@ -55,7 +56,11 @@
 
     <link rel="stylesheet" href="../css/vendor/plyr.css" />
 
-    <link rel="stylesheet" href="css/vendor/baguetteBox.min.css" />
+    <link rel="stylesheet" href="../css/vendor/baguetteBox.min.css" />
+
+    <link rel="stylesheet" href="../css/vendor/select2.min.css" />
+
+    <link rel="stylesheet" href="../css/vendor/select2-bootstrap4.min.css" />
 
     <!-- Vendor Styles End -->
     <!-- Template Base Styles Start -->
@@ -105,7 +110,7 @@
                 <div class="mobile-buttons-container">
                     <!-- Menu Button Start -->
                     <a href="#" id="mobileMenuButton" class="menu-button">
-                        <i data-cs-icon="menu"></i>
+                        <i style="color: #c54949" data-cs-icon="menu"></i>
                     </a>
                     <!-- Menu Button End -->
                 </div>
@@ -251,15 +256,18 @@
                             <form>
                                 <div class="mb-3 filled w-100">
                                     <i data-cs-icon="diagram-1"></i>
-                                    <select class="select-single-no-search-filled select2-hidden-accessible" id="categorySelect" data-placeholder="Category">
+                                    <select onchange="AlterarSubcategoriaFromCategoria()" class="ListaCategoria" id="select2Basic" data-placeholder="Category">
                                         <option label="&nbsp;"></option>
                                     </select>
                                 </div>
-                                <div class="mb-3 filled">
-                                    <i data-cs-icon="help"></i>
-                                    <input class="form-control" placeholder="Search" />
+                                
+                                <div class="mb-3 filled w-100">
+                                    <i data-cs-icon="diagram-1"></i>
+                                    <select class="ListaSubCategoria" multiple="multiple" data-placeholder="Sub-Categorias" data-tags="true" data-close-on-select="false" id="selectDataApi">
+                                        <option label="&nbsp;"></option>
+                                    </select>
                                 </div>
-                                <a style="width:100%" href="#" class="btn btn-icon btn-icon-start btn-primary mt-3">
+                                <a style="width:100%" id="btnBuscarPrestador" class="btn btn-icon btn-icon-start btn-primary mt-3">
                                     <span>Buscar</span>
                                 </a>
                             </form>
@@ -382,13 +390,26 @@
 
     <script>
 
-        GetPrestadores()
+        var latitude = 0
+        var longitude = 0
+        var subCategoriasSelecionadas = []
+        var categoriaSelecionada = 0
+
+        GetLocation()
         GetPublicacoess()
+        GetCategoria()
         GetSubCategoria()
 
         function GetPrestadores() {
+
+            var subCategoriasQuery = ''
+
+            for (let i = 0; i < subCategoriasSelecionadas.length; i = i + 1) {
+                subCategoriasQuery = subCategoriasQuery + '&SubCategoriaIds=' + subCategoriasSelecionadas[i]
+            }
+
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/list');
+            ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/list?Latitude=' + latitude + '&Longitude=' + longitude + '&CategoriaId=' + categoriaSelecionada + subCategoriasQuery);
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
@@ -543,6 +564,31 @@
             ajax.send();
         }
 
+        function GetCategoria() {
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/Categoria');
+            ajax.responseType = 'json';
+            ajax.onload = function (e) {
+                if (this.status == 200) {
+
+                    categorias = this.response.data
+
+                    var select = document.getElementsByClassName("ListaCategoria")[0]
+
+                    for (let i = 0; i < categorias.length; i = i + 1) {
+                        var opt0 = document.createElement("option");
+                        opt0.value = categorias[i].id;
+                        opt0.text = categorias[i].name;
+                        select.add(opt0, select.options[i + 1]);
+
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+        
         function GetSubCategoria() {
 
             const ajax = new XMLHttpRequest();
@@ -553,19 +599,98 @@
 
                     subCategorias = this.response.data
 
-                    var select = document.getElementById("categorySelect")
+                    var select = document.getElementsByClassName("ListaSubCategoria")[0]
 
                     for (let i = 0; i < subCategorias.length; i = i + 1) {
                         var opt0 = document.createElement("option");
                         opt0.value = subCategorias[i].id;
                         opt0.text = subCategorias[i].name;
                         select.add(opt0, select.options[i + 1]);
-
                     }
                 }
             };
 
             ajax.send();
+        }
+
+        function removeOptions(selectElement) {
+            var i, L = selectElement.options.length - 1;
+            for(i = L; i >= 0; i--) {
+                selectElement.remove(i);
+            }
+        }
+
+        function AlterarSubcategoriaFromCategoria() {
+
+            var select = document.getElementsByClassName("ListaCategoria")[0]
+            var valueCategoria = select.options[select.selectedIndex].value;
+            var textCategoria = select.options[select.selectedIndex].text;
+
+            var selectSubCategoria = document.getElementsByClassName("ListaSubCategoria")[0]
+            removeOptions(selectSubCategoria)
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/SubCategoria?idCategoria=' + valueCategoria);
+            ajax.responseType = 'json';
+            ajax.onload = function (e) {
+                if (this.status == 200) {
+
+                    subCategorias = this.response.data
+
+                    for (let i = 0; i < subCategorias.length; i = i + 1) {
+                        var opt0 = document.createElement("option");
+                        opt0.value = subCategorias[i].id;
+                        opt0.text = subCategorias[i].name;
+                        selectSubCategoria.add(opt0, selectSubCategoria.options[i + 1]);
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+
+        document.getElementById("btnBuscarPrestador").addEventListener("click", BuscarPrestadorFiltro, false);
+
+        function BuscarPrestadorFiltro() {
+
+            var select = document.getElementsByClassName("ListaCategoria")[0]
+            var valueCategoria = select.options[select.selectedIndex].value;
+            categoriaSelecionada = valueCategoria
+            console.log("Categoria: " + categoriaSelecionada)
+
+            var selectSubCategoria = document.getElementsByClassName("select2-selection__choice")
+
+            subCategoriasSelecionadas = []
+
+            for (let i = 0; i < selectSubCategoria.length; i = i + 1) {
+                for (let x = 0; x < subCategorias.length; x = x + 1) {
+                    if(subCategorias[x].name == selectSubCategoria[i].title){
+                        subCategoriasSelecionadas.push(subCategorias[x].id)
+                    }
+                }
+            }
+
+            console.log(subCategoriasSelecionadas)
+
+            document.getElementById("listaPrestador").innerHTML = ''
+            GetLocation()
+        }
+
+        function GetLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(savePosition, GetPrestadores);
+            } 
+            else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function savePosition(position) {
+              latitude = position.coords.latitude
+              longitude = position.coords.longitude
+              console.log("Lat: " + latitude)
+              console.log("Long: " + longitude)
+              GetPrestadores()
         }
 
         function selectPrestador(idUsuario) {
@@ -588,6 +713,7 @@
     <script src="../js/vendor/intro.min.js"></script>
     <script src="../js/vendor/select2.full.min.js"></script>
     <script src="../js/vendor/plyr.min.js"></script>
+    <script src="../js/forms/controls.select2.js"></script>
     <!-- Vendor Scripts End -->
     <!-- Template Base Scripts Start -->
     <script src="../font/CS-Line/csicons.min.js"></script>

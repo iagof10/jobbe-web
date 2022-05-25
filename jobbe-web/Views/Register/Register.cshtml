@@ -112,12 +112,6 @@
                             </div>
                             <div>
                                 <form id="registerForm" class="tooltip-end-bottom" novalidate>
-                                    <div class="mb-3 filled form-group tooltip-end-top" role="group" aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check" name="btnradio" value="1" id="btnradio1" checked />
-                                        <label class="btn btn-outline-primary" for="btnradio1"> Cliente </label>
-                                        <input type="radio" class="btn-check" name="btnradio" value="0" id="btnradio2" />
-                                        <label class="btn btn-outline-primary" for="btnradio2">Prestador</label>
-                                    </div>
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-cs-icon="user"></i>
                                         <input class="form-control" placeholder="Name" id="registerName" name="registerName" />
@@ -292,29 +286,34 @@
                 registerCelularValue = document.getElementById("registerCelular").value
                 registerEmailValue = document.getElementById("registerEmail").value
                 registerPasswordValue = document.getElementById("registerPassword").value
-                registerTipoValue = document.querySelector('input[name="btnradio"]:checked').value
+                registerTipoValue = 0
 
                 var ajax = new XMLHttpRequest();
                 ajax.open("POST", RotaAPI + "api/UsuarioPrestador");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ nome: registerNameValue, apelido: registerApelidoValue, tipoUsuario: parseInt(registerTipoValue), telefone: registerCelularValue, email: registerEmailValue, senha: registerPasswordValue }));
                 ajax.onreadystatechange = function () {
-                    if (ajax.readyState == 4 && ajax.status == 200) {
 
-                        const ajaxSaveUser = new XMLHttpRequest();
-                        ajaxSaveUser.open('GET', RotaWeb + 'SaveSessionUser/' + JSON.parse(ajax.response).data.id);
-                        ajaxSaveUser.responseType = 'json';
-                        ajaxSaveUser.onload = function (e) {
-                            if (this.status == 200) {
-                                alertSucess()
-                            } else {
-                                alertErro()
-                            }
-                        };
-                        ajaxSaveUser.send();
+                    if(ajax.readyState == 4){
 
-                    } else {
-                        alertErro()
+                        if (ajax.status == 200) {
+
+                            const ajaxSaveUser = new XMLHttpRequest();
+                            ajaxSaveUser.open('GET', RotaWeb + 'SaveSessionUser/' + JSON.parse(ajax.response).data.id);
+                            ajaxSaveUser.responseType = 'json';
+                            ajaxSaveUser.onload = function (e) {
+                                if (this.status == 200) {
+                                    alertSucess()
+                                } else {
+                                    alertErro()
+                                }
+                            };
+                            ajaxSaveUser.send();
+
+                        } else {
+                            alertErro()
+                        }
+
                     }
                 }
             }

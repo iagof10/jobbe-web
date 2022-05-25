@@ -68,7 +68,8 @@
     <!-- Template Base Styles End -->
 
     <link rel="stylesheet" href="../css/main.css" />
-    <script src="../js/base/loader.js"></script>
+    <script src="../js/base/loader.js">
+    </script>
     <script src="../js/site.js"></script>
 </head>
 
@@ -124,6 +125,48 @@
 
                 <div>
 
+                    @*                    <!-- Center Start -->
+                        <section class="scroll-section" id="center">
+                        <div class="row">
+                        <div class="col-12 mb-5">
+                        <div class="glide" id="glideCenter">
+                        <div class="glide__track" data-glide-el="track">
+                        <div class="glide__slides">
+                        <div class="glide__slide">
+                        <div class="card">
+                        <img src="img/product/small/product-10.webp" class="card-img-top" alt="card image" />
+                        <div class="card-body">
+                        <h5 class="card-title">Card title 1</h5>
+                        <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="glide__slide">
+                        <div class="card">
+                        <img src="img/product/small/product-10.webp" class="card-img-top" alt="card image" />
+                        <div class="card-body">
+                        <h5 class="card-title">Card title 2</h5>
+                        <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="glide__slide">
+                        <div class="card">
+                        <img src="img/product/small/product-10.webp" class="card-img-top" alt="card image" />
+                        <div class="card-body">
+                        <h5 class="card-title">Card title 3</h5>
+                        <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </section>*@
+
+                    <!-- Center End -->
                     <!-- Auto Play Start -->
                     <section class="scroll-section" id="autoPlay" style="margin-top: 10px;">
                         <div class="row gx-2">
@@ -251,21 +294,51 @@
                 <div class="col-12 mb-5">
                     <div class="card h-100-card">
                         <div class="card-body">
-                            <div class="cta-3">Precisa de um serviço?</div>
-                            <div class="mb-3 cta-3 text-primary">Procure o prestador(a) ideal pra você!</div>
+                            <div class="cta-4">Precisa de um serviço?</div>
+                            <div class="mb-3 cta-4 text-primary">Procure o prestador(a) ideal pra você!</div>
                             <form>
                                 <div class="mb-3 filled w-100">
                                     <i data-cs-icon="diagram-1"></i>
-                                    <select onchange="AlterarSubcategoriaFromCategoria()" class="ListaCategoria" id="select2Basic" data-placeholder="Category">
+                                    <select onchange="AlterarSubcategoriaFromCategoria()" class="ListaCategoria" id="select2Basic" data-placeholder="Categorias">
                                         <option label="&nbsp;"></option>
                                     </select>
                                 </div>
-                                
-                                <div class="mb-3 filled w-100">
+
+                                <div class="mb-5 filled w-100">
                                     <i data-cs-icon="diagram-1"></i>
                                     <select class="ListaSubCategoria" multiple="multiple" data-placeholder="Sub-Categorias" data-tags="true" data-close-on-select="false" id="selectDataApi">
                                         <option label="&nbsp;"></option>
                                     </select>
+                                </div>
+                                <div class="mb-3 filled w-100">
+                                    <div class="cta-4">Adicione sua localização,</div>
+                                    <div class="mb-3 cta-4 text-primary">buscaremos os prestadores que atendam sua região!</div>
+                                </div>
+
+                                <div class="mb-3 filled w-100">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <a id="btnLocalizacao" style="margin-right: 0.25vw" class="btn btn-outline-primary mb-1" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            Usar localização
+                                        </a>
+                                        <a id="btnEndereco" style="margin-left: 0.25vw" class="btn btn-outline-primary mb-1" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                                            Digitar Endereço
+                                        </a>
+                                    </div>
+
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card card-body no-shadow border mt-3">
+                                            Usaremos sua localização para buscar os prestadores que atendem sua região, não esqueça  de permitir que o Jobbe acesse sua localização.
+                                        </div>
+                                    </div>
+
+                                    <div class="collapse" id="collapseExample2">
+                                        <br/>
+                                        <label class="mb-3 top-label">
+                                            <input id="cepLocalizacao" class="form-control" />
+                                            <span>CEP</span>
+                                        </label>
+                                    </div>
+
                                 </div>
                                 <a style="width:100%" id="btnBuscarPrestador" class="btn btn-icon btn-icon-start btn-primary mt-3">
                                     <span>Buscar</span>
@@ -394,11 +467,77 @@
         var longitude = 0
         var subCategoriasSelecionadas = []
         var categoriaSelecionada = 0
+        var btnLocalizacaoIsOpen = false
+        var btnEnderecoIsOpen = false
+        var btnClicked = false
 
-        GetLocation()
+        GetPrestadores()
         GetPublicacoess()
         GetCategoria()
         GetSubCategoria()
+
+        document.getElementById("btnLocalizacao").addEventListener("click", selectFiltroLocalizacao, false);
+
+        function selectFiltroLocalizacao() {
+
+            console.log("teste1")
+
+            if(btnLocalizacaoIsOpen){
+                document.getElementById("btnLocalizacao").classList.remove("btn-primary")
+                document.getElementById("btnLocalizacao").classList.add("btn-outline-primary")
+                latitude = 0
+                longitude = 0
+                btnLocalizacaoIsOpen = false;
+            }else{
+                document.getElementById("btnLocalizacao").classList.remove("btn-outline-primary")
+                document.getElementById("btnLocalizacao").classList.add("btn-primary")
+                GetLocationOnly()
+                btnLocalizacaoIsOpen = true;
+            }
+
+            if(!btnClicked){
+                if(btnEnderecoIsOpen){
+                    btnClicked = true;
+                    document.getElementById("btnEndereco").click();
+                }else{
+                    btnClicked = false;
+                }
+            }else{
+                btnClicked = false;
+            }
+        }
+
+        document.getElementById("btnEndereco").addEventListener("click", selectFiltroEndereco, false);
+
+        function selectFiltroEndereco() {
+
+            console.log("teste2")
+
+            if(btnEnderecoIsOpen){
+                document.getElementById("btnEndereco").classList.remove("btn-primary")
+                document.getElementById("btnEndereco").classList.add("btn-outline-primary")
+                latitude = 0
+                longitude = 0
+                document.getElementById("cepLocalizacao").value = ''
+                btnEnderecoIsOpen = false;
+            }else{
+                document.getElementById("btnEndereco").classList.remove("btn-outline-primary")
+                document.getElementById("btnEndereco").classList.add("btn-primary")
+                btnEnderecoIsOpen = true;
+            }
+
+            if(!btnClicked){
+                if(btnLocalizacaoIsOpen){
+                    btnClicked = true;
+                    document.getElementById("btnLocalizacao").click();
+                }else{
+                    btnClicked = false;
+                }
+
+            }else{
+                btnClicked = false;
+            }
+        }
 
         function GetPrestadores() {
 
@@ -490,7 +629,7 @@
                                             `;
 
                                 document.getElementById("listaPrestador").innerHTML += html
-                            }                            
+                            }
                         }
 
                     }
@@ -564,6 +703,26 @@
             ajax.send();
         }
 
+        function BuscarPorCep() {
+
+            var cep = document.getElementById("cepLocalizacao").value
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/EnderecoBase/' + cep);
+            ajax.responseType = 'json';
+            ajax.onload = function (e) {
+                if (this.status == 200) {
+                    latitude = this.response.data.latitude
+                    longitude = this.response.data.longitude
+                    console.log(latitude)
+                    console.log(longitude)
+                    GetPrestadores()
+                }
+            };
+
+            ajax.send();
+        }
+
         function GetCategoria() {
 
             const ajax = new XMLHttpRequest();
@@ -588,7 +747,7 @@
 
             ajax.send();
         }
-        
+
         function GetSubCategoria() {
 
             const ajax = new XMLHttpRequest();
@@ -670,16 +829,19 @@
                 }
             }
 
-            console.log(subCategoriasSelecionadas)
-
             document.getElementById("listaPrestador").innerHTML = ''
-            GetLocation()
+
+            if(btnEnderecoIsOpen){
+                BuscarPorCep()
+            }else{
+                GetPrestadores()
+            }
         }
 
         function GetLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(savePosition, GetPrestadores);
-            } 
+            }
             else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
@@ -691,6 +853,22 @@
               console.log("Lat: " + latitude)
               console.log("Long: " + longitude)
               GetPrestadores()
+        }
+
+        document.getElementById("btnUsarLocalizacao").addEventListener("click", GetLocationOnly, false);
+
+        function GetLocationOnly() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(savePositionOnly);
+            }
+            else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function savePositionOnly(position) {
+              latitude = position.coords.latitude
+              longitude = position.coords.longitude
         }
 
         function selectPrestador(idUsuario) {

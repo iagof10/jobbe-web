@@ -16,6 +16,9 @@ class Select2Controls {
     }
 
     this._initSelect2Basic();
+    this._initSelect2Basic2();
+    this._initSelect2Basic3();
+    this._initSelect2Basic4();
     this._initSelect2Multiple();
     this._initTags();
     this._initSearchHidden();
@@ -31,6 +34,21 @@ class Select2Controls {
   _initSelect2Basic() {
     jQuery('#select2Basic').select2({placeholder: ''});
   }
+
+   // Basic single select2
+   _initSelect2Basic2() {
+     jQuery('#select2Basic2').select2({ placeholder: '' });
+    }
+
+    // Basic single select2
+   _initSelect2Basic3() {
+     jQuery('#select2Basic3').select2({ placeholder: '' });
+   }
+
+    // Basic single select2
+    _initSelect2Basic4() {
+        jQuery('#select2Basic4').select2({ placeholder: '' });
+    }
 
   // Basic multiple select2
   _initSelect2Multiple() {

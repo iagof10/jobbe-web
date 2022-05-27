@@ -24,6 +24,11 @@ namespace jobbe_web.Controllers
             return View();
         }
 
+        public IActionResult RecoverPassword()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

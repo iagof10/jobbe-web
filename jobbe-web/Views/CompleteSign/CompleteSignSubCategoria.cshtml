@@ -139,7 +139,8 @@
                     ajax.onreadystatechange = function () {
                         if (ajax.status == 200) {
 
-                            alertSucess('Bem vindo ao Jobbe!', 'Parabéns, agora você pode aproveitar os recursos do Jobbe.')
+                            window.location.replace(RotaWeb + "RegisterCode/RegisterCode");
+                            //alertSucess('Bem vindo ao Jobbe!', 'Parabéns, agora você pode aproveitar os recursos do Jobbe.')
 
                         } else {
                             alertErro()

@@ -33,7 +33,7 @@ namespace jobbe_web.Controllers
         [Route("RecoverPasswordConfirmation/{idRecoverPassword}")]
         public IActionResult RecoverPasswordConfirmation(string idRecoverPassword)
         {
-            return View();
+            return View(idRecoverPassword);
         }
 
         public IActionResult Privacy()

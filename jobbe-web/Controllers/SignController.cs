@@ -29,6 +29,13 @@ namespace jobbe_web.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Route("RecoverPasswordConfirmation/{idRecoverPassword}")]
+        public IActionResult RecoverPasswordConfirmation(string idRecoverPassword)
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -126,6 +126,9 @@
                                     <input id="registerCode" class="form-control" placeholder="Código de Ativação" name="codigoAtivacao" />
                                 </div>
                                 <button id="btnSendRegisterCode" type="submit" class="btn btn-lg btn-primary">Ativar Conta</button>
+                                <div style="text-align: center; margin-top: -20px">
+                                    <div id="idProgressBar" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -240,12 +243,20 @@
         document.getElementById("btnSendRegisterCode").addEventListener("click", SendRegisterCode, false);
 
         function SendRegisterCode() {
+
+            document.getElementById("btnSendRegisterCode").style.visibility = "hidden";
+            document.getElementById("idProgressBar").style.visibility = "visible";
+
             var registerCode = document.getElementById("registerCode").value
             const ajax = new XMLHttpRequest();
             ajax.open('GET', RotaWeb + 'GetSessionUser');
             ajax.responseType = 'json';
             ajax.onload = function(e) {
+
                 if (this.status == 200) {
+
+                    document.getElementById("idProgressBar").style.visibility = "hidden";
+                    document.getElementById("btnSendRegisterCode").style.visibility = "visible";
 
                     idUsuario = this.response
 
@@ -269,6 +280,12 @@
                     };
 
                     ajax.send();
+
+                } else {
+
+                    document.getElementById("idProgressBar").style.visibility = "hidden";
+                    document.getElementById("btnSendRegisterCode").style.visibility = "visible";
+
                 }
             };
 

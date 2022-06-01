@@ -132,7 +132,10 @@
                                         <input class="form-control pe-7" name="password" id="registerPassword" type="password" placeholder="Password" />
                                         <a class="text-small position-absolute t-3 e-3" href="/Sign/RecoverPassword">Esqueci a senha?</a>
                                     </div>
-                                    <button style="width: 100%" type="submit" class="btn btn-lg btn-primary">Login</button>
+                                    <button id="btnLogin" style="visibility: visible; width: 100%" type="submit" class="btn btn-lg btn-primary">Login</button>
+                                    <div style="text-align: center; margin-top: -20px">
+                                        <div id="idProgressBar" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -247,6 +250,9 @@
             e.preventDefault();
             if (validateForm()) {
 
+                document.getElementById("btnLogin").style.visibility = "hidden";
+                document.getElementById("idProgressBar").style.visibility = "visible";
+
                 registerEmailValue = document.getElementById("registerEmail").value
                 registerPasswordValue = document.getElementById("registerPassword").value
 
@@ -255,6 +261,10 @@
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ email: registerEmailValue, senha: registerPasswordValue }));
                 ajax.onreadystatechange = function () {
+
+                    document.getElementById("btnLogin").style.visibility = "visible";
+                    document.getElementById("idProgressBar").style.visibility = "hidden";
+
                     if (ajax.status == 200) {
 
                         setSessionUser(JSON.parse(ajax.response).data.userId, JSON.parse(ajax.response).data.categoriaId, JSON.parse(ajax.response).data.validatedUser)

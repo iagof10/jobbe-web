@@ -141,7 +141,10 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <button style="width: 100%" type="submit" data-bs-target="#exampleModal" class="btn btn-lg btn-primary">Signup</button>
+                                    <button id="btnSignup" style="visibility: visible; width: 100%" type="submit" data-bs-target="#exampleModal" class="btn btn-lg btn-primary">Signup</button>
+                                    <div style="text-align: center; margin-top: -20px">
+                                        <div id="idProgressBar" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -277,9 +280,12 @@
     <script>
 
         // jQuery ajax form submit example, runs when form is submitted
-        $("#registerForm").submit(function (e) {
+        $("#registerForm").submit(function(e) {
             e.preventDefault();
             if (validateForm()) {
+
+                document.getElementById("btnSignup").style.visibility = "hidden";
+                document.getElementById("idProgressBar").style.visibility = "visible";
 
                 registerNameValue = document.getElementById("registerName").value
                 registerApelidoValue = document.getElementById("registerApelido").value
@@ -292,16 +298,19 @@
                 ajax.open("POST", RotaAPI + "api/UsuarioPrestador");
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ nome: registerNameValue, apelido: registerApelidoValue, tipoUsuario: parseInt(registerTipoValue), telefone: registerCelularValue, email: registerEmailValue, senha: registerPasswordValue }));
-                ajax.onreadystatechange = function () {
+                ajax.onreadystatechange = function() {
 
-                    if(ajax.readyState == 4){
+                    if (ajax.readyState == 4) {
+
+                        document.getElementById("btnSignup").style.visibility = "visible";
+                        document.getElementById("idProgressBar").style.visibility = "hidden";
 
                         if (ajax.status == 200) {
 
                             const ajaxSaveUser = new XMLHttpRequest();
                             ajaxSaveUser.open('GET', RotaWeb + 'SaveSessionUser/' + JSON.parse(ajax.response).data.id);
                             ajaxSaveUser.responseType = 'json';
-                            ajaxSaveUser.onload = function (e) {
+                            ajaxSaveUser.onload = function(e) {
                                 if (this.status == 200) {
                                     alertSucess()
                                 } else {

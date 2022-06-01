@@ -22,7 +22,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "https://172.20.10.6:8081;http://172.20.10.6:8082"
+      "applicationUrl": "https://192.168.0.85:8081;http://192.168.0.85:8082"
     },
     "Docker": {
       "commandName": "Docker",

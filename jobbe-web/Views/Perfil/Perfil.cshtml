@@ -1833,33 +1833,33 @@
                 if (ajaxCard.readyState == 4) {
                     if (ajaxCard.status == 200) {
                         var html = `
-                                                  <div id="publicacao` + JSON.parse(this.response).data.id +`" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
-                                                            <a>
-                                                                <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                                            </a>
-                                                            <div class="card-body">
-                                                                <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                    ` + JSON.parse(this.response).data.descricao + `
-                                                                </p>
-                                                            </div>
-                                                   </div>
-                                                `;
+                                        <div id="publicacao` + JSON.parse(this.response).data.id +`" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
+                                                <a>
+                                                    <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                </a>
+                                                <div class="card-body">
+                                                    <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                        ` + JSON.parse(this.response).data.descricao + `
+                                                    </p>
+                                                </div>
+                                        </div>
+                                    `;
 
                         var html2 = `
-                                <div id="publicacaoAmpliada` + this.response.data[i].id +`" style="margin-top:5vh">
+                                <div id="publicacaoAmpliada` + JSON.parse(this.response).data.id +`" style="margin-top:5vh">
                                     <div style="width:100%; display: flex; justify-content: center;">
-                                        <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
+                                        <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" />
                                     </div>
 
                                     <div style="width:100%; display: flex; justify-content: center;">
                                         <p class="text-alternate clamp-line mb-0" data-line="2">
-                                            ` + this.response.data[i].descricao + `
+                                            ` + JSON.parse(this.response).data.descricao + `
                                         </p>
                                     </div>
 
                                     <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
                                         <div style="width:100%; display: flex; justify-content: center;">
-                                            <button onClick="deletePublicacao(` + this.response.data[i].id +`)" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
+                                            <button onClick="deletePublicacao(` + JSON.parse(this.response).data.id +`)" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
                                         </div>
                                     </div>
 

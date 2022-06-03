@@ -1833,8 +1833,8 @@
                 if (ajaxCard.readyState == 4) {
                     if (ajaxCard.status == 200) {
                         var html = `
-                                                  <div class="card mb-5">
-                                                            <a href="Pages.Blog.Detail.html">
+                                                  <div id="publicacao` + JSON.parse(this.response).data.id +`" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
+                                                            <a>
                                                                 <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
                                                             </a>
                                                             <div class="card-body">
@@ -1845,11 +1845,38 @@
                                                    </div>
                                                 `;
 
+                        var html2 = `
+                                <div id="publicacaoAmpliada` + this.response.data[i].id +`" style="margin-top:5vh">
+                                    <div style="width:100%; display: flex; justify-content: center;">
+                                        <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
+                                    </div>
+
+                                    <div style="width:100%; display: flex; justify-content: center;">
+                                        <p class="text-alternate clamp-line mb-0" data-line="2">
+                                            ` + this.response.data[i].descricao + `
+                                        </p>
+                                    </div>
+
+                                    <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                        <div style="width:100%; display: flex; justify-content: center;">
+                                            <button onClick="deletePublicacao(` + this.response.data[i].id +`)" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
+                                        </div>
+                                    </div>
+
+                                    <hr style="width:100%; margin-top:3vh"/>
+
+                                </div>
+                            `;
+
                         htmlBase = document.getElementById("listaPublicacao").innerHTML
                         document.getElementById("listaPublicacao").innerHTML = html
                         document.getElementById("listaPublicacao").innerHTML += htmlBase
                         document.getElementById("btnCloseAddPublicacao").click();
                         document.getElementById("descricaoPublicacao").value = ''
+
+                        htmlBase2 = document.getElementById("framePublicacaoAmpliada").innerHTML
+                        document.getElementById("framePublicacaoAmpliada").innerHTML = html2
+                        document.getElementById("framePublicacaoAmpliada").innerHTML += htmlBase2
 
                     } else {
                         alertErro()

@@ -1622,7 +1622,7 @@
 
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
                             var html = `
-                                                  <div data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
+                                                  <div id="publicacao` + this.response.data[i].id +`" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
                                                             <a>
                                                                 <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
                                                             </a>
@@ -2013,6 +2013,27 @@
 
                         document.getElementById("galeriaAmpliada" + idGaleria).outerHTML = "";
                         document.getElementById("galeria" + idGaleria).outerHTML = "";
+                        //document.getElementById("btnCloseRemoveCard").click();
+
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+        
+        function deletePublicacao(idPublicacao) {
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('DELETE', RotaAPI + 'api/Publicacao/' + idPublicacao);
+            ajax.responseType = 'json';
+            ajax.onload = function(e) {
+                if (this.status == 200) {
+
+                    if (this.response.data) {
+
+                        document.getElementById("publicacaoAmpliada" + idGaleria).outerHTML = "";
+                        document.getElementById("publicacao" + idPublicacao).outerHTML = "";
                         //document.getElementById("btnCloseRemoveCard").click();
 
                     }

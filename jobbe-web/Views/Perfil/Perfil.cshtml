@@ -496,9 +496,6 @@
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" data-bs-toggle="tab" href="#publicacaoTab" role="tab" aria-selected="false">Publicações</a>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="tab" href="#friendsTab" role="tab" aria-selected="false">Parceiros</a>
-                            </li>
                             <li class="nav-item dropdown ms-auto d-none responsive-tab-dropdown">
                                 <a class="btn btn-icon btn-icon-only btn-background pt-0"
                                    href="#"
@@ -596,7 +593,7 @@
                                 <div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header" style="height: 10%;">
                                                 <div class="sw-7 me-1 mb-1 d-inline-block">
                                                     <img id="fotoPerfilGaleriaAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
@@ -703,7 +700,7 @@
                                 <div class="modal fade" id="modalPublicacaoAmpliada" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header style="height: 10%;"">
                                                 <div class="sw-7 me-1 mb-1 d-inline-block">
                                                     <img id="fotoPublicacaoAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
@@ -1361,7 +1358,7 @@
                                                     </div>
 
                                                     <div style="width:100%; display: flex; justify-content: center;">
-                                                        <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                        <p style="margin-top: 10px;" class="text-alternate clamp-line mb-0" data-line="2">
                                                             ` + this.response.data[i].descricao + `
                                                         </p>
                                                     </div>
@@ -1570,7 +1567,7 @@
                                     </div>
 
                                     <div style="width:100%; display: flex; justify-content: center;">
-                                        <p class="text-alternate clamp-line mb-0" data-line="2">
+                                        <p style="margin-top: 10px;" class="text-alternate clamp-line mb-0" data-line="2">
                                             ` + JSON.parse(this.response).data.descricao + `
                                         </p>
                                     </div>

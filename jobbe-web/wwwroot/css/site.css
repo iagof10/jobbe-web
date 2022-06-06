@@ -69,3 +69,18 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+/*Barra de scroll*/
+*::-webkit-scrollbar-track  {
+    background-color:   #f4f4f4;
+}
+
+*::-webkit-scrollbar  {
+    width:  2px;
+    background:   #f4f4f4;
+}
+
+*::-webkit-scrollbar-thumb  {
+    background:   #dad7d7;
+}

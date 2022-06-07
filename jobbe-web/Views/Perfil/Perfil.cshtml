@@ -496,6 +496,9 @@
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" data-bs-toggle="tab" href="#publicacaoTab" role="tab" aria-selected="false">Publicações</a>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#friendsTab" role="tab" aria-selected="false">Parceiros</a>
+                            </li>
                             <li class="nav-item dropdown ms-auto d-none responsive-tab-dropdown">
                                 <a class="btn btn-icon btn-icon-only btn-background pt-0"
                                    href="#"
@@ -593,7 +596,7 @@
                                 <div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
-                                            <div class="modal-header" style="height: 10%;">
+                                            <div class="modal-header">
                                                 <div class="sw-7 me-1 mb-1 d-inline-block">
                                                     <img id="fotoPerfilGaleriaAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
@@ -601,9 +604,6 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div id="frameImagemAmpliada" class="modal-body" style="padding-left: 0;padding-right: 0;">
-
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -700,7 +700,7 @@
                                 <div class="modal fade" id="modalPublicacaoAmpliada" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
-                                            <div class="modal-header style="height: 10%;"">
+                                            <div class="modal-header">
                                                 <div class="sw-7 me-1 mb-1 d-inline-block">
                                                     <img id="fotoPublicacaoAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
@@ -708,9 +708,6 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div id="framePublicacaoAmpliada" class="modal-body" style="padding-left: 0;padding-right: 0;">
-
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -881,11 +878,12 @@
     <script src="../js/pages/portfolio.home.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/scripts.js"></script>
+    @*<script type="module" src="../js/utils/utils.js"></script>*@
     <!-- Page Specific Scripts End -->
 
 
-    <script>
-
+    <script type="module">
+        import { utils } from '../js/utils/utils.js'
         //Cropme in Modal
         var CiM = {
             myCropme: null,
@@ -945,13 +943,13 @@
             getImagePlaceholder: function(width, height, text) {
                 //based on https://cloudfour.com/thinks/simple-svg-placeholder/
                 var svg = '\
-                              <svg xmlns="http://www.w3.org/2000/svg" width="{w}" \
-                              height="{h}" viewBox="0 0 {w} {h}">\
-                              <rect fill="#ddd" width="{w}" height="{h}"/>\
-                              <text fill="rgba(0,0,0,0.5)" font-family="sans-serif"\
-                              font-size="30" dy="10.5" font-weight="bold"\
-                              x="50%" y="50%" text-anchor="middle">{t}</text>\
-                              </svg>';
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="{w}" \
+                                      height="{h}" viewBox="0 0 {w} {h}">\
+                                      <rect fill="#ddd" width="{w}" height="{h}"/>\
+                                      <text fill="rgba(0,0,0,0.5)" font-family="sans-serif"\
+                                      font-size="30" dy="10.5" font-weight="bold"\
+                                      x="50%" y="50%" text-anchor="middle">{t}</text>\
+                                      </svg>';
                 var cleaned = svg
                     .replace(/{w}/g, width)
                     .replace(/{h}/g, height)
@@ -1030,6 +1028,10 @@
         }
 
         window.onload = function() {
+            const { isUserLogged } = utils
+            
+
+            isUserLogged(@Model)
 
             function getBase64Image(img) {
                 var canvas = document.createElement("canvas");
@@ -1275,32 +1277,35 @@
 
                         for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
                             var html = `
-                                                <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
-                                                  <div class="row g-0 align-items-center mb-3">
-                                                            <div class="col-auto">
-                                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                                    <i data-cs-icon="screen" class="text-primary"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col ps-3">
-                                                                <div class="row g-0">
-                                                                    <div class="col">
-                                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
-                                                                        <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                                        <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
+                                                          <div class="row g-0 align-items-center mb-3">
+                                                                    <div class="col-auto">
+                                                                        <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                                            <i data-cs-icon="screen" class="text-primary"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col ps-3">
+                                                                        <div class="row g-0">
+                                                                            <div class="col">
+                                                                                <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
+                                                                                <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
+                                                                            <i data-cs-icon="close" class="icon" data-cs-size="18"></i>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
-                                                                    <i data-cs-icon="close"></i>
-                                                                </button>
-                                                            </div>
                                                         </div>
-                                                </div>
-                                                `;
+                                                        `;
 
                             document.getElementById("listaCards").innerHTML += html
+                            
                         }
+
+                         csicons.replace()
 
                     }
 
@@ -1308,11 +1313,11 @@
 
                         for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
                             var html = `
-                                                  <div class="text-muted">
-                                                            <i data-cs-icon="phone" class="me-1"></i>
-                                                            <span class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
-                                                    </div>
-                                                `;
+                                                          <div class="text-muted">
+                                                                    <i data-cs-icon="phone" class="me-1"></i>
+                                                                    <span class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
+                                                            </div>
+                                                        `;
 
                             document.getElementById("listaTelefone").innerHTML += html
                         }
@@ -1337,42 +1342,42 @@
 
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
                             var html = `
-                                                  <div id="publicacao` + this.response.data[i].id +`" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
-                                                            <a>
-                                                                <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                                            </a>
-                                                            <div class="card-body">
-                                                                    <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                        ` + this.response.data[i].descricao + `
-                                                                    </p>
-                                                            </div>
-                                                   </div>
-                                                `;
+                                                          <div id="publicacao` + this.response.data[i].id + `" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
+                                                                    <a>
+                                                                        <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                                    </a>
+                                                                    <div class="card-body">
+                                                                            <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                                ` + this.response.data[i].descricao + `
+                                                                            </p>
+                                                                    </div>
+                                                           </div>
+                                                        `;
 
                             document.getElementById("listaPublicacao").innerHTML += html
 
                             var html2 = `
-                                                <div id="publicacaoAmpliada` + this.response.data[i].id +`" style="margin-top:5vh">
-                                                    <div style="width:100%; display: flex; justify-content: center;">
-                                                        <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
-                                                    </div>
+                                                        <div id="publicacaoAmpliada` + this.response.data[i].id + `" style="margin-top:5vh">
+                                                            <div style="width:100%; display: flex; justify-content: center;">
+                                                                <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
+                                                            </div>
 
-                                                    <div style="width:100%; display: flex; justify-content: center;">
-                                                        <p style="margin-top: 10px;" class="text-alternate clamp-line mb-0" data-line="2">
-                                                            ` + this.response.data[i].descricao + `
-                                                        </p>
-                                                    </div>
+                                                            <div style="width:100%; display: flex; justify-content: center;">
+                                                                <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                    ` + this.response.data[i].descricao + `
+                                                                </p>
+                                                            </div>
 
-                                                    <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
-                                                        <div style="width:100%; display: flex; justify-content: center;">
-                                                            <button onClick="deletePublicacao(` + this.response.data[i].id +`)" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
+                                                            <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                                                <div style="width:100%; display: flex; justify-content: center;">
+                                                                    <button onClick="deletePublicacao(` + this.response.data[i].id + `)" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <hr style="width:100%; margin-top:3vh"/>
+
                                                         </div>
-                                                    </div>
-
-                                                    <hr style="width:100%; margin-top:3vh"/>
-
-                                                </div>
-                                        `;
+                                                `;
 
                             document.getElementById("framePublicacaoAmpliada").innerHTML += html2
 
@@ -1399,31 +1404,31 @@
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
 
                             var html = `
-                                                          <div id="galeria` + this.response.data[i].id +`" class="col">
-                                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                                            <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
-                                                            </div>
-                                                        </div>
-                                                `;
+                                                                  <div id="galeria` + this.response.data[i].id + `" class="col">
+                                                                    <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                                                    <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                                                    </div>
+                                                                </div>
+                                                        `;
 
                             document.getElementById("listaGaleria").innerHTML += html
-                            
+
                             var html2 = `
-                                                <div id="galeriaAmpliada` + this.response.data[i].id +`" style="margin-top:5vh">
-                                                    <div style="width:100%; display: flex; justify-content: center;">
-                                                        <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" />
-                                                    </div>
+                                                        <div id="galeriaAmpliada` + this.response.data[i].id + `" style="margin-top:5vh">
+                                                            <div style="width:100%; display: flex; justify-content: center;">
+                                                                <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" />
+                                                            </div>
 
-                                                    <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
-                                                        <div style="width:100%; display: flex; justify-content: center;">
-                                                            <button onClick="deleteGaleria(` + this.response.data[i].id +`)" type="button" class="btn btn-outline-primary">Deletar Foto</button>
+                                                            <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                                                <div style="width:100%; display: flex; justify-content: center;">
+                                                                    <button onClick="deleteGaleria(` + this.response.data[i].id + `)" type="button" class="btn btn-outline-primary">Deletar Foto</button>
+                                                                </div>
+                                                            </div>
+
+                                                            <hr style="width:100%; margin-top:3vh"/>
+
                                                         </div>
-                                                    </div>
-
-                                                    <hr style="width:100%; margin-top:3vh"/>
-
-                                                </div>
-                                        `;
+                                                `;
 
                             document.getElementById("frameImagemAmpliada").innerHTML += html2
                         }
@@ -1442,6 +1447,8 @@
             titulo = document.getElementById("tituloMural").value
             descricao = document.getElementById("descricaoMural").value
 
+            
+
             if (existMuralPrestador) {
                 var ajax = new XMLHttpRequest();
                 ajax.open("PUT", RotaAPI + "api/Mural");
@@ -1455,6 +1462,7 @@
                         document.getElementById("descMuralPrestador").textContent = descricao;
                         document.getElementById("tituloMuralPrestador").textContent = titulo;
                         document.getElementById("btnCloseAddMural").click();
+                        csicons.replace()
                     } else {
                         alertErro()
                     }
@@ -1482,7 +1490,7 @@
         document.getElementById("btnSalvarCard").addEventListener("click", salvarCard, false);
 
         function salvarCard() {
-
+          
             tituloCard = document.getElementById("tituloCard").value
             descricaoCard = document.getElementById("descricaoCard").value
 
@@ -1494,32 +1502,34 @@
                 if (ajaxCard.readyState == 4) {
                     if (ajaxCard.status == 200) {
                         var htmlCard = `
-                                                <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
-                                                  <div class="row g-0 align-items-center mb-3">
-                                                            <div class="col-auto">
-                                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                                    <i data-cs-icon="screen" class="text-primary"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col ps-3">
-                                                                <div class="row g-0">
-                                                                    <div class="col">
-                                                                        <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
-                                                                        <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
+                                                        <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
+                                                          <div class="row g-0 align-items-center mb-3">
+                                                                    <div class="col-auto">
+                                                                        <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                                            <i data-cs-icon="screen" class="text-primary"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col ps-3">
+                                                                        <div class="row g-0">
+                                                                            <div class="col">
+                                                                                <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
+                                                                                <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + JSON.parse(this.response).data.id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary ms-1" type="button">
+                                                                            <i data-cs-icon="close"></i>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-auto">
-                                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + JSON.parse(this.response).data.id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-secondary ms-1" type="button">
-                                                                    <i data-cs-icon="close"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                `;
+                                                        `;
 
                         document.getElementById("listaCards").innerHTML += htmlCard
                         document.getElementById("btnCloseAddCard").click();
+
+                        csicons.replace()
 
                     } else {
                         alertErro()
@@ -1548,40 +1558,40 @@
                 if (ajaxCard.readyState == 4) {
                     if (ajaxCard.status == 200) {
                         var html = `
-                                        <div id="publicacao` + JSON.parse(this.response).data.id +`" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
-                                                <a>
-                                                    <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                                </a>
-                                                <div class="card-body">
-                                                    <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                        ` + JSON.parse(this.response).data.descricao + `
-                                                    </p>
+                                                <div id="publicacao` + JSON.parse(this.response).data.id + `" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
+                                                        <a>
+                                                            <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                        </a>
+                                                        <div class="card-body">
+                                                            <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                ` + JSON.parse(this.response).data.descricao + `
+                                                            </p>
+                                                        </div>
                                                 </div>
-                                        </div>
-                                    `;
+                                            `;
 
                         var html2 = `
-                                <div id="publicacaoAmpliada` + JSON.parse(this.response).data.id +`" style="margin-top:5vh">
-                                    <div style="width:100%; display: flex; justify-content: center;">
-                                        <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" />
-                                    </div>
+                                        <div id="publicacaoAmpliada` + JSON.parse(this.response).data.id + `" style="margin-top:5vh">
+                                            <div style="width:100%; display: flex; justify-content: center;">
+                                                <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" />
+                                            </div>
 
-                                    <div style="width:100%; display: flex; justify-content: center;">
-                                        <p style="margin-top: 10px;" class="text-alternate clamp-line mb-0" data-line="2">
-                                            ` + JSON.parse(this.response).data.descricao + `
-                                        </p>
-                                    </div>
+                                            <div style="width:100%; display: flex; justify-content: center;">
+                                                <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                    ` + JSON.parse(this.response).data.descricao + `
+                                                </p>
+                                            </div>
 
-                                    <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
-                                        <div style="width:100%; display: flex; justify-content: center;">
-                                            <button onClick="deletePublicacao(` + JSON.parse(this.response).data.id +`)" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
+                                            <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                                <div style="width:100%; display: flex; justify-content: center;">
+                                                    <button onClick="deletePublicacao(` + JSON.parse(this.response).data.id + `)" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
+                                                </div>
+                                            </div>
+
+                                            <hr style="width:100%; margin-top:3vh"/>
+
                                         </div>
-                                    </div>
-
-                                    <hr style="width:100%; margin-top:3vh"/>
-
-                                </div>
-                            `;
+                                    `;
 
                         htmlBase = document.getElementById("listaPublicacao").innerHTML
                         document.getElementById("listaPublicacao").innerHTML = html
@@ -1617,31 +1627,31 @@
                 console.log(ajaxGaleria)
                 if (ajaxGaleria.readyState == 4) {
                     if (ajaxGaleria.status == 200) {
-                                                
+
                         var html = `
-                                    <div id="galeria` + JSON.parse(this.response).data.id +`" class="col">
-                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                            <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" class="card-img h-100 scale" alt="card image" />
-                                        </div>
-                                    </div>
-                                    `;
+                                            <div id="galeria` + JSON.parse(this.response).data.id + `" class="col">
+                                                <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                                    <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                                </div>
+                                            </div>
+                                            `;
 
                         var html2 = `
-                                    <div id="galeriaAmpliada` + JSON.parse(this.response).data.id +`" style="margin-top:5vh">
-                                        <div style="width:100%; display: flex; justify-content: center;">
-                                            <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" />
-                                        </div>
+                                            <div id="galeriaAmpliada` + JSON.parse(this.response).data.id + `" style="margin-top:5vh">
+                                                <div style="width:100%; display: flex; justify-content: center;">
+                                                    <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" />
+                                                </div>
 
-                                        <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
-                                            <div style="width:100%; display: flex; justify-content: center;">
-                                                <button onClick="deleteGaleria(` + JSON.parse(this.response).data.id +`)" type="button" class="btn btn-outline-primary">Deletar Foto</button>
+                                                <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                                    <div style="width:100%; display: flex; justify-content: center;">
+                                                        <button onClick="deleteGaleria(` + JSON.parse(this.response).data.id + `)" type="button" class="btn btn-outline-primary">Deletar Foto</button>
+                                                    </div>
+                                                </div>
+
+                                                <hr style="width:100%; margin-top:3vh"/>
+
                                             </div>
-                                        </div>
-
-                                        <hr style="width:100%; margin-top:3vh"/>
-
-                                    </div>
-                                        `;
+                                                `;
 
                         htmlBase = document.getElementById("listaGaleria").innerHTML
                         document.getElementById("listaGaleria").innerHTML = html
@@ -1763,7 +1773,7 @@
 
             ajax.send();
         }
-        
+
         function deletePublicacao(idPublicacao) {
 
             const ajax = new XMLHttpRequest();

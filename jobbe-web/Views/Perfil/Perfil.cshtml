@@ -1247,6 +1247,12 @@
                     document.getElementById("emailPrestador").textContent = this.response.data.email;
                     document.getElementById("numVisualizacoes").textContent = this.response.data.numVisualizacoes;
 
+                    
+                    document.getElementById("linkPerfil").value = RotaWeb + "DetalhePerfil/" + @Model;
+                    document.getElementById("btnShareWhatsapp").href = 'whatsapp://send?text=Olá, estou te convidando para fazer parte do meu mural de parceitos, acesse o link e me aceite: ' + RotaAPI + 'DetalhePerfil/' + @Model;
+                    document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, este é meu perfil no Jobbe, acesse o link e tenha acesso a todo meu conteúdo: ' + RotaAPI + 'DetalhePerfil/' + @Model;
+                    //document.getElementById("btnShareFacebook").data-url = RotaWeb + "DetalhePerfil/" + @Model;
+
                     if (this.response.data.raio != 0) {
                         document.getElementById("txtRaioAtendimento").innerText = this.response.data.raio + " Kilômetros";
                     }
@@ -1263,14 +1269,8 @@
                         existMuralPrestador = true
                         document.getElementById("descMuralPrestador").textContent = this.response.data.mural.descricao;
                         document.getElementById("tituloMuralPrestador").textContent = this.response.data.mural.titulo;
-
-                        document.getElementById("linkPerfil").value = RotaWeb + "DetalhePerfil/" + @Model;
-                        document.getElementById("btnShareWhatsapp").href = 'whatsapp://send?text=Olá, estou te convidando para fazer parte do meu mural de parceitos, acesse o link e me aceite: ' + RotaAPI + 'DetalhePerfil/' + @Model;
-                        document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, este é meu perfil no Jobbe, acesse o link e tenha acesso a todo meu conteúdo: ' + RotaAPI + 'DetalhePerfil/' + @Model;
-                        //document.getElementById("btnShareFacebook").data-url = RotaWeb + "DetalhePerfil/" + @Model;
-
-                        titulo = document.getElementById("tituloMural").value = this.response.data.mural.titulo;
-                        descricao = document.getElementById("descricaoMural").value = this.response.data.mural.descricao;
+                        document.getElementById("tituloMural").value = this.response.data.mural.titulo;
+                        document.getElementById("descricaoMural").value = this.response.data.mural.descricao;
                     }
 
                     if (this.response.data.cards != null) {
@@ -1444,10 +1444,8 @@
 
         function salvarMural() {
 
-            titulo = document.getElementById("tituloMural").value
-            descricao = document.getElementById("descricaoMural").value
-
-            
+            let titulo = document.getElementById("tituloMural").value
+            let descricao = document.getElementById("descricaoMural").value
 
             if (existMuralPrestador) {
                 var ajax = new XMLHttpRequest();
@@ -1491,8 +1489,8 @@
 
         function salvarCard() {
           
-            tituloCard = document.getElementById("tituloCard").value
-            descricaoCard = document.getElementById("descricaoCard").value
+            let tituloCard = document.getElementById("tituloCard").value
+            let descricaoCard = document.getElementById("descricaoCard").value
 
             var ajaxCard = new XMLHttpRequest();
             ajaxCard.open("POST", RotaAPI + "api/CardPerfil");
@@ -1542,7 +1540,7 @@
 
         function salvarPublicacao() {
 
-            descricaoCard = document.getElementById("descricaoPublicacao").value
+            let descricaoCard = document.getElementById("descricaoPublicacao").value
 
             //var base64 = getBase64Image(document.getElementById("saved-img"));
             var base64Completed = document.getElementById("saved-img").src
@@ -1653,13 +1651,13 @@
                                             </div>
                                                 `;
 
-                        htmlBase = document.getElementById("listaGaleria").innerHTML
+                        let htmlBase = document.getElementById("listaGaleria").innerHTML
                         document.getElementById("listaGaleria").innerHTML = html
                         document.getElementById("listaGaleria").innerHTML += htmlBase
 
                         document.getElementById("btnCloseAddMidia").click();
 
-                        htmlBase2 = document.getElementById("frameImagemAmpliada").innerHTML
+                        let htmlBase2 = document.getElementById("frameImagemAmpliada").innerHTML
                         document.getElementById("frameImagemAmpliada").innerHTML = html2
                         document.getElementById("frameImagemAmpliada").innerHTML += htmlBase2
 
@@ -1807,7 +1805,7 @@
         function BuscarCep() {
 
             var enderecoPorCelText = document.getElementById("enderecoPorCep");
-            cep = document.getElementById("cepLocalizacao").value
+            let cep = document.getElementById("cepLocalizacao").value
             console.log("Cep: " + cep)
 
             const ajax = new XMLHttpRequest();

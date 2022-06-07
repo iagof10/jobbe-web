@@ -919,7 +919,7 @@
             imgHolderCallback: null,
             read_file_from_input: function(input, callback) {
                 if (input.files && input.files[0]) {
-                    imgHolderCallback = callback;
+                    let imgHolderCallback = callback;
                     var reader = new FileReader();
                     if (!CiM.imgHolder) {
                         CiM.imgHolder = new Image();
@@ -971,8 +971,8 @@
             },
 
             uploadImage: function(img, callback) {
-                var imgCanvas = document.createElement("canvas"),
-                    imgContext = imgCanvas.getContext("2d");
+                var imgCanvas = document.createElement("canvas");
+                var imgContext = imgCanvas.getContext("2d");
 
                 // Make sure canvas is as big as the picture (needed??)
                 imgCanvas.width = img.width;
@@ -1043,8 +1043,8 @@
                 return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
             }
 
-            var croppedImg = $('#saved-img'),
-                savedImg = $('#saved-img');
+            var croppedImg = $('#saved-img');
+            var savedImg = $('#saved-img');
 
             CiM.opt.my_final_size = { w: 240, h: 292 };
             CiM.opt.my_win_ratio = 1.5;
@@ -1098,8 +1098,8 @@
 
             /////////////////////////////////////////
 
-            var croppedImgFotoPerfil = $('#saved-imgFotoPerfil'),
-                savedImgFotoPerfil = $('#saved-imgFotoPerfil');
+            var croppedImgFotoPerfil = $('#saved-imgFotoPerfil');
+            var savedImgFotoPerfil = $('#saved-imgFotoPerfil');
 
             CiM.opt.my_final_size = { w: 240, h: 292 };
             CiM.opt.my_win_ratio = 1.5;
@@ -1151,8 +1151,8 @@
 
             /////////////////////////////////////////////////
 
-            var croppedImgFotoMidia = $('#saved-imgFotoMidia'),
-                savedImgFotoMidia = $('#saved-imgFotoMidia');
+            var croppedImgFotoMidia = $('#saved-imgFotoMidia');
+            var savedImgFotoMidia = $('#saved-imgFotoMidia');
 
             CiM.opt.my_final_size = { w: 240, h: 292 };
             CiM.opt.my_win_ratio = 1.5;
@@ -1247,9 +1247,6 @@
                     document.getElementById("emailPrestador").textContent = this.response.data.email;
                     document.getElementById("numVisualizacoes").textContent = this.response.data.numVisualizacoes;
 
-                    
-                    document.getElementById("linkPerfil").value = RotaWeb + "DetalhePerfil/" + @Model;
-                    document.getElementById("btnShareWhatsapp").href = 'whatsapp://send?text=Olá, estou te convidando para fazer parte do meu mural de parceitos, acesse o link e me aceite: ' + RotaAPI + 'DetalhePerfil/' + @Model;
                     document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, este é meu perfil no Jobbe, acesse o link e tenha acesso a todo meu conteúdo: ' + RotaAPI + 'DetalhePerfil/' + @Model;
                     //document.getElementById("btnShareFacebook").data-url = RotaWeb + "DetalhePerfil/" + @Model;
 
@@ -1591,13 +1588,13 @@
                                         </div>
                                     `;
 
-                        htmlBase = document.getElementById("listaPublicacao").innerHTML
+                        let htmlBase = document.getElementById("listaPublicacao").innerHTML
                         document.getElementById("listaPublicacao").innerHTML = html
                         document.getElementById("listaPublicacao").innerHTML += htmlBase
                         document.getElementById("btnCloseAddPublicacao").click();
                         document.getElementById("descricaoPublicacao").value = ''
 
-                        htmlBase2 = document.getElementById("framePublicacaoAmpliada").innerHTML
+                        let htmlBase2 = document.getElementById("framePublicacaoAmpliada").innerHTML
                         document.getElementById("framePublicacaoAmpliada").innerHTML = html2
                         document.getElementById("framePublicacaoAmpliada").innerHTML += htmlBase2
 
@@ -1856,18 +1853,6 @@
 
         function alertErro() {
             sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
-        }
-
-        document.getElementById("btnCopiarLink").addEventListener("click", CopyClipboard, false);
-
-        function CopyClipboard() {
-            var copyText = document.getElementById("linkPerfil");
-            var copyButton = document.getElementById("btnCopiarLink");
-
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(copyText.value);
-            copyButton.textContent = 'Copiado';
         }
 
         function getLocation() {

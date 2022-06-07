@@ -95,6 +95,12 @@
                         <li>
                             <a style="color: #d44f4f" href="Sign/Sign">
                                 <i data-cs-icon="trend-up" class="icon" data-cs-size="18"></i>
+                                <span class="label">Saiba Mais</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a style="color: #d44f4f" href="Sign/Sign">
+                                <i data-cs-icon="trend-up" class="icon" data-cs-size="18"></i>
                                 <span class="label">Entrar</span>
                             </a>
                         </li>
@@ -170,7 +176,7 @@
                     <!-- Auto Play Start -->
                     <section class="scroll-section" id="autoPlay" style="margin-top: 10px;">
                         <div class="row gx-2">
-                            <div class="mb-5">
+                            <div class="mb-4">
                                 <div class="glide" id="glideAuto">
                                     <div class="glide__track" data-glide-el="track">
                                         <div class="glide__slides">
@@ -294,8 +300,8 @@
                 <div class="col-12 mb-5">
                     <div class="card h-100-card">
                         <div class="card-body">
-                            <div class="cta-4">Precisa de um serviço?</div>
-                            <div class="mb-3 cta-4 text-primary">Procure o prestador(a) ideal pra você!</div>
+                            <div id="txt1" class="cta-4">Precisa de um serviço?</div>
+                            <div id="txt2" class="mb-3 cta-4 text-primary">Procure o prestador(a) ideal pra você!</div>
                             <form>
                                 <div class="mb-3 filled w-100">
                                     <i data-cs-icon="diagram-1"></i>
@@ -304,15 +310,15 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-5 filled w-100">
+                                <div class="mb-4 filled w-100">
                                     <i data-cs-icon="diagram-1"></i>
                                     <select class="ListaSubCategoria" multiple="multiple" data-placeholder="Sub-Categorias" data-tags="true" data-close-on-select="false" id="selectDataApi">
                                         <option label="&nbsp;"></option>
                                     </select>
                                 </div>
                                 <div class="mb-3 filled w-100">
-                                    <div class="cta-4">Adicione sua localização,</div>
-                                    <div class="mb-3 cta-4 text-primary">buscaremos os prestadores que atendam sua região!</div>
+                                    <div  id="txt3" class="cta-4">Adicione sua localização,</div>
+                                    <div  id="txt4" class="mb-3 cta-4 text-primary">buscaremos os prestadores que atendam sua região!</div>
                                 </div>
 
                                 <div class="mb-3 filled w-100">
@@ -341,6 +347,7 @@
 
                                 </div>
                                 <a style="width:100%" id="btnBuscarPrestador" class="btn btn-icon btn-icon-start btn-primary mt-3">
+                                    <i data-cs-icon="search"></i>
                                     <span>Buscar</span>
                                 </a>
                             </form>
@@ -462,6 +469,20 @@
     <!-- Theme Settings & Niches Buttons End -->
 
     <script>
+
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            document.getElementById("txt1").classList.remove("cta-4")
+            document.getElementById("txt1").classList.add("cta-5")
+            
+            document.getElementById("txt2").classList.remove("cta-4")
+            document.getElementById("txt2").classList.add("cta-5") 
+
+            document.getElementById("txt3").classList.remove("cta-4")
+            document.getElementById("txt3").classList.add("cta-5") 
+
+            document.getElementById("txt4").classList.remove("cta-4")
+            document.getElementById("txt4").classList.add("cta-5") 
+        }
 
         var latitude = 0
         var longitude = 0

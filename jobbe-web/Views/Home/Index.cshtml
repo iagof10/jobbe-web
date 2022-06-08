@@ -94,19 +94,19 @@
                     <ul style="float: right" id="menu" class="menu">
                         <li>
                             <a style="color: #d44f4f" href="Sign/Sign">
-                                <i data-cs-icon="trend-up" class="icon" data-cs-size="18"></i>
+                                <i data-cs-icon="info-hexagon" class="icon" data-cs-size="18"></i>
                                 <span class="label">Saiba Mais</span>
                             </a>
                         </li>
                         <li>
                             <a style="color: #d44f4f" href="Sign/Sign">
-                                <i data-cs-icon="trend-up" class="icon" data-cs-size="18"></i>
+                                <i data-cs-icon="login" class="icon" data-cs-size="18"></i>
                                 <span class="label">Entrar</span>
                             </a>
                         </li>
                         <li>
                             <a style="color: #d44f4f" href="Register/Register">
-                                <i data-cs-icon="messages" class="icon" data-cs-size="18"></i>
+                                <i data-cs-icon="user" class="icon" data-cs-size="18"></i>
                                 <span class="label">Cadastre-se</span>
                             </a>
                         </li>
@@ -593,7 +593,7 @@
                                                     <div class="row g-0 align-items-center mb-1">
                                                         <div class="col-auto">
                                                             <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                <i data-cs-icon="presentation" class="text-primary"></i>
+                                                                <i data-cs-icon="image" class="text-primary"></i>
                                                             </div>
                                                         </div>
                                                         <div class="col ps-3">
@@ -610,7 +610,7 @@
                                                     <div class="row g-0 align-items-center mb-1">
                                                         <div class="col-auto">
                                                             <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                <i data-cs-icon="clock" class="text-primary"></i>
+                                                                <i data-cs-icon="content" class="text-primary"></i>
                                                             </div>
                                                         </div>
                                                         <div class="col ps-3">
@@ -627,7 +627,7 @@
                                                     <div class="row g-0 align-items-center mb-4">
                                                         <div class="col-auto">
                                                             <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                <i data-cs-icon="diploma" class="text-primary"></i>
+                                                                <i data-cs-icon="eye" class="text-primary"></i>
                                                             </div>
                                                         </div>
                                                         <div class="col ps-3">
@@ -642,7 +642,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100">
-                                                        <a id="` + this.response.data[i].id + `" onclick="selectPrestador(this.id)" class="btn btn-outline-primary w-100 me-1 btn-sm">Ver Perfil</a>
+                                                        <a id="` + this.response.data[i].id + `" href="` + RotaWeb + 'DetalhePerfil/' + this.response.data[i].id + `" class="btn btn-outline-primary w-100 me-1 btn-sm">Ver Perfil</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -653,6 +653,7 @@
                             }
                         }
 
+                        csicons.replace()
                     }
                 }
             };

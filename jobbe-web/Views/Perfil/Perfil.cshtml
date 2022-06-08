@@ -496,21 +496,6 @@
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" data-bs-toggle="tab" href="#publicacaoTab" role="tab" aria-selected="false">Publicações</a>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="tab" href="#friendsTab" role="tab" aria-selected="false">Parceiros</a>
-                            </li>
-                            <li class="nav-item dropdown ms-auto d-none responsive-tab-dropdown">
-                                <a class="btn btn-icon btn-icon-only btn-background pt-0"
-                                   href="#"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-haspopup="true"
-                                   aria-expanded="false"
-                                   data-diplay="static">
-                                    <i data-cs-icon="more-horizontal"></i>
-                                </a>
-                                <ul class="dropdown-menu mt-2 dropdown-menu-end"></ul>
-                            </li>
                         </ul>
                         <!-- Title Tabs End -->
 
@@ -1253,11 +1238,16 @@
 
                     if (this.response.data.raio != 0) {
                         document.getElementById("txtRaioAtendimento").innerText = this.response.data.raio + " Kilômetros";
+                    } else {
+                        document.getElementById("txtRaioAtendimento").innerText = '-'
                     }
 
                     if (this.response.data.enderecoBase != null) {
                         document.getElementById("txtRegiaoAtendimento").innerText = this.response.data.enderecoBase.bairro;
                         document.getElementById("txtRegiaoAtendimentoCidade").innerText = this.response.data.enderecoBase.localidadeNome + " - " + this.response.data.enderecoBase.uf;
+                    } else {
+                        document.getElementById("txtRegiaoAtendimento").innerText = 'Brasil'
+                        document.getElementById("txtRegiaoAtendimentoCidade").innerText = ''
                     }
 
                     console.log(this.response)
@@ -1275,8 +1265,8 @@
 
                         for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
                             var html = `
-                                                        <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
-                                                          <div class="row g-0 align-items-center mb-3">
+                                                        <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 13px;padding-bottom: 13px;margin-bottom: 10px;" class="card">
+                                                          <div class="row g-0 align-items-center">
                                                                     <div class="col-auto">
                                                                         <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
                                                                             <i data-cs-icon="screen" class="text-primary"></i>
@@ -1285,7 +1275,7 @@
                                                                     <div class="col ps-3">
                                                                         <div class="row g-0">
                                                                             <div class="col">
-                                                                                <div class="sh-5 d-flex align-items-center lh-1-25">` + this.response.data.cards[i].titulo + `</div>
+                                                                                <h5>` + this.response.data.cards[i].descricao + `</h5>
                                                                                 <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
                                                                             </div>
                                                                         </div>
@@ -1498,8 +1488,8 @@
                 if (ajaxCard.readyState == 4) {
                     if (ajaxCard.status == 200) {
                         var htmlCard = `
-                                                        <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 10px;margin-bottom: 10px;" class="card">
-                                                          <div class="row g-0 align-items-center mb-3">
+                                                        <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 13px;padding-bottom: 13px;margin-bottom: 10px;" class="card">
+                                                          <div class="row g-0 align-items-center">
                                                                     <div class="col-auto">
                                                                         <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
                                                                             <i data-cs-icon="screen" class="text-primary"></i>
@@ -1508,7 +1498,7 @@
                                                                     <div class="col ps-3">
                                                                         <div class="row g-0">
                                                                             <div class="col">
-                                                                                <div class="sh-5 d-flex align-items-center lh-1-25">` + tituloCard + `</div>
+                                                                                <h5>` + tituloCard + `</h5>
                                                                                 <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
                                                                             </div>
                                                                         </div>

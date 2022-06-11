@@ -1826,7 +1826,7 @@
         function deleteGaleria(idGaleria) {
 
             const ajax = new XMLHttpRequest();
-            ajax.open('DELETE', RotaAPI + 'api/Galeria/' + idGaleria);
+            ajax.open('DELETE', RotaAPI + 'api/Galeria/' + idGaleria + '/' + @Model);
             ajax.responseType = 'json';
             ajax.onload = function(e) {
                 if (this.status == 200) {
@@ -1847,7 +1847,7 @@
         function deletePublicacao(idPublicacao) {
 
             const ajax = new XMLHttpRequest();
-            ajax.open('DELETE', RotaAPI + 'api/Publicacao/' + idPublicacao);
+            ajax.open('DELETE', RotaAPI + 'api/Publicacao/' + idPublicacao + '/' + @Model);
             ajax.responseType = 'json';
             ajax.onload = function(e) {
                 if (this.status == 200) {

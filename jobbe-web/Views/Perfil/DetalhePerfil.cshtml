@@ -183,6 +183,9 @@
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" data-bs-toggle="tab" href="#publicacaoTab" role="tab" aria-selected="false">Publicações</a>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#subCategoriasTab" role="tab" aria-selected="false">Sub-Categorias</a>
+                            </li>
                         </ul>
                         <!-- Title Tabs End -->
 
@@ -191,10 +194,6 @@
                             <div class="tab-pane fade active show" id="projectsTab" role="tabpanel">
 
                                 <br />
-
-                                <div class="d-flex align-items-center flex-column mb-5">
-                                    <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddGaleria">Add Mídia</button>
-                                </div>
 
                                 <div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-fullscreen">
@@ -246,6 +245,18 @@
                                 <!-- List End -->
                             </div>
                             <!-- Collections Tab End -->
+
+                            <div class="tab-pane fade" id="subCategoriasTab" role="tabpanel">
+
+                                <br />
+
+                                <!-- List Start -->
+                                <div class="mb-5" id="listaSubCategorias">
+                                </div>
+                                <!-- List End -->
+
+                            </div>
+
                         </div>
                     </div>
                     <!-- Right Side End -->
@@ -439,6 +450,38 @@
 
                         csicons.replace()
 
+                    }
+
+                    if (this.response.data.categoria.subCategorias != null) {
+
+                        for (let i = 0; i < this.response.data.categoria.subCategorias.length; i = i + 1) {
+                            var html = `
+                                        <div class="col mb-2">
+                                          <div class="card">
+                                            <div class="card-body" style="padding-top: 15px; padding-bottom: 15px;">
+                                              <div class="row g-0 sh-5">
+                                                <div class="col-auto">
+                                                    <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                        <i data-cs-icon="clipboard" class="text-primary"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                  <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                      <div>` + this.response.data.categoria.subCategorias[i].name + `</div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        `;
+
+                            document.getElementById("listaSubCategorias").innerHTML += html
+                        }
+
+                        csicons.replace()
                     }
 
                     if (this.response.data.telefones != null) {

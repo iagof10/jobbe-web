@@ -218,7 +218,10 @@
                                                     <!-- Quill Top Label End -->
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button id="btnSalvarMural" type="button" class="btn btn-primary">Save changes</button>
+                                                    <button id="btnSalvarMural" style="width: 100%;" type="button" class="btn btn-primary">Save changes</button>
+                                                    <div  style="text-align: center; margin-top: -20px; width: 100%;">
+                                                        <div id="idProgressBarMural" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -418,14 +421,14 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
+                                            <h5 class="modal-title" id="verticallyCenteredLabel">Card</h5>
                                             <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <!-- Quill Top Label Start -->
 
                                             <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
+                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira um card, coloque um conteúdo breve mas que chame a atenção do seu cliente!</h7>
                                             </div>
 
                                             <section class="scroll-section" id="topLabel">
@@ -441,7 +444,10 @@
                                             <!-- Quill Top Label End -->
                                         </div>
                                         <div class="modal-footer">
-                                            <button id="btnSalvarCard" type="button" class="btn btn-primary">Save changes</button>
+                                            <button id="btnSalvarCard" style="width: 100%;" type="button" class="btn btn-primary">Save changes</button>
+                                            <div  style="text-align: center; margin-top: -20px; width: 100%;">
+                                                <div id="idProgressBarCard" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                            </div>                                        
                                         </div>
                                     </div>
                                 </div>
@@ -1501,6 +1507,9 @@
 
         function salvarMural() {
 
+            document.getElementById("btnSalvarMural").style.visibility = "hidden";
+            document.getElementById("idProgressBarMural").style.visibility = "visible";
+
             let titulo = document.getElementById("tituloMural").value
             let descricao = document.getElementById("descricaoMural").value
 
@@ -1510,6 +1519,10 @@
                 ajax.setRequestHeader("Content-Type", "application/json");
                 ajax.send(JSON.stringify({ titulo: titulo, descricao: descricao, id: idMuralPrestador }));
                 ajax.onreadystatechange = function() {
+
+                    document.getElementById("idProgressBarMural").style.visibility = "hidden";
+                    document.getElementById("btnSalvarMural").style.visibility = "visible";
+
                     if (ajax.status == 200) {
                         console.log(JSON.parse(this.response))
                         idMuralPrestador = JSON.parse(this.response).data.id
@@ -1546,6 +1559,9 @@
 
         function salvarCard() {
           
+            document.getElementById("btnSalvarCard").style.visibility = "hidden";
+            document.getElementById("idProgressBarCard").style.visibility = "visible";
+
             let tituloCard = document.getElementById("tituloCard").value
             let descricaoCard = document.getElementById("descricaoCard").value
 
@@ -1555,6 +1571,10 @@
             ajaxCard.send(JSON.stringify({ titulo: tituloCard, descricao: descricaoCard, idUsuario: @Model}));
             ajaxCard.onreadystatechange = function() {
                 if (ajaxCard.readyState == 4) {
+
+                    document.getElementById("idProgressBarCard").style.visibility = "hidden";
+                    document.getElementById("btnSalvarCard").style.visibility = "visible";
+
                     if (ajaxCard.status == 200) {
                         var htmlCard = `
                                                         <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 13px;padding-bottom: 13px;margin-bottom: 10px;" class="card">

@@ -303,437 +303,433 @@
 
     <script>
 
-        window.addEventListener('load', function() {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.getElementById("txt1").classList.remove("cta-4")
+            document.getElementById("txt1").classList.add("cta-5")
 
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                document.getElementById("txt1").classList.remove("cta-4")
-                document.getElementById("txt1").classList.add("cta-5")
+            document.getElementById("txt2").classList.remove("cta-4")
+            document.getElementById("txt2").classList.add("cta-5")
 
-                document.getElementById("txt2").classList.remove("cta-4")
-                document.getElementById("txt2").classList.add("cta-5")
+            document.getElementById("txt3").classList.remove("cta-4")
+            document.getElementById("txt3").classList.add("cta-5")
 
-                document.getElementById("txt3").classList.remove("cta-4")
-                document.getElementById("txt3").classList.add("cta-5")
+            document.getElementById("txt4").classList.remove("cta-4")
+            document.getElementById("txt4").classList.add("cta-5")
+        }
 
-                document.getElementById("txt4").classList.remove("cta-4")
-                document.getElementById("txt4").classList.add("cta-5")
+        var latitude = 0
+        var longitude = 0
+        var subCategoriasSelecionadas = []
+        var categoriaSelecionada = 0
+        var btnLocalizacaoIsOpen = false
+        var btnEnderecoIsOpen = false
+        var btnClicked = false
+
+        GetPrestadores()
+        GetPublicacoess()
+        GetCategoria()
+        GetSubCategoria()
+
+        document.getElementById("btnLocalizacao").addEventListener("click", selectFiltroLocalizacao, false);
+
+        function selectFiltroLocalizacao() {
+
+            console.log("teste1")
+
+            if (btnLocalizacaoIsOpen) {
+                document.getElementById("btnLocalizacao").classList.remove("btn-primary")
+                document.getElementById("btnLocalizacao").classList.add("btn-outline-primary")
+                latitude = 0
+                longitude = 0
+                btnLocalizacaoIsOpen = false;
+            } else {
+                document.getElementById("btnLocalizacao").classList.remove("btn-outline-primary")
+                document.getElementById("btnLocalizacao").classList.add("btn-primary")
+                GetLocationOnly()
+                btnLocalizacaoIsOpen = true;
             }
 
-            var latitude = 0
-            var longitude = 0
-            var subCategoriasSelecionadas = []
-            var categoriaSelecionada = 0
-            var btnLocalizacaoIsOpen = false
-            var btnEnderecoIsOpen = false
-            var btnClicked = false
+            if (!btnClicked) {
+                if (btnEnderecoIsOpen) {
+                    btnClicked = true;
+                    document.getElementById("btnEndereco").click();
+                } else {
+                    btnClicked = false;
+                }
+            } else {
+                btnClicked = false;
+            }
+        }
 
-            GetPrestadores()
-            GetPublicacoess()
-            GetCategoria()
-            GetSubCategoria()
+        document.getElementById("btnEndereco").addEventListener("click", selectFiltroEndereco, false);
 
-            document.getElementById("btnLocalizacao").addEventListener("click", selectFiltroLocalizacao, false);
+        function selectFiltroEndereco() {
 
-            function selectFiltroLocalizacao() {
+            console.log("teste2")
 
-                console.log("teste1")
+            if (btnEnderecoIsOpen) {
+                document.getElementById("btnEndereco").classList.remove("btn-primary")
+                document.getElementById("btnEndereco").classList.add("btn-outline-primary")
+                latitude = 0
+                longitude = 0
+                document.getElementById("cepLocalizacao").value = ''
+                btnEnderecoIsOpen = false;
+            } else {
+                document.getElementById("btnEndereco").classList.remove("btn-outline-primary")
+                document.getElementById("btnEndereco").classList.add("btn-primary")
+                btnEnderecoIsOpen = true;
+            }
 
+            if (!btnClicked) {
                 if (btnLocalizacaoIsOpen) {
-                    document.getElementById("btnLocalizacao").classList.remove("btn-primary")
-                    document.getElementById("btnLocalizacao").classList.add("btn-outline-primary")
-                    latitude = 0
-                    longitude = 0
-                    btnLocalizacaoIsOpen = false;
-                } else {
-                    document.getElementById("btnLocalizacao").classList.remove("btn-outline-primary")
-                    document.getElementById("btnLocalizacao").classList.add("btn-primary")
-                    GetLocationOnly()
-                    btnLocalizacaoIsOpen = true;
-                }
-
-                if (!btnClicked) {
-                    if (btnEnderecoIsOpen) {
-                        btnClicked = true;
-                        document.getElementById("btnEndereco").click();
-                    } else {
-                        btnClicked = false;
-                    }
+                    btnClicked = true;
+                    document.getElementById("btnLocalizacao").click();
                 } else {
                     btnClicked = false;
                 }
+
+            } else {
+                btnClicked = false;
+            }
+        }
+
+        function GetPrestadores() {
+
+            var subCategoriasQuery = ''
+
+            for (let i = 0; i < subCategoriasSelecionadas.length; i = i + 1) {
+                subCategoriasQuery = subCategoriasQuery + '&SubCategoriaIds=' + subCategoriasSelecionadas[i]
             }
 
-            document.getElementById("btnEndereco").addEventListener("click", selectFiltroEndereco, false);
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/list?Latitude=' + latitude + '&Longitude=' + longitude + '&CategoriaId=' + categoriaSelecionada + subCategoriasQuery);
+            ajax.responseType = 'json';
+            ajax.onload = function(e) {
+                if (this.status == 200) {
+                    console.log(this.response)
 
-            function selectFiltroEndereco() {
+                    if (this.response.data != null) {
 
-                console.log("teste2")
+                        for (let i = 0; i < this.response.data.length; i = i + 1) {
 
-                if (btnEnderecoIsOpen) {
-                    document.getElementById("btnEndereco").classList.remove("btn-primary")
-                    document.getElementById("btnEndereco").classList.add("btn-outline-primary")
-                    latitude = 0
-                    longitude = 0
-                    document.getElementById("cepLocalizacao").value = ''
-                    btnEnderecoIsOpen = false;
-                } else {
-                    document.getElementById("btnEndereco").classList.remove("btn-outline-primary")
-                    document.getElementById("btnEndereco").classList.add("btn-primary")
-                    btnEnderecoIsOpen = true;
-                }
-
-                if (!btnClicked) {
-                    if (btnLocalizacaoIsOpen) {
-                        btnClicked = true;
-                        document.getElementById("btnLocalizacao").click();
-                    } else {
-                        btnClicked = false;
-                    }
-
-                } else {
-                    btnClicked = false;
-                }
-            }
-
-            function GetPrestadores() {
-
-                var subCategoriasQuery = ''
-
-                for (let i = 0; i < subCategoriasSelecionadas.length; i = i + 1) {
-                    subCategoriasQuery = subCategoriasQuery + '&SubCategoriaIds=' + subCategoriasSelecionadas[i]
-                }
-
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/list?Latitude=' + latitude + '&Longitude=' + longitude + '&CategoriaId=' + categoriaSelecionada + subCategoriasQuery);
-                ajax.responseType = 'json';
-                ajax.onload = function(e) {
-                    if (this.status == 200) {
-                        console.log(this.response)
-
-                        if (this.response.data != null) {
-
-                            for (let i = 0; i < this.response.data.length; i = i + 1) {
-
-                                if (this.response.data[i].mural != null) {
-                                    var html = `
-                                                        <div class="col">
-                                                            <div class="card h-100">
-                                                                <div class="card-body text-center">
-                                                                    <div class="sw-13 position-relative mb-3 mx-auto">
-                                                                        <img src="` + RotaAPI + 'api/UsuarioPrestador/' + this.response.data[i].idFotoPerfil + `" class="img-fluid card" alt="thumb" />
-                                                                    </div>
-                                                                    <a href="Instructor.Detail.html" class="body-link">` + this.response.data[i].apelido + `</a>
-                                                                    <div class="text-muted text-medium mb-2">` + this.response.data[i].categoria.descricao + `</div>
-                                                                    <div class="mb-3 text-muted sh-7">` + this.response.data[i].mural.descricao + `</div>
-                                                                    <div class="row g-0 align-items-center mb-1">
-                                                                        <div class="col-auto">
-                                                                            <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                                <i data-cs-icon="image" class="text-primary"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col ps-3">
-                                                                            <div class="row g-0">
-                                                                                <div class="col">
-                                                                                    <div class="sh-4 d-flex align-items-center lh-1-25">Galeria</div>
-                                                                                </div>
-                                                                                <div class="col-auto">
-                                                                                    <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numGaleriaItens + `</div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row g-0 align-items-center mb-1">
-                                                                        <div class="col-auto">
-                                                                            <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                                <i data-cs-icon="content" class="text-primary"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col ps-3">
-                                                                            <div class="row g-0">
-                                                                                <div class="col">
-                                                                                    <div class="sh-4 d-flex align-items-center lh-1-25">Publicações</div>
-                                                                                </div>
-                                                                                <div class="col-auto">
-                                                                                    <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numPublicacoes + `</div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row g-0 align-items-center mb-4">
-                                                                        <div class="col-auto">
-                                                                            <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                                <i data-cs-icon="eye" class="text-primary"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col ps-3">
-                                                                            <div class="row g-0">
-                                                                                <div class="col">
-                                                                                    <div class="sh-4 d-flex align-items-center lh-1-25">Visualizações</div>
-                                                                                </div>
-                                                                                <div class="col-auto">
-                                                                                    <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numVisualizacoes + `</div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100">
-                                                                        <a id="` + this.response.data[i].id + `" href="` + RotaWeb + 'DetalhePerfil/' + this.response.data[i].id + `" class="btn btn-outline-primary w-100 me-1 btn-sm">Ver Perfil</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                            `;
-
-                                    document.getElementById("listaPrestador").innerHTML += html
-                                }
-                            }
-
-                            csicons.replace()
-                        }
-                    }
-                };
-
-                ajax.send();
-            }
-
-
-            function GetPublicacoess() {
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/Publicacao/list');
-                ajax.responseType = 'json';
-                ajax.onload = function(e) {
-                    if (this.status == 200) {
-                        console.log(this.response)
-
-                        if (this.response.data != null) {
-
-                            for (let i = 0; i < this.response.data.length; i = i + 1) {
+                            if (this.response.data[i].mural != null) {
                                 var html = `
-                                                        <div class="col">
-                                                          <div class="card mb-5">
-                                                            <a href="Pages.Blog.Detail.html">
-                                                              <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                                            </a>
-                                                            <div class="card-body">
-                                                              <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                ` + this.response.data[i].descricao + `
-                                                              </p>
-                                                            </div>
-                                                            <div class="card-footer border-0 pt-0">
-                                                              <div class="row align-items-center">
-                                                                <div class="col-6">
-                                                                  <div class="d-flex align-items-center">
-                                                                    <div class="sw-5 d-inline-block position-relative me-3">
-                                                                      <img src="img/profile/profile-1.webp" class="img-fluid rounded-xl" alt="thumb" />
+                                                                <div class="col">
+                                                                    <div class="card h-100">
+                                                                        <div class="card-body text-center">
+                                                                            <div class="sw-13 position-relative mb-3 mx-auto">
+                                                                                <img src="` + RotaAPI + 'api/UsuarioPrestador/' + this.response.data[i].idFotoPerfil + `" class="img-fluid card" alt="thumb" />
+                                                                            </div>
+                                                                            <a href="Instructor.Detail.html" class="body-link">` + this.response.data[i].apelido + `</a>
+                                                                            <div class="text-muted text-medium mb-2">` + this.response.data[i].categoria.descricao + `</div>
+                                                                            <div class="mb-3 text-muted sh-7">` + this.response.data[i].mural.descricao + `</div>
+                                                                            <div class="row g-0 align-items-center mb-1">
+                                                                                <div class="col-auto">
+                                                                                    <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
+                                                                                        <i data-cs-icon="image" class="text-primary"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col ps-3">
+                                                                                    <div class="row g-0">
+                                                                                        <div class="col">
+                                                                                            <div class="sh-4 d-flex align-items-center lh-1-25">Galeria</div>
+                                                                                        </div>
+                                                                                        <div class="col-auto">
+                                                                                            <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numGaleriaItens + `</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row g-0 align-items-center mb-1">
+                                                                                <div class="col-auto">
+                                                                                    <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
+                                                                                        <i data-cs-icon="content" class="text-primary"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col ps-3">
+                                                                                    <div class="row g-0">
+                                                                                        <div class="col">
+                                                                                            <div class="sh-4 d-flex align-items-center lh-1-25">Publicações</div>
+                                                                                        </div>
+                                                                                        <div class="col-auto">
+                                                                                            <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numPublicacoes + `</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row g-0 align-items-center mb-4">
+                                                                                <div class="col-auto">
+                                                                                    <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
+                                                                                        <i data-cs-icon="eye" class="text-primary"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col ps-3">
+                                                                                    <div class="row g-0">
+                                                                                        <div class="col">
+                                                                                            <div class="sh-4 d-flex align-items-center lh-1-25">Visualizações</div>
+                                                                                        </div>
+                                                                                        <div class="col-auto">
+                                                                                            <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numVisualizacoes + `</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100">
+                                                                                <a id="` + this.response.data[i].id + `" href="` + RotaWeb + 'DetalhePerfil/' + this.response.data[i].id + `" class="btn btn-outline-primary w-100 me-1 btn-sm">Ver Perfil</a>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="d-inline-block">
-                                                                      <a href="#">` + this.response.data[i].usuario.apelido + `</a>
-                                                                      <div class="text-muted text-small">` + this.response.data[i].usuario.categoria.name + `</div>
-                                                                    </div>
-                                                                  </div>
                                                                 </div>
-                                                                <div class="col-6 text-muted">
-                                                                  <div class="row g-0 justify-content-end">
-                                                                    <div class="col-auto pe-3">
-                                                                      <i data-cs-icon="eye" class="text-primary me-1" data-cs-size="15"></i>
-                                                                      <span class="align-middle"></span>
-                                                                    </div>
-                                                                    <div class="col-auto">
-                                                                      <i data-cs-icon="message" class="text-primary me-1" data-cs-size="15"></i>
-                                                                      <span class="align-middle"></span>
-                                                                    </div>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                       </div>
-                                                          `;
+                                                                    `;
 
-                                document.getElementById("listaPulicacoes").innerHTML += html
+                                document.getElementById("listaPrestador").innerHTML += html
                             }
-
                         }
-                    }
-                };
 
-                ajax.send();
-            }
-
-            function BuscarPorCep() {
-
-                var cep = document.getElementById("cepLocalizacao").value
-
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/EnderecoBase/' + cep);
-                ajax.responseType = 'json';
-                ajax.onload = function(e) {
-                    if (this.status == 200) {
-                        latitude = this.response.data.latitude
-                        longitude = this.response.data.longitude
-                        console.log(latitude)
-                        console.log(longitude)
-                        GetPrestadores()
-                    }
-                };
-
-                ajax.send();
-            }
-
-            function GetCategoria() {
-
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/Categoria');
-                ajax.responseType = 'json';
-                ajax.onload = function(e) {
-                    if (this.status == 200) {
-
-                        categorias = this.response.data
-
-                        var select = document.getElementsByClassName("ListaCategoria")[0]
-
-                        for (let i = 0; i < categorias.length; i = i + 1) {
-                            var opt0 = document.createElement("option");
-                            opt0.value = categorias[i].id;
-                            opt0.text = categorias[i].name;
-                            select.add(opt0, select.options[i + 1]);
-
-                        }
-                    }
-                };
-
-                ajax.send();
-            }
-
-            function GetSubCategoria() {
-
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/SubCategoria/geral');
-                ajax.responseType = 'json';
-                ajax.onload = function(e) {
-                    if (this.status == 200) {
-
-                        subCategorias = this.response.data
-
-                        var select = document.getElementsByClassName("ListaSubCategoria")[0]
-
-                        for (let i = 0; i < subCategorias.length; i = i + 1) {
-                            var opt0 = document.createElement("option");
-                            opt0.value = subCategorias[i].id;
-                            opt0.text = subCategorias[i].name;
-                            select.add(opt0, select.options[i + 1]);
-                        }
-                    }
-                };
-
-                ajax.send();
-            }
-
-            function removeOptions(selectElement) {
-                var i, L = selectElement.options.length - 1;
-                for (i = L; i >= 0; i--) {
-                    selectElement.remove(i);
-                }
-            }
-
-            function AlterarSubcategoriaFromCategoria() {
-
-                var select = document.getElementsByClassName("ListaCategoria")[0]
-                var valueCategoria = select.options[select.selectedIndex].value;
-                var textCategoria = select.options[select.selectedIndex].text;
-
-                var selectSubCategoria = document.getElementsByClassName("ListaSubCategoria")[0]
-                removeOptions(selectSubCategoria)
-
-                const ajax = new XMLHttpRequest();
-                ajax.open('GET', RotaAPI + 'api/SubCategoria?idCategoria=' + valueCategoria);
-                ajax.responseType = 'json';
-                ajax.onload = function(e) {
-                    if (this.status == 200) {
-
-                        subCategorias = this.response.data
-
-                        for (let i = 0; i < subCategorias.length; i = i + 1) {
-                            var opt0 = document.createElement("option");
-                            opt0.value = subCategorias[i].id;
-                            opt0.text = subCategorias[i].name;
-                            selectSubCategoria.add(opt0, selectSubCategoria.options[i + 1]);
-                        }
-                    }
-                };
-
-                ajax.send();
-            }
-
-            document.getElementById("btnBuscarPrestador").addEventListener("click", BuscarPrestadorFiltro, false);
-
-            function BuscarPrestadorFiltro() {
-
-                var select = document.getElementsByClassName("ListaCategoria")[0]
-                var valueCategoria = select.options[select.selectedIndex].value;
-                categoriaSelecionada = valueCategoria
-                console.log("Categoria: " + categoriaSelecionada)
-
-                var selectSubCategoria = document.getElementsByClassName("select2-selection__choice")
-
-                subCategoriasSelecionadas = []
-
-                for (let i = 0; i < selectSubCategoria.length; i = i + 1) {
-                    for (let x = 0; x < subCategorias.length; x = x + 1) {
-                        if (subCategorias[x].name == selectSubCategoria[i].title) {
-                            subCategoriasSelecionadas.push(subCategorias[x].id)
-                        }
+                        csicons.replace()
                     }
                 }
+            };
 
-                document.getElementById("listaPrestador").innerHTML = ''
+            ajax.send();
+        }
 
-                if (btnEnderecoIsOpen) {
-                    BuscarPorCep()
-                } else {
+
+        function GetPublicacoess() {
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/Publicacao/list');
+            ajax.responseType = 'json';
+            ajax.onload = function(e) {
+                if (this.status == 200) {
+                    console.log(this.response)
+
+                    if (this.response.data != null) {
+
+                        for (let i = 0; i < this.response.data.length; i = i + 1) {
+                            var html = `
+                                                                <div class="col">
+                                                                  <div class="card mb-5">
+                                                                    <a href="Pages.Blog.Detail.html">
+                                                                      <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                                    </a>
+                                                                    <div class="card-body">
+                                                                      <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                        ` + this.response.data[i].descricao + `
+                                                                      </p>
+                                                                    </div>
+                                                                    <div class="card-footer border-0 pt-0">
+                                                                      <div class="row align-items-center">
+                                                                        <div class="col-6">
+                                                                          <div class="d-flex align-items-center">
+                                                                            <div class="sw-5 d-inline-block position-relative me-3">
+                                                                              <img src="img/profile/profile-1.webp" class="img-fluid rounded-xl" alt="thumb" />
+                                                                            </div>
+                                                                            <div class="d-inline-block">
+                                                                              <a href="#">` + this.response.data[i].usuario.apelido + `</a>
+                                                                              <div class="text-muted text-small">` + this.response.data[i].usuario.categoria.name + `</div>
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                        <div class="col-6 text-muted">
+                                                                          <div class="row g-0 justify-content-end">
+                                                                            <div class="col-auto pe-3">
+                                                                              <i data-cs-icon="eye" class="text-primary me-1" data-cs-size="15"></i>
+                                                                              <span class="align-middle"></span>
+                                                                            </div>
+                                                                            <div class="col-auto">
+                                                                              <i data-cs-icon="message" class="text-primary me-1" data-cs-size="15"></i>
+                                                                              <span class="align-middle"></span>
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                               </div>
+                                                                  `;
+
+                            document.getElementById("listaPulicacoes").innerHTML += html
+                        }
+
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+
+        function BuscarPorCep() {
+
+            var cep = document.getElementById("cepLocalizacao").value
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/EnderecoBase/' + cep);
+            ajax.responseType = 'json';
+            ajax.onload = function(e) {
+                if (this.status == 200) {
+                    latitude = this.response.data.latitude
+                    longitude = this.response.data.longitude
+                    console.log(latitude)
+                    console.log(longitude)
                     GetPrestadores()
                 }
+            };
+
+            ajax.send();
+        }
+
+        function GetCategoria() {
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/Categoria');
+            ajax.responseType = 'json';
+            ajax.onload = function(e) {
+                if (this.status == 200) {
+
+                    categorias = this.response.data
+
+                    var select = document.getElementsByClassName("ListaCategoria")[0]
+
+                    for (let i = 0; i < categorias.length; i = i + 1) {
+                        var opt0 = document.createElement("option");
+                        opt0.value = categorias[i].id;
+                        opt0.text = categorias[i].name;
+                        select.add(opt0, select.options[i + 1]);
+
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+
+        function GetSubCategoria() {
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/SubCategoria/geral');
+            ajax.responseType = 'json';
+            ajax.onload = function(e) {
+                if (this.status == 200) {
+
+                    subCategorias = this.response.data
+
+                    var select = document.getElementsByClassName("ListaSubCategoria")[0]
+
+                    for (let i = 0; i < subCategorias.length; i = i + 1) {
+                        var opt0 = document.createElement("option");
+                        opt0.value = subCategorias[i].id;
+                        opt0.text = subCategorias[i].name;
+                        select.add(opt0, select.options[i + 1]);
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+
+        function removeOptions(selectElement) {
+            var i, L = selectElement.options.length - 1;
+            for (i = L; i >= 0; i--) {
+                selectElement.remove(i);
+            }
+        }
+
+        function AlterarSubcategoriaFromCategoria() {
+
+            var select = document.getElementsByClassName("ListaCategoria")[0]
+            var valueCategoria = select.options[select.selectedIndex].value;
+            var textCategoria = select.options[select.selectedIndex].text;
+
+            var selectSubCategoria = document.getElementsByClassName("ListaSubCategoria")[0]
+            removeOptions(selectSubCategoria)
+
+            const ajax = new XMLHttpRequest();
+            ajax.open('GET', RotaAPI + 'api/SubCategoria?idCategoria=' + valueCategoria);
+            ajax.responseType = 'json';
+            ajax.onload = function(e) {
+                if (this.status == 200) {
+
+                    subCategorias = this.response.data
+
+                    for (let i = 0; i < subCategorias.length; i = i + 1) {
+                        var opt0 = document.createElement("option");
+                        opt0.value = subCategorias[i].id;
+                        opt0.text = subCategorias[i].name;
+                        selectSubCategoria.add(opt0, selectSubCategoria.options[i + 1]);
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+
+        document.getElementById("btnBuscarPrestador").addEventListener("click", BuscarPrestadorFiltro, false);
+
+        function BuscarPrestadorFiltro() {
+
+            var select = document.getElementsByClassName("ListaCategoria")[0]
+            var valueCategoria = select.options[select.selectedIndex].value;
+            categoriaSelecionada = valueCategoria
+            console.log("Categoria: " + categoriaSelecionada)
+
+            var selectSubCategoria = document.getElementsByClassName("select2-selection__choice")
+
+            subCategoriasSelecionadas = []
+
+            for (let i = 0; i < selectSubCategoria.length; i = i + 1) {
+                for (let x = 0; x < subCategorias.length; x = x + 1) {
+                    if (subCategorias[x].name == selectSubCategoria[i].title) {
+                        subCategoriasSelecionadas.push(subCategorias[x].id)
+                    }
+                }
             }
 
-            function GetLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(savePosition, GetPrestadores);
-                }
-                else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                }
-            }
+            document.getElementById("listaPrestador").innerHTML = ''
 
-            function savePosition(position) {
-                latitude = position.coords.latitude
-                longitude = position.coords.longitude
-                console.log("Lat: " + latitude)
-                console.log("Long: " + longitude)
+            if (btnEnderecoIsOpen) {
+                BuscarPorCep()
+            } else {
                 GetPrestadores()
             }
+        }
 
-            document.getElementById("btnUsarLocalizacao").addEventListener("click", GetLocationOnly, false);
-
-            function GetLocationOnly() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(savePositionOnly);
-                }
-                else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                }
+        function GetLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(savePosition, GetPrestadores);
             }
-
-            function savePositionOnly(position) {
-                latitude = position.coords.latitude
-                longitude = position.coords.longitude
+            else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
             }
+        }
 
-            function selectPrestador(idUsuario) {
+        function savePosition(position) {
+            latitude = position.coords.latitude
+            longitude = position.coords.longitude
+            console.log("Lat: " + latitude)
+            console.log("Long: " + longitude)
+            GetPrestadores()
+        }
 
-                window.location.replace(RotaWeb + 'DetalhePerfil/' + idUsuario);
+        document.getElementById("btnUsarLocalizacao").addEventListener("click", GetLocationOnly, false);
+
+        function GetLocationOnly() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(savePositionOnly);
             }
+            else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
 
-        });
+        function savePositionOnly(position) {
+            latitude = position.coords.latitude
+            longitude = position.coords.longitude
+        }
+
+        function selectPrestador(idUsuario) {
+
+            window.location.replace(RotaWeb + 'DetalhePerfil/' + idUsuario);
+        }
 
     </script>
 

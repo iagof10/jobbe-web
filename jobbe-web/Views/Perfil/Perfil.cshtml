@@ -73,6 +73,8 @@
     <link rel="stylesheet" href="../css/main.css" />
     <script src="../js/base/loader.js"></script>
     <script src="../js/site.js"></script>
+    <link rel="stylesheet" href="../js/utils/libs/Cropp/cropper.min.css" />
+    <link rel="stylesheet" href="../js/utils/libs/Cropp/cropper.css" />
 </head>
 
 <body>
@@ -814,6 +816,35 @@
         </div>
     </div>
 
+    <!-- Novo modal  -->
+      <div class="cropped_modal">
+        <div class="cropped_modal-header">
+        <span class="title">
+            Upload
+        </span>
+
+        <span id="cropped_closed" class="btn-close"></span>
+        </div>
+
+    <div class="main">
+      <!-- <img src="https://github.com/anderson-tec12.png" alt=""> -->
+      <img src="" alt="">
+    </div>
+    <div class="footer">
+      <input type="file" id="CROPED_FILE_LOAD">
+      <button type="button" id="load" >Carregar</button>
+      <button id="croppSave" class="save btn btn-primary">Salvar</button>
+    </div>
+  </div>
+
+  <div class="modal-background">
+
+  </div>
+
+  <div style="display:none" class="img-preview"></div>
+  <div style="display:none" class="img-cropped-inserted"></div>
+
+    <!-- Fim do novo modal  -->
     <style>
         .slidecontainer {
             width: 100%;
@@ -849,6 +880,8 @@
                 background: #d44f4f;
                 cursor: pointer;
             }
+
+            
     </style>
 
     <!-- jQuery library -->
@@ -886,12 +919,16 @@
     <script src="../js/pages/portfolio.home.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/scripts.js"></script>
+    <script src="../js/utils/libs/Cropp/crop.min.js"></script>
+    <script src="../js/utils/libs/Cropp/html2canvas.js"></script>
     @*<script type="module" src="../js/utils/utils.js"></script>*@
     <!-- Page Specific Scripts End -->
 
 
+
     <script type="module">
         import { utils } from '../js/utils/utils.js'
+        
 
         //Cropme in Modal
         var CiM = {
@@ -1037,10 +1074,10 @@
         }
 
         window.onload = function() {
-            const { isUserLogged } = utils
-            
+            const { isUserLogged, CROPPER_ACTION_BUTTON_TO_INPUT, CROPPED_SHOW  } = utils
+            let CROPPED
 
-            isUserLogged(@Model)
+           // isUserLogged(@Model)
 
             function getBase64Image(img) {
                 var canvas = document.createElement("canvas");
@@ -1085,8 +1122,21 @@
             });
             $('#btnGetImage').on('click', function() {
                 //force 'change' event even if repeating same file:
-                $('#fileUpload').prop("value", "");
-                $('#fileUpload').click();
+                // $('#fileUpload').prop("value", "");
+                // $('#fileUpload').click();
+
+               
+
+                document.querySelector('#btnCloseAddPublicacao').click()
+                
+                //NOVO CROPPED
+                const buttonToDispatchLoadFile = document.querySelector("#load");
+                const elementIsGetBase64Preview = document.querySelector('#saved-img')
+                const modalOpenBack = document.querySelector('[data-bs-target="#modalAddPublicacao"]')
+                
+                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview,modalOpenBack)
+
+                buttonToDispatchLoadFile.click()
             });
             $('#fileUpload').on('change', function() {
                 CiM.read_file_from_input(/*input elem*/this, function() {
@@ -1137,15 +1187,29 @@
             });
             $('#btnGetImageFotoPerfil').on('click', function() {
                 //force 'change' event even if repeating same file:
-                $('#fileUploadFotoPerfil').prop("value", "");
-                $('#fileUploadFotoPerfil').click();
+                // $('#fileUploadFotoPerfil').prop("value", "");
+                // $('#fileUploadFotoPerfil').click();
+
+               
+                // const inputFile = document.querySelector("#fileUploadFotoPerfil");                
+                // const imgElement = document.querySelector(".cropped_modal .main img");
+                document.querySelector('#btnCloseAlterarFotoPerfil').click()
+                
+                //NOVO CROPPED
+                const buttonToDispatchLoadFile = document.querySelector("#load");
+                const elementIsGetBase64Preview = document.querySelector('#saved-imgFotoPerfil')
+                const modalOpenBack = document.querySelector('[data-bs-target="#modalAlterarFotoPerfil"]')
+                
+                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview,modalOpenBack)
+
+                buttonToDispatchLoadFile.click()
             });
-            $('#fileUploadFotoPerfil').on('change', function() {
-                CiM.read_file_from_input(/*input elem*/this, function() {
-                    console.log('image src fully loaded');
-                    $('#imgModal-dialogFotoPerfil').modal('show');
-                });
-            });
+            // $('#fileUploadFotoPerfil').on('change', function() {
+            //     CiM.read_file_from_input(/*input elem*/this, function() {
+            //         console.log('image src fully loaded');
+            //         $('#imgModal-dialogFotoPerfil').modal('show');
+            //     });
+            // });
             $('#imgModal-dialogFotoPerfil').on('shown.bs.modal', function() {
                 var cropZone = $('#imgModal-cropmeFotoPerfil');
 
@@ -1190,8 +1254,19 @@
             });
             $('#btnGetImageFotoMidia').on('click', function() {
                 //force 'change' event even if repeating same file:
-                $('#fileUploadFotoMidia').prop("value", "");
-                $('#fileUploadFotoMidia').click();
+                // $('#fileUploadFotoMidia').prop("value", "");
+                // $('#fileUploadFotoMidia').click();
+
+               
+
+                //NOVO CROPPED
+                const buttonToDispatchLoadFile = document.querySelector("#load");
+                const elementIsGetBase64Preview = document.querySelector('#saved-imgFotoMidia')
+                const modalOpenBack = document.querySelector('[data-bs-target="#modalAddGaleria"]')
+                
+                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview,modalOpenBack)
+                document.querySelector('#btnCloseAddMidia').click()
+                buttonToDispatchLoadFile.click()
             });
             $('#fileUploadFotoMidia').on('change', function() {
                 CiM.read_file_from_input(/*input elem*/this, function() {

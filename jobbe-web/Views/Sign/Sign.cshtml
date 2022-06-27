@@ -257,8 +257,8 @@
                 document.getElementById("btnLogin").style.visibility = "hidden";
                 document.getElementById("idProgressBar").style.visibility = "visible";
 
-                registerEmailValue = document.getElementById("registerEmail").value
-                registerPasswordValue = document.getElementById("registerPassword").value
+                let registerEmailValue = document.getElementById("registerEmail").value
+                let registerPasswordValue = document.getElementById("registerPassword").value
 
                 var ajax = new XMLHttpRequest();
                 ajax.open("POST", RotaAPI + "api/Login");

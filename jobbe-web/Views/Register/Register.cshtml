@@ -313,7 +313,7 @@
                 registerCelularValue = document.getElementById("registerCelular").value
                 registerEmailValue = document.getElementById("registerEmail").value
                 registerPasswordValue = document.getElementById("registerPassword").value
-                registerTipoValue = 0
+                let registerTipoValue = 0
 
                 var ajax = new XMLHttpRequest();
                 ajax.open("POST", RotaAPI + "api/UsuarioPrestador");

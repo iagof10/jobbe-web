@@ -25,6 +25,30 @@ namespace jobbe_web
         {
             services.AddControllersWithViews();
             services.AddSession();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAny",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://jobbeapp.com.br")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+
+                        builder.WithOrigins("https://www.jobbeapp.com.br")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+
+                        builder.WithOrigins("http://jobbeapp.com.br")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+
+                        builder.WithOrigins("http://www.jobbeapp.com.br")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +71,8 @@ namespace jobbe_web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("AllowAny");
 
             app.UseSession();
 

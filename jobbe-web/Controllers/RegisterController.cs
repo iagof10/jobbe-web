@@ -1,4 +1,5 @@
 ﻿using jobbe_web.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace jobbe_web.Controllers
 {
+    [EnableCors(PolicyName = "AllowAny")]
     public class RegisterController : Controller
     {
         private readonly ILogger<SignController> _logger;

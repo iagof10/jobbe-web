@@ -8,11 +8,11 @@
 
 <!DOCTYPE html>
 <html lang="pt-br" data-footer="true">
-<head data-color="dark-red">
+<head data-color="light-red">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Jobbe</title>
-    <meta name="description" content="Home screen that contains stats, charts, call to action buttons and various listing elements." />
+    <meta name="description" content="Jobbe a ponte que conecta prestadores de serviços e clientes!" />
     <!-- Favicon Tags Start -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../img/logo/icon_sol.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/logo/icon_sol.png" />
@@ -35,7 +35,30 @@
     <meta name="msapplication-wide310x150logo" content="../img/logo/icon_sol.pngg" />
     <meta name="msapplication-square310x310logo" content="../img/logo/icon_sol.png" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6B1GH0KP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2C6B1GH0KP');
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-233562957-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-233562957-1');
+    </script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2955429652078188" crossorigin="anonymous"></script>
+
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-N373HXJ"></script>
 
     <!-- Favicon Tags End -->
     <!-- Font Tags Start -->
@@ -133,6 +156,30 @@
         <main>
             <div class="container">
 
+
+                <div class="row">
+                    <!-- Introduction Banner Start -->
+                    <div class="col-12 mb-3">
+                        <div class="card sh-25 position-relative">
+@*                            <img src="img/illustration/database.webp" class="card-img h-100 position-absolute theme-filter" alt="card image" />
+*@                            <img src="img/illustration/banner3.png" class="card-img h-100 position-absolute" alt="card image" />
+                            <div class="card-img-overlay d-flex flex-column justify-content-end bg-transparent">
+                                <div class="mb-1">
+                                    <div style="color: #d44f4f" class="cta-5 mb-2 w-75 w-sm-50">Prestador de serviços ou cliente?</div>
+                                    <div class="w-70 text-alternate">O Jobbe exibe prestadores de serviços para milhares de clientes, GRÁTIS.</div>
+                                </div>
+                                <div>
+                                    <a href="Register/Register" class="btn btn-icon btn-icon-start btn-primary mt-3 stretched-link">
+                                        <i data-cs-icon="chevron-right"></i>
+                                        <span>Sou Prestador</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Introduction Banner End -->
+                </div>
+
                 <!-- Help Start -->
                 <div class="col-12 mb-5">
                     <div class="card h-100-card">
@@ -163,7 +210,7 @@
                                         <a id="btnLocalizacao" style="margin-right: 0.25vw" class="btn btn-outline-primary mb-1" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                             Usar localização
                                         </a>
-                                        <a id="btnEndereco" style="margin-left: 0.25vw" class="btn btn-outline-primary mb-1" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                                        <a id="btnEndereco" style="margin-left: 0.5vw" class="btn btn-outline-primary mb-1" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
                                             Digitar Endereço
                                         </a>
                                     </div>
@@ -187,11 +234,262 @@
                                     <i data-cs-icon="search"></i>
                                     <span>Buscar</span>
                                 </a>
+                                <div style="text-align: center; margin-top: -20px">
+                                    <div id="idProgressBar" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
 
+                <!-- Center Start -->
+                <section class="scroll-section" id="center">
+                    <div id="txt1" class="cta-3 mb-3">Conheça as Categorias Disponíveis</div>
+                    <div class="row">
+                        <div class="col-12 mb-5">
+                            <div class="glide" id="glideCenter">
+                                <div class="glide__track" data-glide-el="track">
+                                    <div class="glide__slides">
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/arteecultura3.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Arte e Cultura</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/artesanato4.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Artesanato</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/assistenciatecnica5.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Assistência Técnica</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/educacao20.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Aulas e Treinamentos</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/automoveis6.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Autos</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/coaching11.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Coaching</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/conservacaoelimpeza12.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Conservação e Limpeza</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/construcaocivil13.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Construções, Reformas e Reparos</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/consultoria14.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Consultoria</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/informaticasoftware42.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Design e Tecnologia</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/engenharia22.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Engenharia</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/esoterico23.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Esotérico</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/eventosprofissionais27.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Eventos</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/gastronomia28.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Gastronomia</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/belezaestetica7.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Moda e Beleza</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/pets35.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Pets</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/hidraulica30.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Reformas e Reparos</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="glide__slide">
+                                            <div class="card mb-5">
+                                                <img style="height: 200px" src="img/categorias/medicina32.1.jpg" class="card-img-top" alt="card image" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Saúde</h5>
+                                                    <p class="card-text">Liquorice caramels apple pie chupa.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <span class="glide__arrows slider-nav" data-glide-el="controls">
+                                        <button class="btn btn-icon btn-icon-only btn-outline-primary" data-glide-dir="<">
+                                            <i data-cs-icon="chevron-left"></i>
+                                        </button>
+                                    </span>
+                                    <span class="glide__bullets" data-glide-el="controls[nav]"></span>
+                                    <span class="glide__arrows slider-nav" data-glide-el="controls">
+                                        <button class="btn btn-icon btn-icon-only btn-outline-primary" data-glide-dir=">">
+                                            <i data-cs-icon="chevron-right"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Horizontal Start -->
+                <section class="scroll-section mb-7" id="horizontal">
+                    <div id="txt1" class="cta-3 mb-3">Como funciona o Jobbe?</div>
+                    <div class="row g-2">
+
+                        <div class="col-12 col-xl-4 mb-2">
+                            <div class="card">
+                                <div class="h-100 row g-0 card-body align-items-center">
+                                    <div class="col-auto">
+                                        <div>
+                                            <img style="height: 70px;width: 70px;border-radius: 10px;" src="img/icons/money.png" alt="card image">
+                                        </div>
+                                    </div>
+                                    <div style="margin-left: 10px" class="col">
+                                        <div style="color: #d44f4f" class="cta-5 mb-2 w-75 w-sm-50">O Jobbe é GRÁTIS!!</div>
+                                        <div class="text-alternate">Seja prestador de serviço ou cliente, o Jobbe não cobra nada de você, é uma plataforma livre pra uso!.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-xl-4 mb-2">
+                            <div class="card">
+                                <div class="h-100 row g-0 card-body align-items-center">
+                                    <div class="col-auto">
+                                        <div class="sw-6 sh-6 rounded-xl d-flex justify-content-center align-items-center border border-primary">
+                                            <i data-cs-icon="paint-roller" class="text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div style="margin-left: 10px" class="col">
+                                        <div style="color: #d44f4f" class="cta-5 mb-2 w-75 w-sm-50">Para Prestador</div>
+                                        <div class="text-alternate">Cadastra-se gratuitamente e adicione o tipo de serviço que trabalha, o Jobbe irá exibir seu perfil para milhares de clientes.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-xl-4">
+                            <div class="card">
+                                <div class="h-100 row g-0 card-body align-items-center">
+                                    <div class="col-auto">
+                                        <div class="sw-6 sh-6 rounded-xl d-flex justify-content-center align-items-center border border-primary">
+                                            <i data-cs-icon="user" class="text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div style="margin-left: 10px" class="col">
+                                        <div style="color: #d44f4f" class="cta-5 mb-2 w-75 w-sm-50">Para Cliente</div>
+                                        <div class="text-alternate">Se você precisar contratar um profissional, basta buscar o tipo de serviço que precisa, aparecerá vários prestadores para você!.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- Horizontal End -->
+                <!-- Center End -->
                 <!-- Right Side Start -->
                 <div class="container">
                     <!-- Title Tabs Start -->
@@ -223,7 +521,54 @@
                         <div class="tab-pane fade active show" id="prestadoresTab" role="tabpanel">
 
                             <br />
-
+                            <!-- Mail List Start -->
+                            <section style="display: none" id="divNotFoundPrestadores">
+                                <div class="card mb-5">
+                                    <div class="card-body row g-0 text-center">
+                                        <div class="col-12">
+                                            <div class="mb-3 cta-3 text-primary">Procurando um prestador?</div>
+                                            <div class="cta-5 mb-1">No momento não encontramos um prestador que atenda sua região, estamos trabalhando para para adicionar prestadores em todo Brasil!</div>
+                                            <div class="cta-5 mb-3">Enquanto isso, deixe abaixo seu e-mail ou Whatsapp, iremos buscar um prestador e avisaremos assim que possível, é rapidinho!</div>
+                                            <div class="row gx-2 justify-content-center">
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="d-flex flex-column justify-content-start">
+                                                        <div class="text-muted mb-3 mb-sm-0">
+                                                            <input id="emailOrWhatsappNotFound" type="text" class="form-control" placeholder="E-mail ou Whatsapp" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-auto">
+                                                    <button id="btnEnviarBuscaPrestadores" class="btn btn-primary me-2">
+                                                        <i data-cs-icon="send"></i>
+                                                        <span>Enviar</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Mail List End -->
+                            <!-- Mail List Start -->
+                            <section style="display: none" class="scroll-section" id="divConhecerLanding">
+                                <div class="card mb-5">
+                                    <div class="card-body row g-0 text-center">
+                                        <div class="col-12">
+                                            <div class="mb-3 cta-3 text-primary">Obrigado, assim que possível entraremos em contato!</div>
+                                            <div class="cta-5 mb-3">Conheça também nossa Landing, seja parte do #TEAMJOBBE!</div>
+                                            <div class="row gx-2 justify-content-center">
+                                                <div class="col-12 col-sm-auto">
+                                                    <a href="https://landing.jobbeapp.com.br" class="btn btn-primary me-2">
+                                                        <i data-cs-icon="chevron-right"></i>
+                                                        <span>Conhecer</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Mail List End -->
                             <!-- List Start -->
                             <div id="listaPrestador" class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 row-cols-xxl-4 g-3 mb-5">
 
@@ -346,6 +691,7 @@
                 latitude = 0
                 longitude = 0
                 btnLocalizacaoIsOpen = false;
+                $("#btnLocalizacao").blur();
             } else {
                 document.getElementById("btnLocalizacao").classList.remove("btn-outline-primary")
                 document.getElementById("btnLocalizacao").classList.add("btn-primary")
@@ -378,6 +724,7 @@
                 longitude = 0
                 document.getElementById("cepLocalizacao").value = ''
                 btnEnderecoIsOpen = false;
+                $("#btnEndereco").blur();
             } else {
                 document.getElementById("btnEndereco").classList.remove("btn-outline-primary")
                 document.getElementById("btnEndereco").classList.add("btn-primary")
@@ -405,93 +752,118 @@
                 subCategoriasQuery = subCategoriasQuery + '&SubCategoriaIds=' + subCategoriasSelecionadas[i]
             }
 
+            document.getElementById("divNotFoundPrestadores").style.display = "none";
+            document.getElementById("divConhecerLanding").style.display = "none";
+
             const ajax = new XMLHttpRequest();
             ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/list?Latitude=' + latitude + '&Longitude=' + longitude + '&CategoriaId=' + categoriaSelecionada + subCategoriasQuery);
             ajax.responseType = 'json';
             ajax.onload = function(e) {
                 if (this.status == 200) {
+
+                    document.getElementById("idProgressBar").style.visibility = "hidden";
+                    document.getElementById("btnBuscarPrestador").style.visibility = "visible";
+
                     console.log(this.response)
 
                     if (this.response.data != null) {
 
+                        if (this.response.data.length == 0) {
+                            document.getElementById("divNotFoundPrestadores").style.display = "block";
+                        }
+
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
 
                             if (this.response.data[i].mural != null) {
+
+
+                                let descricaoPerfil = this.response.data[i].mural.descricao
+
+                                if (descricaoPerfil.length > 120) descricaoPerfil = descricaoPerfil.substring(0, 120);
+
+                                descricaoPerfil = descricaoPerfil + "..."
+
                                 var html = `
-                                                                <div class="col">
-                                                                    <div class="card h-100">
-                                                                        <div class="card-body text-center">
-                                                                            <div class="sw-13 position-relative mb-3 mx-auto">
-                                                                                <img src="` + RotaAPI + 'api/UsuarioPrestador/' + this.response.data[i].idFotoPerfil + `" class="img-fluid card" alt="thumb" />
-                                                                            </div>
-                                                                            <a href="Instructor.Detail.html" class="body-link">` + this.response.data[i].apelido + `</a>
-                                                                            <div class="text-muted text-medium mb-2">` + this.response.data[i].categoria.descricao + `</div>
-                                                                            <div class="mb-3 text-muted sh-7">` + this.response.data[i].mural.descricao + `</div>
-                                                                            <div class="row g-0 align-items-center mb-1">
-                                                                                <div class="col-auto">
-                                                                                    <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                                        <i data-cs-icon="image" class="text-primary"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col ps-3">
-                                                                                    <div class="row g-0">
-                                                                                        <div class="col">
-                                                                                            <div class="sh-4 d-flex align-items-center lh-1-25">Galeria</div>
-                                                                                        </div>
-                                                                                        <div class="col-auto">
-                                                                                            <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numGaleriaItens + `</div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row g-0 align-items-center mb-1">
-                                                                                <div class="col-auto">
-                                                                                    <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                                        <i data-cs-icon="content" class="text-primary"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col ps-3">
-                                                                                    <div class="row g-0">
-                                                                                        <div class="col">
-                                                                                            <div class="sh-4 d-flex align-items-center lh-1-25">Publicações</div>
-                                                                                        </div>
-                                                                                        <div class="col-auto">
-                                                                                            <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numPublicacoes + `</div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row g-0 align-items-center mb-4">
-                                                                                <div class="col-auto">
-                                                                                    <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
-                                                                                        <i data-cs-icon="eye" class="text-primary"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col ps-3">
-                                                                                    <div class="row g-0">
-                                                                                        <div class="col">
-                                                                                            <div class="sh-4 d-flex align-items-center lh-1-25">Visualizações</div>
-                                                                                        </div>
-                                                                                        <div class="col-auto">
-                                                                                            <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numVisualizacoes + `</div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100">
-                                                                                <a id="` + this.response.data[i].id + `" href="` + RotaWeb + 'DetalhePerfil/' + this.response.data[i].id + `" class="btn btn-outline-primary w-100 me-1 btn-sm">Ver Perfil</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                    `;
+                                                                                                                                        <div class="col">
+                                                                                                                                            <div class="card h-100">
+                                                                                                                                                <div class="card-body text-center">
+                                                                                                                                                    <div class="sw-13 position-relative mb-3 mx-auto">
+                                                                                                                                                        <img src="` + RotaAPI + 'api/UsuarioPrestador/compact/' + this.response.data[i].idFotoPerfil + `" style="height: 20vh;width: 15vh;" class="img-fluid card" alt="thumb" />
+                                                                                                                                                    </div>
+                                                                                                                                                    <a href="Instructor.Detail.html" class="body-link">` + this.response.data[i].apelido + `</a>
+                                                                                                                                                    <div class="text-muted text-medium mb-2">` + this.response.data[i].categoria.descricao + `</div>
+                                                                                                                                                    <div class="mb-3 text-muted sh-7">` + descricaoPerfil + `</div>
+                                                                                                                                                    <div class="row g-0 align-items-center mb-1">
+                                                                                                                                                        <div class="col-auto">
+                                                                                                                                                            <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
+                                                                                                                                                                <i data-cs-icon="image" class="text-primary"></i>
+                                                                                                                                                            </div>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="col ps-3">
+                                                                                                                                                            <div class="row g-0">
+                                                                                                                                                                <div class="col">
+                                                                                                                                                                    <div class="sh-4 d-flex align-items-center lh-1-25">Galeria</div>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="col-auto">
+                                                                                                                                                                    <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numGaleriaItens + `</div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        </div>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="row g-0 align-items-center mb-1">
+                                                                                                                                                        <div class="col-auto">
+                                                                                                                                                            <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
+                                                                                                                                                                <i data-cs-icon="content" class="text-primary"></i>
+                                                                                                                                                            </div>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="col ps-3">
+                                                                                                                                                            <div class="row g-0">
+                                                                                                                                                                <div class="col">
+                                                                                                                                                                    <div class="sh-4 d-flex align-items-center lh-1-25">Publicações</div>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="col-auto">
+                                                                                                                                                                    <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numPublicacoes + `</div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        </div>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="row g-0 align-items-center mb-4">
+                                                                                                                                                        <div class="col-auto">
+                                                                                                                                                            <div class="sw-3 sh-4 d-flex justify-content-center align-items-center">
+                                                                                                                                                                <i data-cs-icon="eye" class="text-primary"></i>
+                                                                                                                                                            </div>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="col ps-3">
+                                                                                                                                                            <div class="row g-0">
+                                                                                                                                                                <div class="col">
+                                                                                                                                                                    <div class="sh-4 d-flex align-items-center lh-1-25">Visualizações</div>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="col-auto">
+                                                                                                                                                                    <div class="sh-4 d-flex align-items-center text-alternate">` + this.response.data[i].numVisualizacoes + `</div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        </div>
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100">
+                                                                                                                                                        <a id="` + this.response.data[i].id + `" href="` + RotaWeb + 'DetalhePerfil/' + this.response.data[i].id + `" class="btn btn-outline-primary w-100 me-1 btn-sm">Ver Perfil</a>
+                                                                                                                                                    </div>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                            `;
 
                                 document.getElementById("listaPrestador").innerHTML += html
                             }
                         }
 
                         csicons.replace()
+                    } else {
+                        document.getElementById("divNotFoundPrestadores").style.display = "block";
                     }
+
+                } else {
+                    document.getElementById("idProgressBar").style.visibility = "hidden";
+                    document.getElementById("btnBuscarPrestador").style.visibility = "visible";
                 }
             };
 
@@ -510,47 +882,38 @@
                     if (this.response.data != null) {
 
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
+
+                            var textoPublicacao = this.response.data[i].descricao.replaceAll("\n", "<br>")
+
                             var html = `
-                                                                <div class="col">
-                                                                  <div class="card mb-5">
-                                                                    <a href="Pages.Blog.Detail.html">
-                                                                      <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                                                    </a>
-                                                                    <div class="card-body">
-                                                                      <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                        ` + this.response.data[i].descricao + `
-                                                                      </p>
-                                                                    </div>
-                                                                    <div class="card-footer border-0 pt-0">
-                                                                      <div class="row align-items-center">
-                                                                        <div class="col-6">
-                                                                          <div class="d-flex align-items-center">
-                                                                            <div class="sw-5 d-inline-block position-relative me-3">
-                                                                              <img src="img/profile/profile-1.webp" class="img-fluid rounded-xl" alt="thumb" />
-                                                                            </div>
-                                                                            <div class="d-inline-block">
-                                                                              <a href="#">` + this.response.data[i].usuario.apelido + `</a>
-                                                                              <div class="text-muted text-small">` + this.response.data[i].usuario.categoria.name + `</div>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                        <div class="col-6 text-muted">
-                                                                          <div class="row g-0 justify-content-end">
-                                                                            <div class="col-auto pe-3">
-                                                                              <i data-cs-icon="eye" class="text-primary me-1" data-cs-size="15"></i>
-                                                                              <span class="align-middle"></span>
-                                                                            </div>
-                                                                            <div class="col-auto">
-                                                                              <i data-cs-icon="message" class="text-primary me-1" data-cs-size="15"></i>
-                                                                              <span class="align-middle"></span>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                      </div>
-                                                                    </div>
-                                                                  </div>
-                                                               </div>
-                                                                  `;
+                                                                                                                                        <div class="col">
+                                                                                                                                          <div class="card mb-5">
+                                                                                                                                            <a>
+                                                                                                                                              <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                                                                                                            </a>
+                                                                                                                                            <div class="card-body">
+                                                                                                                                              <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                                                                                                ` + textoPublicacao + `
+                                                                                                                                              </p>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="card-footer border-0 pt-0">
+                                                                                                                                              <div class="row align-items-center">
+                                                                                                                                                <div class="col-6">
+                                                                                                                                                  <div class="d-flex align-items-center">
+                                                                                                                                                    <div class="sw-5 d-inline-block position-relative me-3">
+                                                                                                                                                      <img src="` + RotaAPI + 'api/UsuarioPrestador/compact/' + this.response.data[i].usuario.idFotoPerfil + `" style="height: 8vh;width: 7vh;" class="img-fluid card" alt="thumb" />
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="d-inline-block">
+                                                                                                                                                      <a href="` + RotaWeb + 'DetalhePerfil/' + this.response.data[i].usuario.id + `">` + this.response.data[i].usuario.apelido + `</a>
+                                                                                                                                                      <div class="text-muted text-small">` + this.response.data[i].usuario.categoria.name + `</div>
+                                                                                                                                                    </div>
+                                                                                                                                                  </div>
+                                                                                                                                                </div>
+                                                                                                                                              </div>
+                                                                                                                                            </div>
+                                                                                                                                          </div>
+                                                                                                                                       </div>
+                                                                                                                                          `;
 
                             document.getElementById("listaPulicacoes").innerHTML += html
                         }
@@ -571,11 +934,18 @@
             ajax.responseType = 'json';
             ajax.onload = function(e) {
                 if (this.status == 200) {
+
+                    document.getElementById("idProgressBar").style.visibility = "hidden";
+                    document.getElementById("btnBuscarPrestador").style.visibility = "visible";
+
                     latitude = this.response.data.latitude
                     longitude = this.response.data.longitude
                     console.log(latitude)
                     console.log(longitude)
                     GetPrestadores()
+                } else {
+                    document.getElementById("idProgressBar").style.visibility = "hidden";
+                    document.getElementById("btnBuscarPrestador").style.visibility = "visible";
                 }
             };
 
@@ -667,9 +1037,47 @@
             ajax.send();
         }
 
+        document.getElementById("btnEnviarBuscaPrestadores").addEventListener("click", EnviarBuscaPrestadoresNotFound, false);
+
+        function EnviarBuscaPrestadoresNotFound() {
+
+            var selectSubCategoriaNotFound = document.getElementsByClassName("select2-selection__choice")
+
+            let subCategoriasSelecionadasNotFound = []
+
+            for (let i = 0; i < selectSubCategoriaNotFound.length; i = i + 1) {
+                for (let x = 0; x < subCategorias.length; x = x + 1) {
+                    if (subCategorias[x].name == selectSubCategoriaNotFound[i].title) {
+                        subCategoriasSelecionadasNotFound.push(subCategorias[x].id)
+                    }
+                }
+            }
+
+            let emailOrWhatsappNotFoundText = document.getElementById("emailOrWhatsappNotFound").value
+            let idSubCategoriaSelecionadaNotFound = 0
+
+            if (subCategoriasSelecionadasNotFound.length > 0) {
+                idSubCategoriaSelecionadaNotFound = subCategoriasSelecionadasNotFound[0]
+            }
+
+            var ajax = new XMLHttpRequest();
+            ajax.open("POST", RotaAPI + "api/ContatoUsuario");
+            ajax.setRequestHeader("Content-Type", "application/json");
+            ajax.send(JSON.stringify({ idCategoria: categoriaSelecionada, idSubCategoria: idSubCategoriaSelecionadaNotFound, contato: emailOrWhatsappNotFoundText }));
+            ajax.onreadystatechange = function() {
+
+                document.getElementById("divNotFoundPrestadores").style.display = "none";
+                document.getElementById("divConhecerLanding").style.display = "block";
+            }
+
+        }
+
         document.getElementById("btnBuscarPrestador").addEventListener("click", BuscarPrestadorFiltro, false);
 
         function BuscarPrestadorFiltro() {
+
+            document.getElementById("btnBuscarPrestador").style.visibility = "hidden";
+            document.getElementById("idProgressBar").style.visibility = "visible";
 
             var select = document.getElementsByClassName("ListaCategoria")[0]
             var valueCategoria = select.options[select.selectedIndex].value;
@@ -734,6 +1142,17 @@
 
             window.location.replace(RotaWeb + 'DetalhePerfil/' + idUsuario);
         }
+
+        String.prototype.replaceAll = function(stringToFind, stringToReplace) {
+            if (stringToFind === stringToReplace) return this;
+            var temp = this;
+            var index = temp.indexOf(stringToFind);
+            while (index != -1) {
+                temp = temp.replace(stringToFind, stringToReplace);
+                index = temp.indexOf(stringToFind);
+            }
+            return temp;
+        };
 
     </script>
 

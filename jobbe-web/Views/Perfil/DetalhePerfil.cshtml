@@ -1,10 +1,6 @@
 ﻿@model long
 
 @{
-    ViewData["Title"] = "Home Page";
-}
-
-@{
     Layout = null;
 }
 
@@ -13,31 +9,45 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Jobbe</title>
-    <meta name="description" content="Portfolio Home Page" />
+    <title>@ViewBag.Title</title>
+
+    <meta name="description" content="@ViewBag.Descricao" />
     <!-- Favicon Tags Start -->
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../img/logo/icon_sol.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/logo/icon_sol.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/logo/icon_sol.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../img/logo/icon_sol.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../img/logo/icon_sol.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../img/logo/icon_sol.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../img/logo/icon_sol.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../img/logo/icon_sol.png" />
-    <link rel="icon" type="image/png" href="../img/logo/icon_sol.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="../img/logo/icon_sol.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="../img/logo/icon_sol.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../img/logo/icon_sol.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="../img/logo/icon_sol.png" sizes="128x128" />
+    <link id="img1" rel="apple-touch-icon-precomposed" sizes="57x57" href="@ViewBag.Perfil" />
+    <link id="img2" rel="apple-touch-icon-precomposed" sizes="114x114" href="@ViewBag.Perfil" />
+    <link id="img3" rel="apple-touch-icon-precomposed" sizes="72x72" href="@ViewBag.Perfil" />
+    <link id="img4" rel="apple-touch-icon-precomposed" sizes="144x144" href="@ViewBag.Perfil" />
+    <link id="img5" rel="apple-touch-icon-precomposed" sizes="60x60" href="@ViewBag.Perfil" />
+    <link id="img6" rel="apple-touch-icon-precomposed" sizes="120x120" href="@ViewBag.Perfil" />
+    <link id="img7" rel="apple-touch-icon-precomposed" sizes="76x76" href="@ViewBag.Perfil" />
+    <link id="img8" rel="apple-touch-icon-precomposed" sizes="152x152" href="@ViewBag.Perfil" />
+    <link id="img9" rel="icon" type="image/png" href="@ViewBag.Perfil" sizes="196x196" />
+    <link id="img10" rel="icon" type="image/png" href="@ViewBag.Perfil" sizes="96x96" />
+    <link id="img11" rel="icon" type="image/png" href="@ViewBag.Perfil" sizes="32x32" />
+    <link id="img12" rel="icon" type="image/png" href="@ViewBag.Perfil" sizes="16x16" />
+    <link id="img13" rel="icon" type="image/png" href="@ViewBag.Perfil" sizes="128x128" />
+
     <meta name="application-name" content="&nbsp;" />
     <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <meta name="msapplication-TileImage" content="../img/logo/icon_sol.png" />
-    <meta name="msapplication-square70x70logo" content="../img/logo/icon_sol.png" />
-    <meta name="msapplication-square150x150logo" content="../img/logo/icon_sol.png" />
-    <meta name="msapplication-wide310x150logo" content="../img/logo/icon_sol.png" />
-    <meta name="msapplication-square310x310logo" content="../img/logo/icon_sol.png" />
+    <meta name="msapplication-TileImage" content="@ViewBag.Perfil" />
+    <meta name="msapplication-square70x70logo" content="@ViewBag.Perfil" />
+    <meta name="msapplication-square150x150logo" content="@ViewBag.Perfil" />
+    <meta name="msapplication-wide310x150logo" content="@ViewBag.Perfil" />
+    <meta name="msapplication-square310x310logo" content="@ViewBag.Perfil" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6B1GH0KP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2C6B1GH0KP');
+    </script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2955429652078188" crossorigin="anonymous"></script>
+
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-N373HXJ"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
@@ -80,7 +90,7 @@
                                 <div class="d-flex align-items-center flex-column">
                                     <div class="mb-3 d-flex align-items-center flex-column">
                                         <div class="sw-13 position-relative mb-3">
-                                            <img id="fotoPerfilPrestador" src="../img/profile/profile-2.webp" class="img-fluid card" alt="thumb" />
+                                            <img id="fotoPerfilPrestador" style="height: 20vh;width: 15vh;" src="../img/profile/perfilpadrao.png" class="img-fluid card" alt="thumb" />
                                         </div>
                                         <div class="h5 mb-0"><span id="apelidoPrestador"></span></div>
                                         <div class="text-muted"><span id="categoriaPrestador"></span></div>
@@ -104,7 +114,7 @@
 
 
                                 <div class="d-flex align-items-center flex-column mb-5">
-                                    <a id="callWhatsapp" class="btn btn-outline-primary w-100 me-2">Chamar no WhatsApp</a>
+                                    <a id="callWhatsapp" data-action="share/whatsapp/share" class="btn btn-outline-primary w-100 me-2">Chamar no WhatsApp</a>
                                 </div>
 
                                 <div class="d-flex align-items-center flex-column mb-5">
@@ -147,10 +157,10 @@
 
                                 <div class="d-flex mb-5">
 
-                                    <a href="http://google.com" style="margin-right: 2vw">
+                                    <a id="shareWhatsapp" style="margin-right: 2vw">
                                         <img src="../img/favicon/whatsapp.png" style="width: 5vh">
                                     </a>
-
+@*
                                     <a href="http://google.com" style="margin-right: 2vw">
                                         <img src="../img/favicon/instagram2.png" style="width: 5vh">
                                     </a>
@@ -161,7 +171,7 @@
 
                                     <a href="http://google.com" style="margin-right: 2vw">
                                         <img src="../img/favicon/email.png" style="width: 5vh">
-                                    </a>
+                                    </a>*@
 
                                 </div>
 
@@ -202,8 +212,8 @@
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <div class="sw-7 me-1 mb-1 d-inline-block">
-                                                    <img id="fotoPerfilGaleriaAmpliada" class="img-fluid rounded-md" alt="thumb" />
+                                                <div style="margin-right: 1vw" class="sw-7 mb-1 d-inline-block">
+                                                    <img style="height: 10vh;" id="fotoPerfilGaleriaAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
                                                 <h5 class="modal-title h4" id="nomeUsuarioGaleriaAmpliada"></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -230,8 +240,8 @@
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <div class="sw-7 me-1 mb-1 d-inline-block">
-                                                    <img id="fotoPublicacaoAmpliada" class="img-fluid rounded-md" alt="thumb" />
+                                                <div style="margin-right: 1vw" class="sw-7 mb-1 d-inline-block">
+                                                    <img style="height: 10vh;" id="fotoPublicacaoAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
                                                 <h5 class="modal-title h4" id="nomeUsuarioPublicacaoAmpliada"></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -393,6 +403,14 @@
             ajax.responseType = 'json';
             ajax.onload = function (e) {
                 if (this.status == 200) {
+
+                    if (this.response.data.idFotoPerfil != null) {
+                        document.getElementById('fotoPerfilGaleriaAmpliada').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
+                        document.getElementById('fotoPublicacaoAmpliada').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
+                    }
+
+                    document.getElementById("nomeUsuarioGaleriaAmpliada").innerText = this.response.data.apelido;
+                    document.getElementById("nomeUsuarioPublicacaoAmpliada").innerText = this.response.data.apelido;
                     document.getElementById("apelidoPrestador").textContent = this.response.data.apelido;
                     document.getElementById("categoriaPrestador").textContent = this.response.data.categoria.descricao;
                     document.getElementById("emailPrestador").textContent = this.response.data.email;
@@ -410,6 +428,9 @@
                     console.log(this.response)
 
                     if (this.response.data.mural != null) {
+
+                        document.querySelector('meta[name="description"]').setAttribute("content", this.response.data.mural.descricao);
+
                         idMuralPrestador = this.response.data.mural.id
                         existMuralPrestador = true
                         document.getElementById("descMuralPrestador").textContent = this.response.data.mural.descricao;
@@ -434,15 +455,10 @@
                                             <div class="col ps-3">
                                                 <div class="row g-0">
                                                     <div class="col">
-                                                        <h5>` + this.response.data.cards[i].titulo + `</h5>
+                                                        <h6>` + this.response.data.cards[i].titulo + `</h6>
                                                         <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="` + this.response.data.cards[i].id + `" onclick="selectCardDelete(this.id)" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
-                                                    <i data-cs-icon="close"></i>
-                                                </button>
                                             </div>
                                         </div>
                                 </div>
@@ -489,11 +505,17 @@
 
                     if (this.response.data.telefones != null) {
 
+                        document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, olha este perfil que encontrei no Jobbe, acesse o link para dar uma olhadinha: ' + 'https://jobbeapp.com.br/DetalhePerfil/' + @Model;
+
                        var whatsAppLink = document.getElementById('callWhatsapp');
                        var phoneNumberLink = document.getElementById('callPhoneNumber');
-
-                        whatsAppLink.href = 'https://api.whatsapp.com/send?phone=55' + this.response.data.telefones[0].numeroTelefone + '&text=Olá, preciso de um serviço!'
-                        whatsAppLink.target = '_blank'
+                       let numeroCelularPrestador = this.response.data.telefones[0].numeroTelefone.replace(" ", "");
+                       numeroCelularPrestador = numeroCelularPrestador.replace("(", "");
+                       numeroCelularPrestador = numeroCelularPrestador.replace(")", "");
+                       numeroCelularPrestador = numeroCelularPrestador.replace("-", "");
+                       //whatsAppLink.href = 'https://api.whatsapp.com/send?phone=55' + this.response.data.telefones[0].numeroTelefone + '&text=Olá! Encontrei seu perfil no Jobbe, preciso de um serviço!'
+                       whatsAppLink.href = 'https://wa.me/55' + numeroCelularPrestador + '/?text=' + '&text=Olá! Encontrei seu perfil no Jobbe, preciso de um serviço!'
+                       whatsAppLink.target = '_blank'
 
                         phoneNumberLink.href = 'tel://+55' + this.response.data.telefones[0].numeroTelefone
 
@@ -527,6 +549,9 @@
                     if (this.response.data != null) {
 
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
+
+                            var textoPublicacao = this.response.data[i].descricao.replaceAll("\n", "<br>")
+
                             var html = `
                                             <div id="publicacao` + this.response.data[i].id + `" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
                                                     <a>
@@ -534,7 +559,7 @@
                                                     </a>
                                                     <div class="card-body">
                                                             <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                ` + this.response.data[i].descricao + `
+                                                                ` + textoPublicacao + `
                                                             </p>
                                                     </div>
                                             </div>
@@ -544,13 +569,13 @@
 
                             var html2 = `
                                         <div id="publicacaoAmpliada` + this.response.data[i].id + `" style="margin-top:5vh">
-                                            <div style="width:100%; display: flex; justify-content: center;">
-                                                <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
+                                            <div class="mb-3" style="width:100%; display: flex; justify-content: center;">
+                                                <img style="max-height: 70vh;max-width: 100vw;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
                                             </div>
 
                                             <div style="width:100%; display: flex; justify-content: center;">
                                                 <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                    ` + this.response.data[i].descricao + `
+                                                    ` + textoPublicacao + `
                                                 </p>
                                             </div>
 
@@ -595,7 +620,7 @@
                             var html2 = `
                                                 <div id="galeriaAmpliada` + this.response.data[i].id + `" style="margin-top:5vh">
                                                     <div style="width:100%; display: flex; justify-content: center;">
-                                                        <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" />
+                                                        <img style="max-height: 70vh;max-width: 100vw;" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" />
                                                     </div>
 
                                                     <hr style="width:100%; margin-top:3vh"/>
@@ -612,6 +637,17 @@
 
             ajax.send();
           }
+
+        String.prototype.replaceAll = function(stringToFind, stringToReplace) {
+            if (stringToFind === stringToReplace) return this;
+            var temp = this;
+            var index = temp.indexOf(stringToFind);
+            while (index != -1) {
+                temp = temp.replace(stringToFind, stringToReplace);
+                index = temp.indexOf(stringToFind);
+            }
+            return temp;
+        };
 
     </script>
 

@@ -46,6 +46,10 @@ namespace jobbe_web
                         builder.WithOrigins("http://www.jobbeapp.com.br")
                                             .AllowAnyHeader()
                                             .AllowAnyMethod();
+                        
+                        builder.WithOrigins("https://192.168.15.7:8081")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
 
                     });
             });

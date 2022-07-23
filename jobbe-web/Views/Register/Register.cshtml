@@ -12,7 +12,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Jobbe</title>
-    <meta name="description" content="Register Page" />
+    <meta name="description" content="Jobbe a ponte que conecta prestadores de serviços e clientes!" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
@@ -37,6 +37,19 @@
     <meta name="msapplication-square150x150logo" content="../img/logo/icon_sol.png" />
     <meta name="msapplication-wide310x150logo" content="../img/logo/icon_sol.png" />
     <meta name="msapplication-square310x310logo" content="../img/logo/icon_sol.png" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6B1GH0KP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2C6B1GH0KP');
+    </script>
+
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-N373HXJ"></script>
+
     <!-- Favicon Tags End -->
     <!-- Font Tags Start -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -83,7 +96,7 @@
                                 </div>*@
 
                                 <div class="mb-5">
-                                    <a class="btn btn-lg btn-outline-white" href="/Sign/Sign">Voltar</a>
+                                    <a class="btn btn-lg btn-outline-white" href="/">Voltar</a>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +135,7 @@
                                     </div>
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-cs-icon="user"></i>
-                                        <input class="form-control" placeholder="Apelido" id="registerApelido" name="registerApelido" />
+                                        <input class="form-control" placeholder="Apelido ou Nome Social" id="registerApelido" name="registerApelido" />
                                     </div>
                                     <div class="mb-3 filled form-group tooltip-end-top">
                                         <i data-cs-icon="phone"></i>
@@ -141,11 +154,11 @@
                                             <input type="checkbox" class="form-check-input" id="registerCheck" name="registerCheck" />
                                             <label class="form-check-label" for="registerCheck">
                                                 Li e aceito os
-                                                <a href="/Register/Register" target="_blank">termos e condições.</a>
+                                                <a href="/Terms/Terms" target="_blank">termos e condições.</a>
                                             </label>
                                         </div>
                                     </div>
-                                    <button id="btnSignup" style="visibility: visible; width: 100%" type="submit" data-bs-target="#exampleModal" class="btn btn-lg btn-primary">Signup</button>
+                                    <button id="btnSignup" style="visibility: visible; width: 100%" type="submit" data-bs-target="#exampleModal" class="btn btn-lg btn-primary">Cadastrar</button>
                                     <div style="text-align: center; margin-top: -20px">
                                         <div id="idProgressBar" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
                                     </div>
@@ -305,6 +318,13 @@
             e.preventDefault();
             if (validateForm()) {
 
+                let useTerms = document.getElementById("registerCheck").checked
+
+                if (!useTerms) {
+                    alertErro("Termos de Uso Obrigatório!", "Para avançar seu cadastro é necessário aceitar os termos de uso.")
+                    return
+                }
+
                 document.getElementById("btnSignup").style.visibility = "hidden";
                 document.getElementById("idProgressBar").style.visibility = "visible";
 
@@ -341,7 +361,7 @@
                             ajaxSaveUser.send();
 
                         } else {
-                            alertErro()
+                            alertErro("Algo deu errado!", JSON.parse(ajax.response).errorMessage)
                         }
 
                     }
@@ -360,8 +380,8 @@
         }
 
 
-        function alertErro() {
-            sweetAlert("Algo deu errado!", "Não foi possível salvar o registro.", "error")
+        function alertErro(title, message) {
+            sweetAlert(title, message, "error")
         }
 
         function alertSucess() {

@@ -2,5 +2,5 @@
 //var RotaWeb = 'https://192.168.0.209:8081/'
 //var RotaAPI = 'https://192.168.0.209:5001/'
 //var RotaWeb = 'https://192.168.0.209:8081/'
-var RotaAPI = 'https://192.168.15.9:5001/'
-var RotaWeb = 'https://192.168.15.9/8081'
+var RotaAPI = 'https://192.168.15.7:5001/'
+var RotaWeb = 'https://192.168.15.7:8081/'

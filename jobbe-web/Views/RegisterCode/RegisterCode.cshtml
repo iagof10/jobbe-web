@@ -12,7 +12,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Jobbe</title>
-    <meta name="description" content="Login Page" />
+    <meta name="description" content="Jobbe a ponte que conecta prestadores de serviços e clientes!" />
     <!-- Favicon Tags Start -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
@@ -37,6 +37,19 @@
     <meta name="msapplication-square150x150logo" content="../img/logo/icon_sol.png" />
     <meta name="msapplication-wide310x150logo" content="../img/logo/icon_sol.png" />
     <meta name="msapplication-square310x310logo" content="../img/logo/icon_sol.png" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6B1GH0KP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2C6B1GH0KP');
+    </script>
+
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-N373HXJ"></script>
+
     <!-- Favicon Tags End -->
     <!-- Font Tags Start -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -116,13 +129,13 @@
                                 <p class="h6">Enviamos um e-mail com seu código de ativação, coloque esse código no campo abaixo.</p>
                                 <p class="h6">
                                     Se você não recebeu o email,
-                                    <a href="Pages.Authentication.Login.html">click aqui para reenviar o código.</a>
+                                    <a id="btnReenviarCodigo" style="cursor: pointer; color: #d44f4f">click aqui para reenviar o código.</a>
                                     .
                                 </p>
                             </div>
                             <div>
                                 <div class="mb-3 filled form-group tooltip-end-top">
-                                    <i data-cs-icon="number"></i>
+                                    <i data-cs-icon="key"></i>
                                     <input id="registerCode" class="form-control" placeholder="Código de Ativação" name="codigoAtivacao" />
                                 </div>
                                 <button id="btnSendRegisterCode" type="submit" class="btn btn-lg btn-primary">Ativar Conta</button>
@@ -248,48 +261,122 @@
             document.getElementById("idProgressBar").style.visibility = "visible";
 
             var registerCode = document.getElementById("registerCode").value
-            const ajax = new XMLHttpRequest();
-            ajax.open('GET', RotaWeb + 'GetSessionUser');
-            ajax.responseType = 'json';
-            ajax.onload = function(e) {
+            const ajaxSession = new XMLHttpRequest();
+            ajaxSession.open('GET', RotaWeb + 'GetSessionUser');
+            ajaxSession.responseType = 'json';
+            ajaxSession.onload = function(e) {
 
-                if (this.status == 200) {
+                if (ajaxSession.readyState == 4) { 
+                
+                    if (this.status == 200) {
 
-                    document.getElementById("idProgressBar").style.visibility = "hidden";
-                    document.getElementById("btnSendRegisterCode").style.visibility = "visible";
+                        let idUsuario = this.response
 
-                    idUsuario = this.response
+                        const ajax = new XMLHttpRequest();
+                        ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/RegisterCode/' + idUsuario + "/" + registerCode);
+                        ajax.responseType = 'json';
+                        ajax.onload = function(e) {
 
-                    const ajax = new XMLHttpRequest();
-                    ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/RegisterCode/' + idUsuario + "/" + registerCode);
-                    ajax.responseType = 'json';
-                    ajax.onload = function(e) {
-                        if (this.status == 200) {
-                            if (this.response.data) {
+                            if (ajax.readyState == 4) { 
+                
+                                document.getElementById("idProgressBar").style.visibility = "hidden";
+                                document.getElementById("btnSendRegisterCode").style.visibility = "visible";
 
-                                window.location.replace(RotaWeb + "Perfil/Perfil");
+                                if (this.status == 200) {
+                                    if (this.response.data) {
 
-                            } else {
+                                        window.location.replace(RotaWeb + "Perfil/Perfil");
 
-                                //alertErro()
+                                    } else {
+
+                                        //alertErro()
+
+                                    }
+                                } else {
+                                    //alertErro()
+                                }
 
                             }
-                        } else {
-                            //alertErro()
-                        }
-                    };
+                        };
 
-                    ajax.send();
+                        ajax.send();
 
-                } else {
+                    } else {
 
-                    document.getElementById("idProgressBar").style.visibility = "hidden";
-                    document.getElementById("btnSendRegisterCode").style.visibility = "visible";
+                        document.getElementById("idProgressBar").style.visibility = "hidden";
+                        document.getElementById("btnSendRegisterCode").style.visibility = "visible";
+
+                    }
 
                 }
+
             };
 
-            ajax.send();
+            ajaxSession.send();
+        }
+
+
+        document.getElementById("btnReenviarCodigo").addEventListener("click", ReenviarCodigoAtivacao, false);
+
+        function ReenviarCodigoAtivacao() {
+            
+            const ajaxSession = new XMLHttpRequest();
+            ajaxSession.open('GET', RotaWeb + 'GetSessionUser');
+            ajaxSession.responseType = 'json';
+            ajaxSession.onload = function(e) {
+
+                if (ajaxSession.readyState == 4) { 
+                
+                    if (this.status == 200) {
+
+                        let idUsuario = this.response
+
+                        const ajax = new XMLHttpRequest();
+                        ajax.open('GET', RotaAPI + 'api/UsuarioPrestador/ReenviarCodigoAtivacao/' + idUsuario);
+                        ajax.responseType = 'json';
+                        ajax.onload = function (e) {
+                            if (this.status == 200) {
+
+                                if (this.response.data) {
+
+                                    alertSucess()
+                                }
+                    
+                            }else{
+                                alertErro()
+                            }
+                        };
+
+                        ajax.send();
+
+                    } else {
+
+                        alertErro()
+
+                    }
+
+                }
+
+            };
+
+            ajaxSession.send();
+        }
+
+        function alertErro() {
+            sweetAlert("Usuário não encontrado!", "", "error")
+        }
+
+
+        function alertSucess() {
+            swal({
+                title: 'Código de ativação enviado!',
+                text: 'Enviamos um novo código, caso não apareça na sua caixa de entrada, dê uma olhadinha na sua caixa de Spam.',
+                type: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#1ea8e7',
+                confirmButtonText: 'Yes!'
+            }).then(() => {
+            });
         }
 
     </script>

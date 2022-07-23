@@ -14,7 +14,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Jobbe</title>
-    <meta name="description" content="Portfolio Home Page" />
+    <meta name="description" content="Jobbe a ponte que conecta prestadores de serviços e clientes!" />
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,7 +45,19 @@
     <meta name="msapplication-wide310x150logo" content="../img/logo/icon_sol.png" />
     <meta name="msapplication-square310x310logo" content="../img/logo/icon_sol.png" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C6B1GH0KP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2C6B1GH0KP');
+    </script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2955429652078188" crossorigin="anonymous"></script>
+
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-N373HXJ"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
@@ -64,6 +76,8 @@
     <link rel="stylesheet" href="../css/vendor/baguetteBox.min.css" />
 
     <link rel="stylesheet" href="../css/vendor/nouislider.min.css" />
+
+    <link rel="stylesheet" href="../css/vendor/glide.core.min.css" />
 
     <!-- Vendor Styles End -->
     <!-- Template Base Styles Start -->
@@ -84,13 +98,17 @@
                 <div class="row gx-4 gy-5">
                     <!-- Left Side Start -->
                     <div class="col-12 col-xl-4 col-xxl-3">
+
                         <!-- Biography Start -->
                         <div class="card">
                             <div class="card-body mb-n5">
+
                                 <div class="d-flex align-items-center flex-column">
+
+
                                     <div class="mb-3 d-flex align-items-center flex-column">
                                         <div class="sw-13 position-relative mb-3">
-                                            <img id="fotoPerfilPrestador" src="../img/profile/profile-2.webp" class="img-fluid card" alt="thumb" />
+                                            <img id="fotoPerfilPrestador" style="height: 20vh;width: 15vh;" src="../img/profile/perfilpadrao.png" class="img-fluid card" alt="thumb" />
                                         </div>
 
                                         <!-- Vertically centered modal-->
@@ -102,16 +120,15 @@
                                              aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Alterar Foto Perfil</h5>
+                                                    <div class="modal-header" style="height: 10vh;">
+                                                        <h6 class="modal-title" id="verticallyCenteredLabel">Insira uma foto de perfil, este é o cartão de visitas para seu cliente!</h6>
                                                         <button id="btnCloseAlterarFotoPerfil" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <!-- Quill Top Label Start -->
-
-                                                        <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Insira sua publicação, ela será exibida para milhares de clientes!</h7>
-                                                        </div>
+                                                        @*                                                        <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
+                                                        <h7 class="modal-title" id="verticallyCenteredLabel">Insira sua publicação, ela será exibida para milhares de clientes!</h7>
+                                                        </div>*@
 
                                                         <section class="scroll-section" id="topLabel">
 
@@ -149,18 +166,146 @@
                                                         </section>
                                                         <!-- Quill Top Label End -->
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button id="btnSalvarFotoPerfil" type="button" class="btn btn-primary">Save changes</button>
+                                                    <div class="modal-footer" style="padding: 10px;">
+                                                        <button id="btnSalvarFotoPerfil" style="width: 100%;" type="button" class="btn btn-primary">Salvar</button>
+                                                        <div style="text-align: center; margin-top: -20px; width: 100%;">
+                                                            <div id="idProgressBarFotoPerfil" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="text-muted">
-                                            <button type="button" class="btn btn-outline-primary btn-icon btn-icon-end w-100 w-sm-auto" data-bs-toggle="modal" data-bs-target="#modalAlterarFotoPerfil">
-                                                <i data-cs-icon="edit"></i>
-                                            </button>
+
+
+                                        <!-- Vertically centered modal-->
+                                        <div class="modal fade modal-close-out"
+                                             id="modalAlterarDadosPessoais"
+                                             tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="verticallyCenteredLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="height: 10vh;">
+                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Alterar dados pessoais</h5>
+                                                        <button id="btnCloseAlterarDadosPessoais" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <section class="scroll-section" id="topLabel">
+
+                                                            <!-- Public Info Start -->
+                                                            <div>
+                                                                <div>
+                                                                    <div class="mb-3 row">
+                                                                        <label>Nome</label>
+                                                                        <div>
+                                                                            <input id="editarNome" type="text" class="form-control" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3 row">
+                                                                        <label>Apelido</label>
+                                                                        <div>
+                                                                            <input id="editarApelido" type="text" class="form-control" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3 row">
+                                                                        <label>Celular</label>
+                                                                        <div>
+                                                                            <input id="editarCelular" type="text" class="form-control" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- Public Info End -->
+
+                                                        </section>
+
+                                                    </div>
+                                                    <div class="modal-footer" style="padding: 10px;">
+                                                        <button id="btnSalvarAlterarDadosPessoais" style="width: 100%;" type="button" class="btn btn-primary">Salvar</button>
+                                                        <div style="text-align: center; margin-top: -20px; width: 100%;">
+                                                            <div id="idProgressBarAlterarDadosPessoais" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <!-- Vertically centered modal-->
+                                        <div class="modal fade modal-close-out"
+                                             id="modalLogout"
+                                             tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="verticallyCenteredLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="height: 10vh;">
+                                                        <h5 class="modal-title" id="verticallyCenteredLabel">Logout</h5>
+                                                        <button id="btnCloseLogout" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Quill Top Label Start -->
+
+                                                        <div class="mb-5">
+                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Tem certeza que deseja deslogar do seu perfil?</h7>
+                                                            <h7 class="modal-title" id="verticallyCenteredLabel">Não tem problema, quando quiser, basta logar novamente!</h7>
+                                                        </div>
+                                                        <!-- Quill Top Label End -->
+                                                    </div>
+                                                    <div class="modal-footer" style="padding: 10px;">
+                                                        <button id="btnLogout" style="width: 100%;" type="button" class="btn btn-primary">Sair</button>
+                                                        <div style="text-align: center; margin-top: -20px; width: 100%;">
+                                                            <div id="idProgressLogout" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Icons Menu Start -->
+                                        <ul class="list-unstyled list-inline text-center menu-icons">
+                                            <li class="list-inline-item">
+
+                                                <a href="#" data-bs-toggle="dropdown" data-bs-target="#notifications" aria-haspopup="true" aria-expanded="false" class="btn btn-outline-primary btn-icon btn-icon-end w-100 w-sm-auto">
+                                                    <div>
+                                                        <i data-cs-icon="gear"></i>
+                                                        <span class="position-absolute notification-dot rounded-xl"></span>
+                                                    </div>
+                                                </a>
+
+                                                <div class="dropdown-menu scroll-out" id="notifications">
+                                                    <div class="scroll">
+                                                        <ul class="list-unstyled border-last-none">
+                                                            <li class="mb-3 pb-3 border-bottom border-separator-light d-flex">
+                                                                <i data-cs-icon="edit" style="margin-right: 1vw; margin-left: 0.5vw"></i>
+                                                                <div class="align-self-center">
+                                                                    <a id="btnAbrirModalPerfil" data-bs-toggle="modal" data-bs-target="#modalAlterarFotoPerfil" href="#">Alterar foto perfil</a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="mb-3 pb-3 border-bottom border-separator-light d-flex">
+                                                                <i data-cs-icon="edit" style="margin-right: 1vw; margin-left: 0.5vw"></i>
+                                                                <div class="align-self-center">
+                                                                    <a data-bs-toggle="modal" data-bs-target="#modalAlterarDadosPessoais" href="#">Alterar dados pessoais</a>
+                                                                </div>
+                                                            </li>
+                                                            <li class="border-bottom border-separator-light d-flex">
+                                                                <i data-cs-icon="logout" style="margin-right: 1vw; margin-left: 0.5vw"></i>
+                                                                <div class="align-self-center">
+                                                                    <a data-bs-toggle="modal" data-bs-target="#modalLogout" href="#">Sair</a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!-- Icons Menu End -->
 
                                         <br />
 
@@ -190,6 +335,10 @@
                                         <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddMural">Editar Mural</button>
                                     </div>
 
+                                    <div style="display: none; height: 0px; width: 0px;">
+                                        <button id="btnInicial" type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalInicial">Editar Mural</button>
+                                    </div>
+
                                     <!-- Vertically centered modal-->
                                     <div class="modal fade modal-close-out"
                                          id="modalAddMural"
@@ -199,7 +348,7 @@
                                          aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header">
+                                                <div class="modal-header" style="height: 10vh;">
                                                     <h5 class="modal-title" id="verticallyCenteredLabel">Mural</h5>
                                                     <button id="btnCloseAddMural" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
@@ -207,7 +356,7 @@
                                                     <!-- Quill Top Label Start -->
 
                                                     <div class="mb-5">
-                                                        <h7 class="modal-title" id="verticallyCenteredLabel">Insira seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
+                                                        <h7 class="modal-title" id="verticallyCenteredLabel">Edite seu mural e detalhe seu perfil, dessa forma os clientes serão mais atraídos pelo seu conteúdo!</h7>
                                                     </div>
 
                                                     <section class="scroll-section" id="topLabel">
@@ -222,11 +371,33 @@
                                                     </section>
                                                     <!-- Quill Top Label End -->
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button id="btnSalvarMural" style="width: 100%;" type="button" class="btn btn-primary">Save changes</button>
-                                                    <div  style="text-align: center; margin-top: -20px; width: 100%;">
+                                                <div class="modal-footer" style="padding: 10px;">
+                                                    <button id="btnSalvarMural" style="width: 100%;" type="button" class="btn btn-primary">Salvar</button>
+                                                    <div style="text-align: center; margin-top: -20px; width: 100%;">
                                                         <div id="idProgressBarMural" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Vertically centered modal-->
+                                    <div class="modal fade modal-close-out"
+                                         id="modalInicial"
+                                         tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="verticallyCenteredLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="height: 10vh;">
+                                                    <h7 class="modal-title" id="verticallyCenteredLabel">Tenha um perfil campeão, basta seguir os passos abaixo!</h7>
+                                                    <button id="btnCloseInicial" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div id="conteudoModalInicial" style="padding: 10px;" class="modal-body">
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -255,7 +426,7 @@
                                          aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header">
+                                                <div class="modal-header" style="height: 10vh;">
                                                     <h5 class="modal-title" id="verticallyCenteredLabel">Região de Atendimento</h5>
                                                     <button id="btnCloseRegiaoAtendimento" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
@@ -290,7 +461,7 @@
                                          aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header">
+                                                <div class="modal-header" style="height: 10vh;">
                                                     <h5 class="modal-title" id="verticallyCenteredLabel">Região de Atendimento</h5>
                                                     <button id="btnCloseRegiaoLocalizacao" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
@@ -310,7 +481,7 @@
 
                                                     </section>
                                                 </div>
-                                                <div class="modal-footer">
+                                                <div class="modal-footer" style="padding: 10px;">
                                                     <button id="btnSalvarRegiao" type="button" class="btn btn-primary">Salvar</button>
                                                 </div>
                                             </div>
@@ -356,7 +527,7 @@
 
                                                     </section>
                                                 </div>
-                                                <div class="modal-footer">
+                                                <div class="modal-footer" style="padding: 10px;">
                                                     <button id="btnSalvarRegiaoCep" style="visibility: hidden;" type="button" class="btn btn-primary">Salvar</button>
                                                 </div>
                                             </div>
@@ -393,17 +564,17 @@
                                         <img src="../img/favicon/whatsapp.png" style="width: 5vh">
                                     </a>
 
-                                    <a href="http://google.com" style="margin-right: 2vw">
-                                        <img src="../img/favicon/instagram2.png" style="width: 5vh">
+                                    @*                                    <a href="http://google.com" style="margin-right: 2vw">
+                                    <img src="../img/favicon/instagram2.png" style="width: 5vh">
                                     </a>
 
                                     <a href="http://google.com" style="margin-right: 2vw">
-                                        <img src="../img/favicon/facebook.png" style="width: 5vh">
+                                    <img src="../img/favicon/facebook.png" style="width: 5vh">
                                     </a>
 
                                     <a href="http://google.com" style="margin-right: 2vw">
-                                        <img src="../img/favicon/email.png" style="width: 5vh">
-                                    </a>
+                                    <img src="../img/favicon/email.png" style="width: 5vh">
+                                    </a>*@
 
                                 </div>
 
@@ -425,7 +596,7 @@
                                  aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
-                                        <div class="modal-header">
+                                        <div class="modal-header" style="height: 10vh;">
                                             <h5 class="modal-title" id="verticallyCenteredLabel">Card</h5>
                                             <button id="btnCloseAddCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
@@ -448,11 +619,11 @@
                                             </section>
                                             <!-- Quill Top Label End -->
                                         </div>
-                                        <div class="modal-footer">
-                                            <button id="btnSalvarCard" style="width: 100%;" type="button" class="btn btn-primary">Save changes</button>
-                                            <div  style="text-align: center; margin-top: -20px; width: 100%;">
+                                        <div class="modal-footer" style="padding: 10px;">
+                                            <button id="btnSalvarCard" style="width: 100%;" type="button" class="btn btn-primary">Salvar</button>
+                                            <div style="text-align: center; margin-top: -20px; width: 100%;">
                                                 <div id="idProgressBarCard" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
-                                            </div>                                        
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -467,7 +638,7 @@
                                  aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
-                                        <div class="modal-header">
+                                        <div class="modal-header" style="height: 10vh;">
                                             <h5 class="modal-title" id="verticallyCenteredLabel">Excluir Card</h5>
                                             <button id="btnCloseRemoveCard" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
@@ -480,7 +651,7 @@
 
                                             <!-- Quill Top Label End -->
                                         </div>
-                                        <div class="modal-footer">
+                                        <div class="modal-footer" style="padding: 10px;">
                                             <button id="btnDeletarCard" type="button" class="btn btn-primary">Excluir</button>
                                         </div>
                                     </div>
@@ -505,7 +676,7 @@
                                 <a class="nav-link active" data-bs-toggle="tab" href="#projectsTab" role="tab" aria-selected="true">Galeria</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" data-bs-toggle="tab" href="#publicacaoTab" role="tab" aria-selected="false">Publicações</a>
+                                <a id="btnPublicacaoTab" class="nav-link" data-bs-toggle="tab" href="#publicacaoTab" role="tab" aria-selected="false">Publicações</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" data-bs-toggle="tab" href="#subCategoriasTab" role="tab" aria-selected="false">Sub-Categorias</a>
@@ -524,18 +695,17 @@
                                  aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="verticallyCenteredLabel">Adicionar Mídia</h5>
+                                        <div class="modal-header" style="height: 10vh;">
+                                            <h6 class="modal-title" id="verticallyCenteredLabel">Insira uma nova foto para sua galeria!</h6>
                                             <button id="btnCloseAddMidia" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
 
 
                                             <!-- Quill Top Label Start -->
-
-                                            <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira uma nova foto para sua galeria!</h7>
-                                            </div>
+                                            @*                                            <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
+                                            <h7 class="modal-title" id="verticallyCenteredLabel">Insira uma nova foto para sua galeria!</h7>
+                                            </div>*@
 
                                             <section class="scroll-section" id="topLabel">
 
@@ -575,8 +745,11 @@
 
 
                                         </div>
-                                        <div class="modal-footer">
-                                            <button id="btnSalvarMidia" type="button" class="btn btn-primary">Save changes</button>
+                                        <div class="modal-footer" style="padding: 10px;">
+                                            <button id="btnSalvarMidia" style="width: 100%;" type="button" class="btn btn-primary">Salvar</button>
+                                            <div style="text-align: center; margin-top: -20px; width: 100%;">
+                                                <div id="idProgressBarMidia" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -589,14 +762,14 @@
                                 <br />
 
                                 <div class="d-flex align-items-center flex-column mb-5">
-                                    <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddGaleria">Add Mídia</button>
+                                    <button id="btnAbrirModalGaleria" type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddGaleria">Add Mídia</button>
                                 </div>
 
                                 <div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <div class="sw-7 me-1 mb-1 d-inline-block">
+                                                <div style="margin-right: 1vw" class="sw-7 mb-1 d-inline-block">
                                                     <img id="fotoPerfilGaleriaAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
                                                 <h5 class="modal-title h4" id="nomeUsuarioGaleriaAmpliada"></h5>
@@ -627,16 +800,15 @@
                                      aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="verticallyCenteredLabel">Publicação</h5>
+                                            <div class="modal-header" style="height: 10vh;">
+                                                <h6 class="modal-title" id="verticallyCenteredLabel">Insira sua publicação, ela será exibida para milhares de clientes!</h6>
                                                 <button id="btnCloseAddPublicacao" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <!-- Quill Top Label Start -->
-
-                                                <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
-                                                    <h7 class="modal-title" id="verticallyCenteredLabel">Insira sua publicação, ela será exibida para milhares de clientes!</h7>
-                                                </div>
+                                                @*                                                <div class="d-flex flex-row justify-content-between w-100 w-sm-50 w-xl-100 mb-5">
+                                                <h7 class="modal-title" id="verticallyCenteredLabel">Insira sua publicação, ela será exibida para milhares de clientes!</h7>
+                                                </div>*@
 
                                                 <section class="scroll-section" id="topLabel">
 
@@ -682,8 +854,11 @@
                                                 <!-- Quill Top Label End -->
                                             </div>
 
-                                            <div class="modal-footer">
-                                                <button id="btnSalvarPublicacao" type="button" class="btn btn-primary">Save changes</button>
+                                            <div class="modal-footer" style="padding: 10px;">
+                                                <button id="btnSalvarPublicacao" style="width: 100%;" type="button" class="btn btn-primary">Salvar</button>
+                                                <div style="text-align: center; margin-top: -20px; width: 100%;">
+                                                    <div id="idProgressBarPublicacao" style="visibility: hidden" class="spinner-border text-primary" role="status"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -692,7 +867,7 @@
                                 <br />
 
                                 <div class="d-flex align-items-center flex-column mb-5">
-                                    <button type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddPublicacao">Add Publicação</button>
+                                    <button id="btnAbrirModalPublicacao" type="button" class="btn btn-outline-primary w-100 me-2" data-bs-toggle="modal" data-bs-target="#modalAddPublicacao">Add Publicação</button>
                                 </div>
 
 
@@ -700,7 +875,7 @@
                                     <div class="modal-dialog modal-fullscreen">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <div class="sw-7 me-1 mb-1 d-inline-block">
+                                                <div style="margin-right: 1vw" class="sw-7 mb-1 d-inline-block">
                                                     <img id="fotoPublicacaoAmpliada" class="img-fluid rounded-md" alt="thumb" />
                                                 </div>
                                                 <h5 class="modal-title h4" id="nomeUsuarioPublicacaoAmpliada"></h5>
@@ -718,7 +893,7 @@
                                 </div>
                                 <!-- List End -->
                             </div>
-                            
+
                             <div class="tab-pane fade" id="subCategoriasTab" role="tabpanel">
 
                                 <br />
@@ -817,32 +992,31 @@
     </div>
 
     <!-- Novo modal  -->
-      <div class="cropped_modal">
+    <div class="cropped_modal">
         <div class="cropped_modal-header">
-        <span class="title">
-            Upload
-        </span>
+            <span class="title">
+                Cortar Foto
+            </span>
 
-        <span id="cropped_closed" class="btn-close"></span>
+            <span id="cropped_closed" class="btn-close"></span>
         </div>
 
-    <div class="main">
-      <!-- <img src="https://github.com/anderson-tec12.png" alt=""> -->
-      <img src="" alt="">
+        <div class="main">
+            <!-- <img src="https://github.com/anderson-tec12.png" alt=""> -->
+            <img src="" alt="">
+        </div>
+        <div class="footer">
+            <input type="file" id="CROPED_FILE_LOAD">
+            <button type="button" id="load">Carregar</button>
+            <button id="croppSave" class="save btn btn-primary">Salvar</button>
+        </div>
     </div>
-    <div class="footer">
-      <input type="file" id="CROPED_FILE_LOAD">
-      <button type="button" id="load" >Carregar</button>
-      <button id="croppSave" class="save btn btn-primary">Salvar</button>
+
+    <div class="modal-background">
     </div>
-  </div>
 
-  <div class="modal-background">
-
-  </div>
-
-  <div style="display:none" class="img-preview"></div>
-  <div style="display:none" class="img-cropped-inserted"></div>
+    <div style="display:none" class="img-preview"></div>
+    <div style="display:none" class="img-cropped-inserted"></div>
 
     <!-- Fim do novo modal  -->
     <style>
@@ -881,7 +1055,6 @@
                 cursor: pointer;
             }
 
-            
     </style>
 
     <!-- jQuery library -->
@@ -923,12 +1096,23 @@
     <script src="../js/utils/libs/Cropp/html2canvas.js"></script>
     @*<script type="module" src="../js/utils/utils.js"></script>*@
     <!-- Page Specific Scripts End -->
+    <!-- Page Specific Scripts Start -->
+    <script src="../js/cs/glide.custom.js"></script>
+    <script src="../js/plugins/carousels.js"></script>
+    <!-- Page Specific Scripts End -->
+    <!-- Vendor Scripts Start -->
+    <script src="../js/cs/scrollspy.js"></script>
+    <script src="../js/vendor/glide.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 
 
     <script type="module">
         import { utils } from '../js/utils/utils.js'
-        
+
 
         //Cropme in Modal
         var CiM = {
@@ -989,13 +1173,13 @@
             getImagePlaceholder: function(width, height, text) {
                 //based on https://cloudfour.com/thinks/simple-svg-placeholder/
                 var svg = '\
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="{w}" \
-                                      height="{h}" viewBox="0 0 {w} {h}">\
-                                      <rect fill="#ddd" width="{w}" height="{h}"/>\
-                                      <text fill="rgba(0,0,0,0.5)" font-family="sans-serif"\
-                                      font-size="30" dy="10.5" font-weight="bold"\
-                                      x="50%" y="50%" text-anchor="middle">{t}</text>\
-                                      </svg>';
+                                                                                                                                                                              <svg xmlns="http://www.w3.org/2000/svg" width="{w}" \
+                                                                                                                                                                              height="{h}" viewBox="0 0 {w} {h}">\
+                                                                                                                                                                              <rect fill="#ddd" width="{w}" height="{h}"/>\
+                                                                                                                                                                              <text fill="rgba(0,0,0,0.5)" font-family="sans-serif"\
+                                                                                                                                                                              font-size="30" dy="10.5" font-weight="bold"\
+                                                                                                                                                                              x="50%" y="50%" text-anchor="middle">{t}</text>\
+                                                                                                                                                                              </svg>';
                 var cleaned = svg
                     .replace(/{w}/g, width)
                     .replace(/{h}/g, height)
@@ -1074,10 +1258,10 @@
         }
 
         window.onload = function() {
-            const { isUserLogged, CROPPER_ACTION_BUTTON_TO_INPUT, CROPPED_SHOW  } = utils
+            const { isUserLogged, CROPPER_ACTION_BUTTON_TO_INPUT, CROPPED_SHOW } = utils
             let CROPPED
 
-           // isUserLogged(@Model)
+            // isUserLogged(@Model)
 
             function getBase64Image(img) {
                 var canvas = document.createElement("canvas");
@@ -1125,16 +1309,16 @@
                 // $('#fileUpload').prop("value", "");
                 // $('#fileUpload').click();
 
-               
+
 
                 document.querySelector('#btnCloseAddPublicacao').click()
-                
+
                 //NOVO CROPPED
                 const buttonToDispatchLoadFile = document.querySelector("#load");
                 const elementIsGetBase64Preview = document.querySelector('#saved-img')
                 const modalOpenBack = document.querySelector('[data-bs-target="#modalAddPublicacao"]')
-                
-                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview,modalOpenBack)
+
+                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview, modalOpenBack)
 
                 buttonToDispatchLoadFile.click()
             });
@@ -1190,17 +1374,17 @@
                 // $('#fileUploadFotoPerfil').prop("value", "");
                 // $('#fileUploadFotoPerfil').click();
 
-               
-                // const inputFile = document.querySelector("#fileUploadFotoPerfil");                
+
+                // const inputFile = document.querySelector("#fileUploadFotoPerfil");
                 // const imgElement = document.querySelector(".cropped_modal .main img");
                 document.querySelector('#btnCloseAlterarFotoPerfil').click()
-                
+
                 //NOVO CROPPED
                 const buttonToDispatchLoadFile = document.querySelector("#load");
                 const elementIsGetBase64Preview = document.querySelector('#saved-imgFotoPerfil')
                 const modalOpenBack = document.querySelector('[data-bs-target="#modalAlterarFotoPerfil"]')
-                
-                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview,modalOpenBack)
+
+                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview, modalOpenBack)
 
                 buttonToDispatchLoadFile.click()
             });
@@ -1257,14 +1441,14 @@
                 // $('#fileUploadFotoMidia').prop("value", "");
                 // $('#fileUploadFotoMidia').click();
 
-               
+
 
                 //NOVO CROPPED
                 const buttonToDispatchLoadFile = document.querySelector("#load");
                 const elementIsGetBase64Preview = document.querySelector('#saved-imgFotoMidia')
                 const modalOpenBack = document.querySelector('[data-bs-target="#modalAddGaleria"]')
-                
-                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview,modalOpenBack)
+
+                CROPPER_ACTION_BUTTON_TO_INPUT(buttonToDispatchLoadFile, elementIsGetBase64Preview, modalOpenBack)
                 document.querySelector('#btnCloseAddMidia').click()
                 buttonToDispatchLoadFile.click()
             });
@@ -1302,6 +1486,23 @@
             return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
         }
 
+        if (@Model == 0) {
+            window.location.replace(RotaWeb);
+        }
+
+        $(document).ready(function($) {
+            var SPMaskBehavior = function(val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+            },
+                spOptions = {
+                    onKeyPress: function(val, e, field, options) {
+                        field.mask(SPMaskBehavior.apply({}, arguments), options);
+                    }
+                };
+
+            $('#editarCelular').mask(SPMaskBehavior, spOptions);
+        });
+
         GetPerfilPrestador()
         GetPublicacaoPrestador()
         GetGaleriaPrestador()
@@ -1309,6 +1510,9 @@
         var existMuralPrestador = false
         var idMuralPrestador = 0
         var idCardDelete = 0
+
+        var bairro = ''
+        var municipio = ''
 
         var latitude = 0
         var longitude = 0
@@ -1322,25 +1526,28 @@
                 if (this.status == 200) {
 
                     if (this.response.data.idFotoPerfil != null) {
+                        document.getElementById('fotoPerfilGaleriaAmpliada').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
+                        document.getElementById('fotoPublicacaoAmpliada').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
                         document.getElementById('fotoPerfilPrestador').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
                     }
 
-                    document.getElementById('fotoPerfilGaleriaAmpliada').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
-                    document.getElementById('fotoPublicacaoAmpliada').src = RotaAPI + "api/UsuarioPrestador/" + this.response.data.idFotoPerfil
                     document.getElementById("apelidoPrestador").textContent = this.response.data.apelido;
+                    document.getElementById("editarApelido").value = this.response.data.apelido;
+                    document.getElementById("editarNome").value = this.response.data.nome;
                     document.getElementById("nomeUsuarioGaleriaAmpliada").innerText = this.response.data.apelido;
                     document.getElementById("nomeUsuarioPublicacaoAmpliada").innerText = this.response.data.apelido;
                     document.getElementById("categoriaPrestador").textContent = this.response.data.categoria.descricao;
                     document.getElementById("emailPrestador").textContent = this.response.data.email;
                     document.getElementById("numVisualizacoes").textContent = this.response.data.numVisualizacoes;
 
-                    document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, este é meu perfil no Jobbe, acesse o link e tenha acesso a todo meu conteúdo: ' + RotaAPI + 'DetalhePerfil/' + @Model;
+                    document.getElementById("shareWhatsapp").href = 'whatsapp://send?text=Olá, este é meu perfil no Jobbe, acesse o link e tenha acesso a todo meu conteúdo: ' + 'https://jobbeapp.com.br/DetalhePerfil/' + @Model;
                     //document.getElementById("btnShareFacebook").data-url = RotaWeb + "DetalhePerfil/" + @Model;
 
                     if (this.response.data.raio != 0) {
                         document.getElementById("txtRaioAtendimento").innerText = this.response.data.raio + " Kilômetros";
                     } else {
                         document.getElementById("txtRaioAtendimento").innerText = '-'
+
                     }
 
                     if (this.response.data.enderecoBase != null) {
@@ -1366,29 +1573,29 @@
 
                         for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
                             var html = `
-                                                        <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 13px;padding-bottom: 13px;margin-bottom: 10px;" class="card">
-                                                          <div class="row g-0 align-items-center">
-                                                                    <div class="col-auto">
-                                                                        <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                                            <i data-cs-icon="clipboard" class="text-primary"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col ps-3">
-                                                                        <div class="row g-0">
-                                                                            <div class="col">
-                                                                                <h5>` + this.response.data.cards[i].descricao + `</h5>
-                                                                                <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-auto">
-                                                                        <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="cardButton` + this.response.data.cards[i].id + `" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
-                                                                            <i data-cs-icon="close" class="icon" data-cs-size="18"></i>
-                                                                        </button>
+                                                <div id="card` + this.response.data.cards[i].id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 13px;padding-bottom: 13px;margin-bottom: 10px;" class="card">
+                                                        <div class="row g-0 align-items-center">
+                                                                <div class="col-auto">
+                                                                    <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                                        <i data-cs-icon="clipboard" class="text-primary"></i>
                                                                     </div>
                                                                 </div>
-                                                        </div>
-                                                        `;
+                                                                <div class="col ps-3">
+                                                                    <div class="row g-0">
+                                                                        <div class="col">
+                                                                            <h5>` + this.response.data.cards[i].descricao + `</h5>
+                                                                            <p class="text-muted m-0 text-small">` + this.response.data.cards[i].descricao + `</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-auto">
+                                                                    <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="cardButton` + this.response.data.cards[i].id + `" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
+                                                                        <i data-cs-icon="close" class="icon" data-cs-size="18"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                    `;
 
                             document.getElementById("listaCards").innerHTML += html
                         }
@@ -1398,7 +1605,7 @@
                         for (let i = 0; i < this.response.data.cards.length; i = i + 1) {
                             let idCardButton = this.response.data.cards[i].id;
                             document.getElementById("cardButton" + this.response.data.cards[i].id).addEventListener("click", function() {
-	                            selectCardDelete(idCardButton)
+                                selectCardDelete(idCardButton)
                             }, false);
                         }
 
@@ -1408,27 +1615,27 @@
 
                         for (let i = 0; i < this.response.data.categoria.subCategorias.length; i = i + 1) {
                             var html = `
-                                        <div class="col mb-2">
-                                          <div class="card">
-                                            <div class="card-body" style="padding-top: 15px; padding-bottom: 15px;">
-                                              <div class="row g-0 sh-5">
-                                                <div class="col-auto">
-                                                    <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                        <i data-cs-icon="clipboard" class="text-primary"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                  <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
-                                                    <div class="d-flex flex-column">
-                                                      <div>` + this.response.data.categoria.subCategorias[i].name + `</div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        `;
+                                                        <div class="col mb-2">
+                                                            <div class="card">
+                                                            <div class="card-body" style="padding-top: 15px; padding-bottom: 15px;">
+                                                                <div class="row g-0 sh-5">
+                                                                <div class="col-auto">
+                                                                    <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                                        <i data-cs-icon="clipboard" class="text-primary"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="card-body d-flex flex-row pt-0 pb-0 ps-3 pe-0 h-100 align-items-center justify-content-between">
+                                                                    <div class="d-flex flex-column">
+                                                                        <div>` + this.response.data.categoria.subCategorias[i].name + `</div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        `;
 
                             document.getElementById("listaSubCategorias").innerHTML += html
                         }
@@ -1438,18 +1645,116 @@
 
                     if (this.response.data.telefones != null) {
 
+                        document.getElementById("editarCelular").value = this.response.data.telefones[0].numeroTelefone;
+
                         for (let i = 0; i < this.response.data.telefones.length; i = i + 1) {
                             var html = `
-                                                          <div class="text-muted">
-                                                                    <i data-cs-icon="phone" class="me-1"></i>
-                                                                    <span class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
-                                                            </div>
+                                                        <div class="text-muted">
+                                                                <i data-cs-icon="phone" class="me-1"></i>
+                                                                <span id="numeroCelularPrestador" class="align-middle"><span></span>` + this.response.data.telefones[i].numeroTelefone + `</span>
+                                                        </div>
                                                         `;
 
                             document.getElementById("listaTelefone").innerHTML += html
                         }
 
                     }
+
+                    document.getElementById("btnInicial").click();
+
+                    var htmlConteudoInicial = `
+                                                    <div class="scroll-out">
+                                                        <div class="scroll-by-count" data-count="6">
+
+                                                            <div class="card mb-4">
+                                                                <div class="row g-0 sh-12">
+                                                                    <div class="col-auto">
+                                                                        <img style="padding: 10px;" src="../img/icons/perfil_icon.png" alt="alternate text" class="card-img card-img-horizontal sw-13 sw-lg-15" />
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="card-body pt-0 pb-0 h-100">
+                                                                            <div class="row g-0 h-100 align-content-center">
+                                                                                <div class="mb-2">
+                                                                                    <a>Perfil Atualizado</a>
+                                                                                    <div class="text-small text-muted">Aumenta a credibilidade do seu perfil, trazendo mais confiança para seus clientes.</div>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <button id="btnInicialPerfil" class="btn btn-sm btn-icon btn-icon-start btn-outline-primary" type="button">
+                                                                                        <i data-cs-icon="edit-square" data-cs-size="15"></i>
+                                                                                        Adicionar Foto Perfil
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-4">
+                                                                <div class="row g-0 sh-12">
+                                                                    <div class="col-auto">
+                                                                        <img style="padding: 10px;" src="../img/icons/galeria_icon.png" alt="alternate text" class="card-img card-img-horizontal sw-13 sw-lg-15" />
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="card-body pt-0 pb-0 h-100">
+                                                                            <div class="row g-0 h-100 align-content-center">
+                                                                                <div class="mb-2">
+                                                                                    <a>+ Fotos na Galeria</a>
+                                                                                    <div class="text-small text-muted">É a sua vitrine de serviços, mantenha atualizada com fotos dos seus trabalhos.</div>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <button id="btnInicialGaleria" class="btn btn-sm btn-icon btn-icon-start btn-outline-primary" type="button">
+                                                                                        <i data-cs-icon="edit-square" data-cs-size="15"></i>
+                                                                                        Adicionar Galeria
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="card mb-4">
+                                                                <div class="row g-0 sh-12">
+                                                                    <div class="col-auto">
+                                                                        <img style="padding: 10px;" src="../img/icons/news_icon2.png" alt="alternate text" class="card-img card-img-horizontal sw-13 sw-lg-15" />
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <div class="card-body pt-0 pb-0 h-100">
+                                                                            <div class="row g-0 h-100 align-content-center">
+                                                                                <div class="mb-2">
+                                                                                    <a>+ Publicações</a>
+                                                                                    <div class="text-small text-muted">Elas são impulsionadas no Jobbe mesmo fora do seu perfil, aumentando sua visibilidade.</div>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <button id="btnInicialPublicacao" class="btn btn-sm btn-icon btn-icon-start btn-outline-primary" type="button">
+                                                                                        <i data-cs-icon="edit-square" data-cs-size="15"></i>
+                                                                                        Adicionar Publicação
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <br />
+
+                                                        <button id="btnInicialOk" style="width: 100%;" type="button" class="btn btn-primary mb-2">OK, Entendi!</button>
+
+                                                    </div>
+                                                        `;
+
+                    document.getElementById("conteudoModalInicial").innerHTML += htmlConteudoInicial
+                    csicons.replace()
+
+                    document.getElementById("btnInicialPerfil").addEventListener("click", clickBtnInicialPerfil, false);
+                    document.getElementById("btnInicialGaleria").addEventListener("click", clickBtnInicialGaleria, false);
+                    document.getElementById("btnInicialPublicacao").addEventListener("click", clickBtnInicialPublicacao, false);
+                    document.getElementById("btnInicialOk").addEventListener("click", btnInicialOk, false);
                 }
             };
 
@@ -1468,30 +1773,33 @@
                     if (this.response.data != null) {
 
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
+
+                            var textoPublicacao = this.response.data[i].descricao.replaceAll("\n", "<br>")
+
                             var html = `
-                                                          <div id="publicacao` + this.response.data[i].id + `" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
-                                                                    <a>
-                                                                        <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                                                    </a>
-                                                                    <div class="card-body">
-                                                                            <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                                ` + this.response.data[i].descricao + `
-                                                                            </p>
-                                                                    </div>
-                                                           </div>
-                                                        `;
+                                                        <div id="publicacao` + this.response.data[i].id + `" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
+                                                                <a>
+                                                                    <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                                </a>
+                                                                <div class="card-body">
+                                                                        <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                            ` + textoPublicacao + `
+                                                                        </p>
+                                                                </div>
+                                                        </div>
+                                                    `;
 
                             document.getElementById("listaPublicacao").innerHTML += html
 
                             var html2 = `
                                                         <div id="publicacaoAmpliada` + this.response.data[i].id + `" style="margin-top:5vh">
-                                                            <div style="width:100%; display: flex; justify-content: center;">
-                                                                <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
+                                                            <div class="mb-3" style="width:100%; display: flex; justify-content: center;">
+                                                                <img style="max-height: 70vh;max-width: 100vw;" src="` + RotaAPI + 'api/Publicacao/' + this.response.data[i].urlMidia + `" />
                                                             </div>
 
                                                             <div style="width:100%; display: flex; justify-content: center;">
                                                                 <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                    ` + this.response.data[i].descricao + `
+                                                                    ` + textoPublicacao + `
                                                                 </p>
                                                             </div>
 
@@ -1504,16 +1812,16 @@
                                                             <hr style="width:100%; margin-top:3vh"/>
 
                                                         </div>
-                                                `;
+                                                        `;
 
                             document.getElementById("framePublicacaoAmpliada").innerHTML += html2
 
                         }
 
-                        for (let i = 0; i < this.response.data.length; i = i + 1) { 
+                        for (let i = 0; i < this.response.data.length; i = i + 1) {
                             let idpublicacaoButton = this.response.data[i].id;
                             document.getElementById("publicacaoButton" + this.response.data[i].id).addEventListener("click", function() {
-	                            deletePublicacao(idpublicacaoButton)
+                                deletePublicacao(idpublicacaoButton)
                             }, false);
                         }
 
@@ -1538,39 +1846,39 @@
                         for (let i = 0; i < this.response.data.length; i = i + 1) {
 
                             var html = `
-                                                                  <div id="galeria` + this.response.data[i].id + `" class="col">
-                                                                    <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                                                    <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
-                                                                    </div>
-                                                                </div>
-                                                        `;
+                                                        <div id="galeria` + this.response.data[i].id + `" class="col">
+                                                            <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                                                <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                                            </div>
+                                                        </div>
+                                                    `;
 
                             document.getElementById("listaGaleria").innerHTML += html
 
                             var html2 = `
-                                                        <div id="galeriaAmpliada` + this.response.data[i].id + `" style="margin-top:5vh">
-                                                            <div style="width:100%; display: flex; justify-content: center;">
-                                                                <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" />
-                                                            </div>
-
-                                                            <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
-                                                                <div style="width:100%; display: flex; justify-content: center;">
-                                                                    <button id="galeriaButton` + this.response.data[i].id + `" type="button" class="btn btn-outline-primary">Deletar Foto</button>
-                                                                </div>
-                                                            </div>
-
-                                                            <hr style="width:100%; margin-top:3vh"/>
-
+                                                    <div id="galeriaAmpliada` + this.response.data[i].id + `" style="margin-top:5vh">
+                                                        <div style="width:100%; display: flex; justify-content: center;">
+                                                            <img style="max-height: 70vh;max-width: 100vw;" src="` + RotaAPI + 'api/Galeria/' + this.response.data[i].urlMidia + `" />
                                                         </div>
+
+                                                        <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                                            <div style="width:100%; display: flex; justify-content: center;">
+                                                                <button id="galeriaButton` + this.response.data[i].id + `" type="button" class="btn btn-outline-primary">Deletar Foto</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr style="width:100%; margin-top:3vh"/>
+
+                                                    </div>
                                                 `;
 
                             document.getElementById("frameImagemAmpliada").innerHTML += html2
                         }
 
-                        for (let i = 0; i < this.response.data.length; i = i + 1) { 
+                        for (let i = 0; i < this.response.data.length; i = i + 1) {
                             let idGaleriaButton = this.response.data[i].id;
                             document.getElementById("galeriaButton" + this.response.data[i].id).addEventListener("click", function() {
-	                            deleteGaleria(idGaleriaButton)
+                                deleteGaleria(idGaleriaButton)
                             }, false);
                         }
 
@@ -1579,6 +1887,102 @@
             };
 
             ajax.send();
+        }
+
+        function clickBtnInicialPerfil() {
+
+            document.getElementById("btnCloseInicial").click();
+            document.getElementById("btnAbrirModalPerfil").click();
+        
+        }
+
+        function clickBtnInicialGaleria() {
+
+            document.getElementById("btnCloseInicial").click();
+            document.getElementById("btnAbrirModalGaleria").click();
+        
+        }
+
+        function clickBtnInicialPublicacao() {
+
+            document.getElementById("btnPublicacaoTab").click();
+            document.getElementById("btnCloseInicial").click();
+            document.getElementById("btnAbrirModalPublicacao").click();
+        
+        }
+        
+        function btnInicialOk() {
+
+            document.getElementById("btnCloseInicial").click();
+        
+        }
+
+        document.getElementById("btnLogout").addEventListener("click", deslogarUsuario, false);
+
+        function deslogarUsuario() {
+
+            const ajaxSaveUser = new XMLHttpRequest();
+            ajaxSaveUser.open('GET', RotaWeb + 'SaveSessionUser/' + 0);
+            ajaxSaveUser.responseType = 'json';
+            ajaxSaveUser.onload = function(e) {
+                if (this.status == 200) {
+                    window.location.replace(RotaWeb);
+                } else {
+                    alertErro()
+                }
+            };
+
+            ajaxSaveUser.send();
+
+        }
+
+        document.getElementById("btnSalvarAlterarDadosPessoais").addEventListener("click", salvarAlteracaoDadosPessoais, false);
+
+        function salvarAlteracaoDadosPessoais() {
+
+            let apelidoEditado = document.getElementById("editarApelido").value
+            let nomeEditado = document.getElementById("editarNome").value
+            let celularEditado = document.getElementById("editarCelular").value
+
+            if (nomeEditado.length < 1) {
+                alertErroMessage("Insira corretamente o nome!", "Insira corretamente o nome, dessa forma seu perfil passará mais segurança para seus clientes.")
+                return
+            }
+
+            if (apelidoEditado.length < 1) {
+                alertErroMessage("Insira corretamente o apelido!", "Insira corretamente o apelido ou nome social, dessa forma seu perfil passará mais segurança para seus clientes.")
+                return
+            }
+
+            if (celularEditado.length < 14) {
+                alertErroMessage("Insira corretamente o número de celular!", "Insira corretamente o número de celular, dessa forma seu perfil passará mais segurança para seus clientes.")
+                return
+            }
+
+            document.getElementById("btnSalvarAlterarDadosPessoais").style.visibility = "hidden";
+            document.getElementById("idProgressBarAlterarDadosPessoais").style.visibility = "visible";
+
+            var ajax = new XMLHttpRequest();
+            ajax.open("PUT", RotaAPI + "api/UsuarioPrestador");
+            ajax.setRequestHeader("Content-Type", "application/json");
+            ajax.send(JSON.stringify({ id: @Model, Nome: nomeEditado, Apelido: apelidoEditado, Celular: celularEditado }));
+            ajax.onreadystatechange = function() {
+
+                document.getElementById("idProgressBarAlterarDadosPessoais").style.visibility = "hidden";
+                document.getElementById("btnSalvarAlterarDadosPessoais").style.visibility = "visible";
+
+                if (ajax.status == 200) {
+
+                    document.getElementById("apelidoPrestador").textContent = apelidoEditado;
+                    document.getElementById("nomeUsuarioGaleriaAmpliada").innerText = apelidoEditado;
+                    document.getElementById("nomeUsuarioPublicacaoAmpliada").innerText = apelidoEditado;
+                    document.getElementById("numeroCelularPrestador").innerHTML = celularEditado;
+                    document.getElementById("btnCloseAlterarDadosPessoais").click();
+
+                } else {
+                    alertErro()
+                }
+            }
         }
 
         document.getElementById("btnSalvarMural").addEventListener("click", salvarMural, false);
@@ -1636,7 +2040,7 @@
         document.getElementById("btnSalvarCard").addEventListener("click", salvarCard, false);
 
         function salvarCard() {
-          
+
             document.getElementById("btnSalvarCard").style.visibility = "hidden";
             document.getElementById("idProgressBarCard").style.visibility = "visible";
 
@@ -1655,29 +2059,29 @@
 
                     if (ajaxCard.status == 200) {
                         var htmlCard = `
-                                                        <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 13px;padding-bottom: 13px;margin-bottom: 10px;" class="card">
-                                                          <div class="row g-0 align-items-center">
-                                                                    <div class="col-auto">
-                                                                        <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
-                                                                            <i data-cs-icon="clipboard" class="text-primary"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col ps-3">
-                                                                        <div class="row g-0">
-                                                                            <div class="col">
-                                                                                <h5>` + tituloCard + `</h5>
-                                                                                <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-auto">
-                                                                        <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="cardButton` + JSON.parse(this.response).data.id + `" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
-                                                                            <i data-cs-icon="close"></i>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        `;
+                                                                                                                                                                                                <div id="card` + JSON.parse(this.response).data.id + `" style="padding-left: 2vw;padding-right: 2vw;padding-top: 13px;padding-bottom: 13px;margin-bottom: 10px;" class="card">
+                                                                                                                                                                                                  <div class="row g-0 align-items-center">
+                                                                                                                                                                                                            <div class="col-auto">
+                                                                                                                                                                                                                <div class="border border-primary sw-5 sh-5 rounded-xl d-flex justify-content-center align-items-center">
+                                                                                                                                                                                                                    <i data-cs-icon="clipboard" class="text-primary"></i>
+                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <div class="col ps-3">
+                                                                                                                                                                                                                <div class="row g-0">
+                                                                                                                                                                                                                    <div class="col">
+                                                                                                                                                                                                                        <h6>` + tituloCard + `</h6>
+                                                                                                                                                                                                                        <p class="text-muted m-0 text-small">` + descricaoCard + `</p>
+                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                            <div class="col-auto">
+                                                                                                                                                                                                                <button data-bs-toggle="modal" data-bs-target="#modalDeleteCard" id="cardButton` + JSON.parse(this.response).data.id + `" class="btn btn-sm btn-icon btn-icon-only btn-outline-primary ms-1" type="button">
+                                                                                                                                                                                                                    <i data-cs-icon="close"></i>
+                                                                                                                                                                                                                </button>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                `;
 
                         document.getElementById("listaCards").innerHTML += htmlCard
                         document.getElementById("btnCloseAddCard").click();
@@ -1686,7 +2090,7 @@
 
                         let idCardButton = JSON.parse(this.response).data.id;
                         document.getElementById("cardButton" + JSON.parse(this.response).data.id).addEventListener("click", function() {
-	                        selectCardDelete(idCardButton)
+                            selectCardDelete(idCardButton)
                         }, false);
 
                     } else {
@@ -1699,6 +2103,9 @@
         document.getElementById("btnSalvarPublicacao").addEventListener("click", salvarPublicacao, false);
 
         function salvarPublicacao() {
+
+            document.getElementById("btnSalvarPublicacao").style.visibility = "hidden";
+            document.getElementById("idProgressBarPublicacao").style.visibility = "visible";
 
             let descricaoCard = document.getElementById("descricaoPublicacao").value
 
@@ -1714,42 +2121,46 @@
             ajaxCard.onreadystatechange = function() {
                 console.log(ajaxCard)
                 if (ajaxCard.readyState == 4) {
+
+                    document.getElementById("idProgressBarPublicacao").style.visibility = "hidden";
+                    document.getElementById("btnSalvarPublicacao").style.visibility = "visible";
+
                     if (ajaxCard.status == 200) {
                         var html = `
-                                                <div id="publicacao` + JSON.parse(this.response).data.id + `" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
-                                                        <a>
-                                                            <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
-                                                        </a>
-                                                        <div class="card-body">
-                                                            <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                                ` + JSON.parse(this.response).data.descricao + `
-                                                            </p>
-                                                        </div>
-                                                </div>
-                                            `;
+                                                                                                                                                                                        <div id="publicacao` + JSON.parse(this.response).data.id + `" data-bs-toggle="modal" data-bs-target="#modalPublicacaoAmpliada" class="card mb-5">
+                                                                                                                                                                                                <a>
+                                                                                                                                                                                                    <img style="min-height: 70vh;" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" class="card-img-top sh-35" alt="card image" />
+                                                                                                                                                                                                </a>
+                                                                                                                                                                                                <div class="card-body">
+                                                                                                                                                                                                    <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                                                                                                                                                        ` + JSON.parse(this.response).data.descricao + `
+                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    `;
 
                         var html2 = `
-                                        <div id="publicacaoAmpliada` + JSON.parse(this.response).data.id + `" style="margin-top:5vh">
-                                            <div style="width:100%; display: flex; justify-content: center;">
-                                                <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" />
-                                            </div>
+                                                                                                                                                                                <div id="publicacaoAmpliada` + JSON.parse(this.response).data.id + `" style="margin-top:5vh">
+                                                                                                                                                                                    <div style="width:100%; display: flex; justify-content: center;">
+                                                                                                                                                                                        <img style="height:70vh" src="` + RotaAPI + 'api/Publicacao/' + JSON.parse(this.response).data.urlMidia + `" />
+                                                                                                                                                                                    </div>
 
-                                            <div style="width:100%; display: flex; justify-content: center;">
-                                                <p class="text-alternate clamp-line mb-0" data-line="2">
-                                                    ` + JSON.parse(this.response).data.descricao + `
-                                                </p>
-                                            </div>
+                                                                                                                                                                                    <div style="width:100%; display: flex; justify-content: center;">
+                                                                                                                                                                                        <p class="text-alternate clamp-line mb-0" data-line="2">
+                                                                                                                                                                                            ` + JSON.parse(this.response).data.descricao + `
+                                                                                                                                                                                        </p>
+                                                                                                                                                                                    </div>
 
-                                            <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
-                                                <div style="width:100%; display: flex; justify-content: center;">
-                                                    <button id="publicacaoButton` + JSON.parse(this.response).data.id + `" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
-                                                </div>
-                                            </div>
+                                                                                                                                                                                    <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                                                                                                                                                                        <div style="width:100%; display: flex; justify-content: center;">
+                                                                                                                                                                                            <button id="publicacaoButton` + JSON.parse(this.response).data.id + `" type="button" class="btn btn-outline-primary">Deletar Publicação</button>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    </div>
 
-                                            <hr style="width:100%; margin-top:3vh"/>
+                                                                                                                                                                                    <hr style="width:100%; margin-top:3vh"/>
 
-                                        </div>
-                                    `;
+                                                                                                                                                                                </div>
+                                                                                                                                                                            `;
 
                         let htmlBase = document.getElementById("listaPublicacao").innerHTML
                         document.getElementById("listaPublicacao").innerHTML = html
@@ -1763,7 +2174,7 @@
 
                         let idpublicacaoButton = JSON.parse(this.response).data.id;
                         document.getElementById("publicacaoButton" + JSON.parse(this.response).data.id).addEventListener("click", function() {
-	                        deletePublicacao(idpublicacaoButton)
+                            deletePublicacao(idpublicacaoButton)
                         }, false);
 
                     } else {
@@ -1777,6 +2188,9 @@
 
         function salvarMidia() {
 
+            document.getElementById("btnSalvarMidia").style.visibility = "hidden";
+            document.getElementById("idProgressBarMidia").style.visibility = "visible";
+
             //var base64 = getBase64Image(document.getElementById("saved-imgFotoMidia"));
             var base64Completed = document.getElementById("saved-imgFotoMidia").src
             var base64 = base64Completed.split(",").pop()
@@ -1789,32 +2203,36 @@
             ajaxGaleria.onreadystatechange = function() {
                 console.log(ajaxGaleria)
                 if (ajaxGaleria.readyState == 4) {
+
+                    document.getElementById("idProgressBarMidia").style.visibility = "hidden";
+                    document.getElementById("btnSalvarMidia").style.visibility = "visible";
+
                     if (ajaxGaleria.status == 200) {
 
                         var html = `
-                                            <div id="galeria` + JSON.parse(this.response).data.id + `" class="col">
-                                                <div class="card sh-35 hover-img-scale-up hover-reveal">
-                                                    <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" class="card-img h-100 scale" alt="card image" />
-                                                </div>
-                                            </div>
-                                            `;
+                                                                                                                                                                                    <div id="galeria` + JSON.parse(this.response).data.id + `" class="col">
+                                                                                                                                                                                        <div class="card sh-35 hover-img-scale-up hover-reveal">
+                                                                                                                                                                                            <img data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" class="card-img h-100 scale" alt="card image" />
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                    `;
 
                         var html2 = `
-                                            <div id="galeriaAmpliada` + JSON.parse(this.response).data.id + `" style="margin-top:5vh">
-                                                <div style="width:100%; display: flex; justify-content: center;">
-                                                    <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" />
-                                                </div>
+                                                                                                                                                                                    <div id="galeriaAmpliada` + JSON.parse(this.response).data.id + `" style="margin-top:5vh">
+                                                                                                                                                                                        <div style="width:100%; display: flex; justify-content: center;">
+                                                                                                                                                                                            <img style="height:70vh" src="` + RotaAPI + 'api/Galeria/' + JSON.parse(this.response).data.urlMidia + `" />
+                                                                                                                                                                                        </div>
 
-                                                <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
-                                                    <div style="width:100%; display: flex; justify-content: center;">
-                                                        <button id="galeriaButton` + JSON.parse(this.response).data.id + `" type="button" class="btn btn-outline-primary">Deletar Foto</button>
-                                                    </div>
-                                                </div>
+                                                                                                                                                                                        <div style="width:100%; display: flex; justify-content: center; margin-top:2vh">
+                                                                                                                                                                                            <div style="width:100%; display: flex; justify-content: center;">
+                                                                                                                                                                                                <button id="galeriaButton` + JSON.parse(this.response).data.id + `" type="button" class="btn btn-outline-primary">Deletar Foto</button>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                        </div>
 
-                                                <hr style="width:100%; margin-top:3vh"/>
+                                                                                                                                                                                        <hr style="width:100%; margin-top:3vh"/>
 
-                                            </div>
-                                                `;
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                        `;
 
                         let htmlBase = document.getElementById("listaGaleria").innerHTML
                         document.getElementById("listaGaleria").innerHTML = html
@@ -1828,7 +2246,7 @@
 
                         let idGaleriaButton = JSON.parse(this.response).data.id;
                         document.getElementById("galeriaButton" + JSON.parse(this.response).data.id).addEventListener("click", function() {
-	                        deleteGaleria(idGaleriaButton)
+                            deleteGaleria(idGaleriaButton)
                         }, false);
 
                     } else {
@@ -1843,6 +2261,9 @@
 
         function salvarFotoPerfil() {
 
+            document.getElementById("btnSalvarFotoPerfil").style.visibility = "hidden";
+            document.getElementById("idProgressBarFotoPerfil").style.visibility = "visible";
+
             //var base64 = getBase64Image(document.getElementById("saved-imgFotoPerfil"));
             var base64Completed = document.getElementById("saved-imgFotoPerfil").src
             var base64 = base64Completed.split(",").pop()
@@ -1855,6 +2276,10 @@
             ajaxCard.onreadystatechange = function() {
                 console.log(ajaxCard)
                 if (ajaxCard.readyState == 4) {
+
+                    document.getElementById("idProgressBarFotoPerfil").style.visibility = "hidden";
+                    document.getElementById("btnSalvarFotoPerfil").style.visibility = "visible";
+
                     if (ajaxCard.status == 200) {
 
                         document.getElementById('fotoPerfilPrestador').src = 'data:image/png;base64,' + base64
@@ -1885,6 +2310,10 @@
                 console.log(ajaxRegiao)
                 if (ajaxRegiao.readyState == 4) {
                     if (ajaxRegiao.status == 200) {
+
+                        document.getElementById("txtRegiaoAtendimento").innerText = bairro;
+                        document.getElementById("txtRegiaoAtendimentoCidade").innerText = municipio;
+                        document.getElementById("txtRaioAtendimento").innerText = raio + " Kilômetros";
                         document.getElementById("btnCloseRegiaoLocalizacao").click();
 
                     } else {
@@ -1979,10 +2408,14 @@
             console.log("Cep: " + cep)
 
             const ajax = new XMLHttpRequest();
-            ajax.open('GET', RotaAPI + 'api/EnderecoBase/' + cep);
+            ajax.open('GET', RotaAPI + 'api/EnderecoBase/' + cep.replace("-", ""));
             ajax.responseType = 'json';
             ajax.onload = function(e) {
                 if (this.status == 200) {
+
+                    bairro = this.response.data.bairro
+                    municipio = this.response.data.localidadeNome + " - " + this.response.data.uf
+
                     console.log(this.response)
                     enderecoPorCelText.innerHTML = this.response.data.logradouroTipo + " " + this.response.data.logradouroNome + "<br>" + this.response.data.bairro + "<br>" + this.response.data.localidadeNome + " - " + this.response.data.uf;
                     document.getElementById("btnSalvarRegiaoCep").style.visibility = "visible";
@@ -2008,6 +2441,10 @@
                 console.log(ajaxRegiao)
                 if (ajaxRegiao.readyState == 4) {
                     if (ajaxRegiao.status == 200) {
+
+                        document.getElementById("txtRegiaoAtendimento").innerText = bairro;
+                        document.getElementById("txtRegiaoAtendimentoCidade").innerText = municipio;
+                        document.getElementById("txtRaioAtendimento").innerText = raio + " Kilômetros";
                         document.getElementById("btnCloseRegiaoCep").click();
 
                     } else {
@@ -2022,6 +2459,10 @@
         function fecharModalRegiaoAtendimentoCep() {
 
             document.getElementById("btnCloseRegiaoAtendimento").click();
+        }
+
+        function alertErroMessage(title, message) {
+            sweetAlert(title, message, "error")
         }
 
         function alertErro() {
@@ -2049,6 +2490,8 @@
             ajax.responseType = 'json';
             ajax.onload = function(e) {
                 if (this.status == 200) {
+                    bairro = this.response.data.bairro
+                    municipio = this.response.data.localidadeNome + " - " + this.response.data.uf
                     console.log(this.response)
                     x.innerHTML = this.response.data.bairro + "<br>" + this.response.data.localidadeNome + " - " + this.response.data.uf;
                 }
@@ -2073,6 +2516,17 @@
         sliderCep.oninput = function() {
             outputCep.innerHTML = this.value;
         }
+
+        String.prototype.replaceAll = function(stringToFind, stringToReplace) {
+            if (stringToFind === stringToReplace) return this;
+            var temp = this;
+            var index = temp.indexOf(stringToFind);
+            while (index != -1) {
+                temp = temp.replace(stringToFind, stringToReplace);
+                index = temp.indexOf(stringToFind);
+            }
+            return temp;
+        };
 
     </script>
 
